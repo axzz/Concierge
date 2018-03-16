@@ -6,10 +6,11 @@ module Web::Controllers::Index
     def call(params)
       if params[:tel].nil?
         self.body={state: 'fail',reason: '没有填写手机号码'}.to_json
-      elsif !tel =~ /^1[34578]\d{9}$/
+      elsif !(params[:tel] =~ /^1[34578]\d{9}$/)
         self.body={state: 'fail',reason: '手机号不符规范'}.to_json
       else
         @repository=UserRepository.new
+        tel=params[:tel]
         @user=@repository.create(tel: tel,name: ('管理员'+tel[-4..-1])) unless @user=@repository.find_user_by_tel(tel)
         if params[:code].nil?
           #请求短信服务
@@ -37,7 +38,6 @@ module Web::Controllers::Index
     end
 
     def verify_SMS_service(code)
-      #判断是否出错
       if @user.SMS!=code
         return "","验证码输入错误"
       elsif Time.now>@user.SMS_limit
