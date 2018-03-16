@@ -53,7 +53,7 @@ module Web::Controllers::Index
       user=repository.find_user_by_tel_SMS(tel,code)
       if user.nil?
         return "","验证码输入错误"
-      elseif Time.now>user.SMS_limit
+      elsif Time.now>user.SMS_limit
         return "","短信已过期"
       end
       #生成token
@@ -74,6 +74,7 @@ module Web::Controllers::Index
     end
 
     def authenticate!
+      #登录页跳过权限判断中间件
     end
   end
 end

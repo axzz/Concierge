@@ -12,7 +12,7 @@ class UserRepository < Hanami::Repository
         user=users.where(tel: tel).where(token: token).first
         if user.nil?
             return false
-        elseif Time.now>user.token_limit
+        elsif Time.now>user.token_limit
             return false
         end
         #延迟token_limit
