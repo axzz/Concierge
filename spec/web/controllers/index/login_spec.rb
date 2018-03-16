@@ -34,12 +34,20 @@ describe Web::Controllers::Index::Login do
   end
 
 
+<<<<<<< HEAD
   it 'success to login' do
     action.call(tel: '17713441928')
     response = action.call(tel: tel,code: '123456')
     token=JSON.parse(response[2][0])["token"]
     response=if_login.call(tel: tel,token: token)
     (JSON.parse(response[2][0])["state"]).must_equal "success"
+=======
+  it 'success to log out' do
+    action.call(tel: '17713441928')
+    response = action.call(tel: tel,code: '123456')
+    token=response[2][0])["token"]
+
+>>>>>>> 425fe4d0962308ebaadcb19f04cf6e019338d427
   end
 
   it 'success to logout' do
