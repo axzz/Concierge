@@ -3,16 +3,14 @@ require 'json'
 module Web::Controllers::Index
   class Login
     include Web::Action
-    #完成文档 interface_login_V0.1
-    #2018_3_14 By axzz
     def call(params)
       if params[:tel].nil?
         self.body={state: 'fail',reason: '没有填写手机号码'}.to_json
       elsif !tel =~ /^1[34578]\d{9}$/
         self.body={state: 'fail',reason: '手机号不符规范'}.to_json
       else
-        repository=UserRepository.new
-        @user=repository.create(tel: tel,name: ('管理员'+tel[-4..-1])) unless @user=repository.find_user_by_tel(tel)
+        @repository=UserRepository.new
+        @user=@repository.create(tel: tel,name: ('管理员'+tel[-4..-1])) unless @user=@repository.find_user_by_tel(tel)
         if params[:code].nil?
           #请求短信服务
           state,reason=SMS_service()
@@ -22,7 +20,7 @@ module Web::Controllers::Index
           token,reason=verify_SMS_service(params[:code])
           if token!=""
             limit_time=Time.now+3600*36
-            repository.update(@user.id,token: token,token_limit: limit_time,SMS_limit: (Time.now-1))
+            @repository.update(@user.id,token: token,token_limit: limit_time,SMS_limit: (Time.now-1))
             self.body={state: "success",token: token}.to_json
           else
             self.body={state: "fail",reason: reason}.to_json
@@ -34,8 +32,7 @@ module Web::Controllers::Index
     def SMS_service
       #TODO: 生成code，发送短信
       code="123456"
-      #存储tel、code
-      repository.update(@user.id,SMS: code,SMS_limit: (Time.now+600))
+      @repository.update(@user.id,SMS: code,SMS_limit: (Time.now+600))
       return "success",""
     end
 
