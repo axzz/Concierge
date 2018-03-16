@@ -18,8 +18,9 @@ module Web::Controllers::Index
           self.body={state: state,reason: reason}.to_json
         else
           #请求验证服务
-          token,reason=verify_SMS_service(params[:code])
-          if token!=""
+          reason=verify_SMS_service(params[:code])
+          if reason==""
+            token=make_token()
             limit_time=Time.now+3600*36
             @repository.update(@user.id,token: token,token_limit: limit_time,SMS_limit: (Time.now-1))
             self.body={state: "success",token: token}.to_json
@@ -39,11 +40,11 @@ module Web::Controllers::Index
 
     def verify_SMS_service(code)
       if @user.SMS!=code
-        return "","验证码输入错误"
+        return "验证码输入错误"
       elsif Time.now>@user.SMS_limit
-        return "","短信已过期"
+        return "短信已过期"
       end
-      return make_token,""
+      return ""
     end
 
     def make_token
