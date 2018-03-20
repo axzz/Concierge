@@ -3,7 +3,7 @@ module Web::Controllers::Index
     include Web::Action
 
     def call(params)
-      self.body='{"state":"success","reason":""}'
+      #self.body='{"state":"success","reason":""}'
     end
   end
 end

@@ -3,7 +3,10 @@ require 'json'
 module Web::Controllers::Index
   class Login
     include Web::Action
+
     def call(params)
+      p request
+      self.format=:json
       if params[:tel].nil?
         self.body={state: 'fail',reason: '没有填写手机号码'}.to_json
       elsif !(params[:tel] =~ /^1[34578]\d{9}$/)

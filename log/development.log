@@ -1,0 +1,69 @@
+# Logfile created on 2018-03-19 14:50:01 +0800 by logger.rb/v1.2.7
+[app] [INFO] [2018-03-19 14:50:02 +0800] HTTP/1.1 GET 404 127.0.0.1 / 1386 {} 0.004634671
+[app] [INFO] [2018-03-19 14:50:54 +0800] (0.000132s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 14:50:54 +0800] (0.000082s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 14:50:54 +0800] (0.000086s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 14:50:54 +0800] (0.000876s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 14:50:54 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 43 {"tel"=>"13408058303", "code"=>"123456"} 0.012782554
+[app] [INFO] [2018-03-19 14:51:00 +0800] (0.000220s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 14:51:00 +0800] (0.000175s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 14:51:00 +0800] (0.000119s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 14:51:00 +0800] (0.000871s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 14:51:00 +0800] (0.000281s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-03-19 14:51:00 +0800] (0.001715s) UPDATE "users" SET "SMS" = '123456', "SMS_limit" = '2018-03-19 07:01:00.053553+0000', "updated_at" = '2018-03-19 06:51:00.057797+0000' WHERE ("users"."id" = 2) RETURNING *
+[app] [INFO] [2018-03-19 14:51:00 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.020851997
+[app] [INFO] [2018-03-19 14:51:45 +0800] (0.000218s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 14:51:45 +0800] (0.000129s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 14:51:45 +0800] (0.000143s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 14:51:45 +0800] (0.001078s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 14:51:45 +0800] (0.000342s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-03-19 14:51:45 +0800] (0.007961s) UPDATE "users" SET "SMS" = '123456', "SMS_limit" = '2018-03-19 07:01:45.871967+0000', "updated_at" = '2018-03-19 06:51:45.877781+0000' WHERE ("users"."id" = 2) RETURNING *
+[app] [INFO] [2018-03-19 14:51:45 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.032475458
+[app] [INFO] [2018-03-19 15:06:48 +0800] HTTP/1.1 GET 200 127.0.0.1 /hello 18 {} 0.002542949
+[app] [INFO] [2018-03-19 16:45:40 +0800] HTTP/1.1 GET 404 127.0.0.1 /hello 1386 {} 0.004534314
+[app] [INFO] [2018-03-19 17:04:41 +0800] (0.000198s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 17:04:41 +0800] (0.000135s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 17:04:41 +0800] (0.000138s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 17:04:41 +0800] (0.001164s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 17:04:41 +0800] (0.000408s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-03-19 17:04:41 +0800] (0.001809s) UPDATE "users" SET "SMS" = '123456', "SMS_limit" = '2018-03-19 09:14:41.917573+0000', "updated_at" = '2018-03-19 09:04:41.922276+0000' WHERE ("users"."id" = 2) RETURNING *
+[app] [INFO] [2018-03-19 17:04:41 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.020489515
+[app] [INFO] [2018-03-19 17:04:54 +0800] (0.000221s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 17:04:54 +0800] (0.000143s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 17:04:54 +0800] (0.000138s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 17:04:54 +0800] (0.000953s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 17:04:54 +0800] (0.000351s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-03-19 17:04:54 +0800] (0.010690s) UPDATE "users" SET "SMS" = '123456', "SMS_limit" = '2018-03-19 09:14:54.523232+0000', "updated_at" = '2018-03-19 09:04:54.528027+0000' WHERE ("users"."id" = 2) RETURNING *
+[app] [INFO] [2018-03-19 17:04:54 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.033630373
+[app] [INFO] [2018-03-19 17:05:02 +0800] (0.000230s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 17:05:02 +0800] (0.000118s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 17:05:02 +0800] (0.000177s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 17:05:02 +0800] (0.000927s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 17:05:02 +0800] (0.000386s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-03-19 17:05:02 +0800] (0.003087s) UPDATE "users" SET "SMS" = '123456', "SMS_limit" = '2018-03-19 09:15:02.604033+0000', "updated_at" = '2018-03-19 09:05:02.608546+0000' WHERE ("users"."id" = 2) RETURNING *
+[app] [INFO] [2018-03-19 17:05:02 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.02084136
+[app] [INFO] [2018-03-19 17:07:55 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 49 {"tel"=>"1340805830"} 0.002913675
+[app] [INFO] [2018-03-19 17:55:18 +0800] (0.000226s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 17:55:18 +0800] (0.000180s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 17:55:18 +0800] (0.000177s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 17:55:18 +0800] (0.000914s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 17:55:18 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 43 {"tel"=>"13408058303", "code"=>"123456"} 0.011696861
+[app] [INFO] [2018-03-19 17:56:58 +0800] (0.000145s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 17:56:58 +0800] (0.000117s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 17:56:58 +0800] (0.000119s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 17:56:58 +0800] (0.001207s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 17:56:58 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 43 {"tel"=>"13408058303", "code"=>"123456"} 0.012498406
+[app] [INFO] [2018-03-19 17:57:03 +0800] (0.000233s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 17:57:03 +0800] (0.000189s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 17:57:03 +0800] (0.000183s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 17:57:03 +0800] (0.000946s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 17:57:03 +0800] (0.000377s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-03-19 17:57:03 +0800] (0.003702s) UPDATE "users" SET "SMS" = '123456', "SMS_limit" = '2018-03-19 10:07:03.225801+0000', "updated_at" = '2018-03-19 09:57:03.230756+0000' WHERE ("users"."id" = 2) RETURNING *
+[app] [INFO] [2018-03-19 17:57:03 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.022883742
+[app] [INFO] [2018-03-19 17:57:07 +0800] (0.000219s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-19 17:57:07 +0800] (0.000157s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-19 17:57:07 +0800] (0.000093s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-19 17:57:07 +0800] (0.000920s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-19 17:57:07 +0800] (0.000379s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-03-19 17:57:07 +0800] (0.003188s) UPDATE "users" SET "SMS_limit" = '2018-03-19 09:57:06.770974+0000', "token" = 'yi4pGzUwZlZFdwRbwdFK1BM3KKzlX8V4', "token_limit" = '2018-03-20 21:57:07.770971+0000', "updated_at" = '2018-03-19 09:57:07.775479+0000' WHERE ("users"."id" = 2) RETURNING *
+[app] [INFO] [2018-03-19 17:57:07 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 62 {"tel"=>"13408058303", "code"=>"123456"} 0.022343694
