@@ -1,11 +1,12 @@
 require 'json'
 
+
 module Web::Controllers::Index
   class Login
     include Web::Action
 
     def call(params)
-      p request
+      #Test1.new.test()
       self.format=:json
       if params[:tel].nil?
         self.body={state: 'fail',reason: '没有填写手机号码'}.to_json
@@ -17,7 +18,7 @@ module Web::Controllers::Index
         @user=@repository.create(tel: tel,name: ('管理员'+tel[-4..-1])) unless @user=@repository.find_user_by_tel(tel)
         if params[:code].nil?
           #请求短信服务
-          state,reason=SMS_service()
+          state,reason=SMS_service(tel)
           self.body={state: state,reason: reason}.to_json
         else
           #请求验证服务
@@ -34,9 +35,11 @@ module Web::Controllers::Index
       end
     end
 
-    def SMS_service
-      #TODO: 生成code，发送短信
-      code="123456"
+    def SMS_service (tel)
+      #生成code，发送短信
+      code=make_SMS
+      Aliyun::Sms.send(tel, 'SMS_117390014', {'code'=> code}.to_json, '')
+      #code="123456"
       @repository.update(@user.id,SMS: code,SMS_limit: (Time.now+600))
       return "success",""
     end
@@ -50,6 +53,13 @@ module Web::Controllers::Index
       return ""
     end
 
+    def make_SMS
+      chars =("0".."9").to_a
+      code=""
+      1.upto(6) { |i| code << chars[rand(chars.size-1)] }
+      return code
+    end
+
     def make_token
       chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
       token = ""
@@ -58,7 +68,7 @@ module Web::Controllers::Index
     end
 
     def authenticate!
-      self.headers.merge!({ 'Access-Control-Allow-Origin' => 'http://192.168.31.228:8080','Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept' })
+      self.headers.merge!({ 'Access-Control-Allow-Origin' => '*','Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept' })
       #登录页跳过权限判断中间件
     end
   end

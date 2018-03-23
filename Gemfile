@@ -3,6 +3,13 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'hanami',       '~> 1.1'
 gem 'hanami-model', '~> 1.1'
+gem 'aliyun-sms'
+
+gem 'shrine'
+gem 'hanami-shrine'
+
+gem 'image_processing'
+gem "mini_magick", ">= 4.3.5"
 
 gem 'pg'
 
