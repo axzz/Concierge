@@ -5,6 +5,9 @@ gem 'hanami',       '~> 1.1'
 gem 'hanami-model', '~> 1.1'
 gem 'aliyun-sms'
 
+gem 'redis'
+gem 'jwt'
+
 gem 'shrine'
 gem 'hanami-shrine'
 

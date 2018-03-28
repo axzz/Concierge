@@ -5,8 +5,9 @@ module Web::Controllers::Index
     include Web::Action
 
     def call(params)
-      #self.format=:json
-      #self.body='{"state":"success","reason":""}'
+      #puts @user.name
+      #self.body={"state":"success"}.to_json
+      self.format="html"
     end
   end
 end

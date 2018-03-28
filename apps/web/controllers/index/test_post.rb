@@ -3,8 +3,14 @@ module Web::Controllers::Index
     include Web::Action
 
     def call(params)
-      tempfile = params[:image][:tempfile]
-      image= ::File.open(tempfile)
+
+      if params[:default_image]
+        image= params[:default_image]
+      else
+        tempfile = params[:image][:tempfile]
+        image= ::File.open(tempfile)
+      end
+
       name=params[:name]
       des=params[:des]
 
@@ -12,7 +18,7 @@ module Web::Controllers::Index
       time_table=params[:time_table]
       state=params[:state]
       check_mode=params[:check_mode]
-      creator_id=UserRepository.new.find_user_by_tel(params[:tel]).id
+      creator_id=@user.id
 
       project=Project.new(name: name,des: des,address: address,time_table: time_table,state: state,check_mode: check_mode,
       creator_id: creator_id,image: image)

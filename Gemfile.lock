@@ -110,6 +110,7 @@ GEM
     ice_nine (0.11.2)
     image_processing (0.10.2)
     inflecto (0.0.2)
+    jwt (2.1.0)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     mini_magick (4.8.0)
@@ -124,6 +125,7 @@ GEM
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rake (12.3.0)
+    redis (4.0.1)
     rom (3.3.3)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.3)
@@ -171,10 +173,12 @@ DEPENDENCIES
   hanami-model (~> 1.1)
   hanami-shrine
   image_processing
+  jwt
   mini_magick (>= 4.3.5)
   minitest
   pg
   rake
+  redis
   shotgun
   shrine
 

@@ -1,7 +1,7 @@
 require_relative '../../../spec_helper'
 
-describe Web::Controllers::Index::Test do
-  let(:action) { Web::Controllers::Index::Test.new }
+describe Web::Controllers::Project::Show do
+  let(:action) { Web::Controllers::Project::Show.new }
   let(:params) { Hash[] }
 
   it 'is successful' do

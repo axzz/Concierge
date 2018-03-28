@@ -1091,3 +1091,188 @@ DETAIL:  失败, 行包含(12, null, image, null, null, null, null, null, null, 
 [app] [INFO] [2018-03-23 17:38:30 +0800] (0.000287s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" LIMIT 1
 [app] [INFO] [2018-03-23 17:38:30 +0800] (0.006980s) UPDATE "users" SET "SMS_limit" = '2018-03-23 09:38:29.552104+0000', "token" = 'jgfKdUlIh8Kc83zwiOA6bUP6BwsvaudX', "token_limit" = '2018-03-24 21:38:30.552101+0000', "updated_at" = '2018-03-23 09:38:30.555503+0000' WHERE ("users"."id" = 2) RETURNING *
 [app] [INFO] [2018-03-23 17:38:30 +0800] HTTP/1.1 GET 200 192.168.31.139 /login 62 {"tel"=>"15708432051", "code"=>"514115"} 0.019909868
+[app] [INFO] [2018-03-26 14:49:23 +0800] HTTP/1.1 GET 404 127.0.0.1 / 1386 {} 0.004725439
+[app] [INFO] [2018-03-26 14:49:32 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.00247917
+[app] [INFO] [2018-03-26 14:49:41 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.004151032
+[app] [INFO] [2018-03-26 14:49:51 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002433115
+[app] [INFO] [2018-03-26 14:49:58 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002975637
+[app] [INFO] [2018-03-26 14:50:00 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002492672
+[app] [INFO] [2018-03-26 14:50:04 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002563166
+[app] [INFO] [2018-03-26 14:52:06 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002447157
+[app] [INFO] [2018-03-26 14:52:07 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002571371
+[app] [INFO] [2018-03-26 14:52:40 +0800] HTTP/1.1 GET 404 127.0.0.1 / 1386 {} 0.005977455
+[app] [INFO] [2018-03-26 14:54:16 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002521328
+[app] [INFO] [2018-03-26 14:56:13 +0800] HTTP/1.1 GET 200 127.0.0.1 / 14911 {} 0.002074798
+[app] [INFO] [2018-03-26 14:56:20 +0800] HTTP/1.1 GET 200 127.0.0.1 / 14911 {} 0.00154431
+[app] [INFO] [2018-03-26 14:56:23 +0800] HTTP/1.1 GET 200 127.0.0.1 / 14911 {} 0.002500542
+[app] [INFO] [2018-03-26 14:56:33 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 14911 {} 0.001366404
+[app] [INFO] [2018-03-26 14:56:36 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 14911 {} 0.00149591
+[app] [INFO] [2018-03-26 14:56:46 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 14911 {} 0.001495115
+[app] [INFO] [2018-03-26 14:56:52 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 14911 {} 0.001525081
+[app] [INFO] [2018-03-27 10:49:01 +0800] (0.000236s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-27 10:49:01 +0800] (0.000178s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-27 10:49:01 +0800] (0.000123s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-27 10:49:01 +0800] (0.000895s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-27 10:49:01 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.286051312
+[app] [INFO] [2018-03-27 10:49:02 +0800] HTTP/1.1 GET 404 127.0.0.1 /favicon.ico 9 {} 0.002447256
+[app] [INFO] [2018-03-27 10:49:08 +0800] (0.000194s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-27 10:49:08 +0800] (0.000135s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-27 10:49:08 +0800] (0.000126s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-27 10:49:08 +0800] (0.000866s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-27 10:49:08 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 49 {"tel"=>"13408058303", "code"=>"123456"} 0.009563312
+[app] [INFO] [2018-03-27 10:49:21 +0800] (0.000212s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-27 10:49:21 +0800] (0.000161s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-27 10:49:21 +0800] (0.000151s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-27 10:49:21 +0800] (0.001024s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-27 10:49:21 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 62 {"tel"=>"13408058303", "code"=>"155673"} 0.012525637
+[app] [INFO] [2018-03-27 10:49:43 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 31 {"tel"=>"13408058303", "token"=>"K8LEf48NYBLI331ghAVFB5cllH7OnOWm"} 0.002800149
+[app] [INFO] [2018-03-27 17:06:57 +0800] HTTP/1.1 GET 405 127.0.0.1 /project/create - {} 0.00278665
+[app] [INFO] [2018-03-27 17:07:45 +0800] HTTP/1.1 GET 405 127.0.0.1 /project - {} 0.002491863
+[app] [INFO] [2018-03-27 17:07:50 +0800] HTTP/1.1 GET 405 127.0.0.1 /project - {} 0.004564299
+[app] [INFO] [2018-03-27 17:07:57 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 52 {} 0.002709143
+[app] [INFO] [2018-03-27 17:08:03 +0800] HTTP/1.1 GET 404 127.0.0.1 /create 1386 {} 0.006116587
+[app] [INFO] [2018-03-27 17:08:15 +0800] HTTP/1.1 GET 405 127.0.0.1 /project - {} 0.002502742
+[app] [INFO] [2018-03-27 17:30:07 +0800] HTTP/1.1 GET 404 127.0.0.1 /project 1386 {} 0.007945524
+[app] [INFO] [2018-03-27 17:30:13 +0800] HTTP/1.1 GET 200 127.0.0.1 /projects 41 {} 0.004188475
+[app] [INFO] [2018-03-27 17:33:49 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 41 {"tel"=>"13408058303", "token"=>"6buVIvW55xmE77nQViOGDmvwFuPFQ1Yk"} 0.008435219
+[app] [INFO] [2018-03-27 17:34:01 +0800] (0.000237s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-27 17:34:01 +0800] (0.000174s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-27 17:34:01 +0800] (0.000161s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-27 17:34:01 +0800] (0.000972s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-27 17:34:01 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.014065148
+[app] [INFO] [2018-03-27 17:34:13 +0800] (0.000237s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-27 17:34:13 +0800] (0.000184s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-27 17:34:13 +0800] (0.000167s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-27 17:34:13 +0800] (0.001281s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-27 17:34:13 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 62 {"tel"=>"13408058303", "code"=>"123456"} 0.015902888
+[app] [INFO] [2018-03-27 17:34:42 +0800] HTTP/1.1 GET 404 127.0.0.1 /projectsy 1386 {"tel"=>"13408058303", "token"=>"UecDLj3g0YMHp0a6bx5MR3cHUg7lADz"} 0.006510879
+[app] [INFO] [2018-03-27 17:34:50 +0800] HTTP/1.1 GET 200 127.0.0.1 /projects 41 {"tel"=>"13408058303", "token"=>"UecDLj3g0YMHp0a6bx5MR3cHUg7lADz"} 0.006095211
+[app] [INFO] [2018-03-27 17:36:03 +0800] HTTP/1.1 GET 200 127.0.0.1 /projects 19 {"tel"=>"13408058303", "token"=>"yUecDLj3g0YMHp0a6bx5MR3cHUg7lADz"} 0.010707837
+[app] [INFO] [2018-03-27 17:49:48 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 41 {"tel"=>"13408058303", "token"=>"6buVIvW55xmE77nQViOGDmvwFuPFQ1Yk"} 0.006770078
+[app] [INFO] [2018-03-27 17:49:56 +0800] HTTP/1.1 GET 200 127.0.0.1 /projects 19 {"tel"=>"13408058303", "token"=>"yUecDLj3g0YMHp0a6bx5MR3cHUg7lADz"} 0.006547171
+[app] [INFO] [2018-03-28 12:07:02 +0800] (0.000221s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 12:07:02 +0800] (0.000196s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 12:07:02 +0800] (0.000160s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 12:07:02 +0800] (0.000973s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 12:07:02 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.015614012
+[app] [INFO] [2018-03-28 12:07:02 +0800] HTTP/1.1 GET 404 127.0.0.1 /favicon.ico 9 {} 0.003560383
+[app] [INFO] [2018-03-28 12:07:07 +0800] (0.000324s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 12:07:07 +0800] (0.000172s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 12:07:07 +0800] (0.000154s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 12:07:07 +0800] (0.000939s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 12:07:28 +0800] (0.000327s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 12:07:28 +0800] (0.000224s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 12:07:28 +0800] (0.000481s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 12:07:28 +0800] (0.001807s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 12:07:28 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 145 {"tel"=>"13408058303", "code"=>"123456"} 0.016272993
+[app] [INFO] [2018-03-28 12:27:23 +0800] HTTP/1.1 GET 403 127.0.0.1 /test 7 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.003738023
+[app] [INFO] [2018-03-28 12:28:30 +0800] HTTP/1.1 GET 403 127.0.0.1 /test 7 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.004296251
+[app] [INFO] [2018-03-28 12:29:51 +0800] (0.000168s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 12:29:51 +0800] (0.000177s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 12:29:51 +0800] (0.000152s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 12:29:51 +0800] (0.001004s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 12:30:33 +0800] (0.000215s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 12:30:33 +0800] (0.000180s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 12:30:33 +0800] (0.000193s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 12:30:33 +0800] (0.001674s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 12:30:33 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.017201783
+[app] [INFO] [2018-03-28 15:23:38 +0800] (0.000185s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:23:38 +0800] (0.000133s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:23:38 +0800] (0.000143s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:23:38 +0800] (0.001223s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:23:38 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.016158631
+[app] [INFO] [2018-03-28 15:23:54 +0800] (0.000427s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:23:54 +0800] (0.000493s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:23:54 +0800] (0.000389s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:23:54 +0800] (0.001350s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:23:54 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.016969219
+[app] [INFO] [2018-03-28 15:24:09 +0800] (0.000205s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:24:09 +0800] (0.000139s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:24:09 +0800] (0.000144s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:24:09 +0800] (0.000873s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:24:09 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.01620973
+[app] [INFO] [2018-03-28 15:24:27 +0800] (0.000227s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:24:27 +0800] (0.000185s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:24:27 +0800] (0.000183s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:24:27 +0800] (0.001232s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:24:27 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.016932966
+[app] [INFO] [2018-03-28 15:26:18 +0800] (0.000225s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:26:18 +0800] (0.000151s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:26:18 +0800] (0.000151s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:26:18 +0800] (0.001050s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:26:18 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.016110867
+[app] [INFO] [2018-03-28 15:28:51 +0800] (0.000219s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:28:51 +0800] (0.000175s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:28:51 +0800] (0.000164s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:28:51 +0800] (0.001069s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:28:51 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.01324733
+[app] [INFO] [2018-03-28 15:39:57 +0800] (0.000213s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:39:57 +0800] (0.000230s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:39:57 +0800] (0.000186s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:39:57 +0800] (0.000957s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:39:57 +0800] HTTP/1.1 GET 200 127.0.0.1 /login 31 {"tel"=>"13408058303"} 0.012975351
+[app] [INFO] [2018-03-28 15:40:01 +0800] (0.000204s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:40:01 +0800] (0.000159s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:40:01 +0800] (0.000179s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:40:01 +0800] (0.000795s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:40:01 +0800] HTTP/1.1 GET 200 127.0.0.1 /login - {"tel"=>"13408058303", "code"=>"123456"} 0.010550458
+[app] [INFO] [2018-03-28 15:40:27 +0800] (0.000197s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:40:27 +0800] (0.000164s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:40:27 +0800] (0.000168s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:40:27 +0800] (0.000873s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:40:27 +0800] HTTP/1.1 GET 200 127.0.0.1 /login - {"tel"=>"13408058303", "code"=>"123456"} 0.012304391
+[app] [INFO] [2018-03-28 15:42:13 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 11 {} 0.002905005
+[app] [INFO] [2018-03-28 15:43:38 +0800] (0.000190s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 15:43:38 +0800] (0.000127s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 15:43:38 +0800] (0.000130s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 15:43:38 +0800] (0.000776s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 15:43:38 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 19 {} 0.010120751
+[app] [INFO] [2018-03-28 16:02:29 +0800] HTTP/1.1 GET 404 127.0.0.1 / 1386 {} 0.009969503
+[app] [INFO] [2018-03-28 17:58:24 +0800] HTTP/1.1 GET 401 127.0.0.1 /test 11 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzM5NjQ4fQ.tQ8ebpsdRQtmmVmggopzu52uxrqWsHhac3VvsAcVqrc"} 0.006413831
+[app] [INFO] [2018-03-28 18:14:23 +0800] (0.001552s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:14:23 +0800] (0.000218s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:14:23 +0800] (0.000190s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:14:23 +0800] (0.000991s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:14:23 +0800] HTTP/1.1 GET 404 127.0.0.1 /favicon.ico 9 {} 0.003519672
+[app] [INFO] [2018-03-28 18:14:57 +0800] (0.000221s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:14:57 +0800] (0.000167s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:14:57 +0800] (0.000122s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:14:57 +0800] (0.000899s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:14:57 +0800] HTTP/1.1 GET 200 127.0.0.1 /login - {"tel"=>"13408058303"} 0.014443163
+[app] [INFO] [2018-03-28 18:15:03 +0800] (0.000210s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:15:03 +0800] (0.000163s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:15:03 +0800] (0.000169s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:15:03 +0800] (0.000919s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:15:03 +0800] HTTP/1.1 GET 200 127.0.0.1 /login - {"tel"=>"13408058303", "code"=>"123456"} 0.012341836
+[app] [INFO] [2018-03-28 18:15:15 +0800] (0.000238s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:15:15 +0800] (0.000170s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:15:15 +0800] (0.000167s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:15:15 +0800] (0.000949s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:15:15 +0800] HTTP/1.1 GET 200 127.0.0.1 /login - {"tel"=>"13408058303", "code"=>"123456"} 0.014379316
+[app] [INFO] [2018-03-28 18:15:37 +0800] (0.000216s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:15:37 +0800] (0.000173s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:15:37 +0800] (0.000176s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:15:37 +0800] (0.000977s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:15:37 +0800] HTTP/1.1 GET 200 127.0.0.1 /test 712 {"token"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNTIyMzYxNzE1fQ.ObJZUponEh1nxt2uVw0LCJv7IbK519P51r2vpBAI2IM"} 0.013456525
+[app] [INFO] [2018-03-28 18:15:52 +0800] (0.000309s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:15:52 +0800] (0.000189s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:15:52 +0800] (0.000086s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:15:52 +0800] (0.000876s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:16:53 +0800] HTTP/1.1 GET 404 127.0.0.1 /test/test 1386 {} 0.005665481
+[app] [INFO] [2018-03-28 18:16:58 +0800] HTTP/1.1 GET 404 127.0.0.1 /test/test.jsp 1386 {} 0.0064347
+[app] [INFO] [2018-03-28 18:17:08 +0800] (0.000528s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:17:08 +0800] (0.000188s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:17:08 +0800] (0.000193s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:17:08 +0800] (0.000983s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:17:20 +0800] (0.000216s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:17:20 +0800] (0.000170s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:17:20 +0800] (0.000161s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:17:20 +0800] (0.000843s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:17:50 +0800] (0.000229s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:17:50 +0800] (0.000134s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:17:50 +0800] (0.000122s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:17:50 +0800] (0.000790s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-03-28 18:18:42 +0800] (0.000211s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-03-28 18:18:42 +0800] (0.000133s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-03-28 18:18:42 +0800] (0.000099s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-03-28 18:18:42 +0800] (0.000941s) SELECT "id", "name", "tel", "SMS", "SMS_limit", "token", "reservation_id", "created_pro_id", "managed_pro_id", "token_limit", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"

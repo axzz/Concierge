@@ -9,11 +9,13 @@ Hanami::Model.migration do
       column :des, String
       column :image_data, String
       column :address, String
-      column :time_table,String
+      column :latitude, Float
+      column :longitude, Float
+      column :time_state,"jsonb"
+      column :time_state_parsed,"jsonb"
       column :state,String
       column :check_mode,String
-      column :manager_ids,"text[]"
-      column :share_code,String
+      column :share_pic,String
       column :created_at, DateTime, null: false
       column :updated_at, DateTime, null: false
     end
