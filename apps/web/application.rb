@@ -75,6 +75,8 @@ module Web
       # cookies true
       # or
       # cookies max_age: 300
+      
+
 
       # Enable sessions
       # Argument: Symbol the Rack session adapter
@@ -260,6 +262,7 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
       controller.prepare do
+        include Web::Headermaker
         include Web::Authentication
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback

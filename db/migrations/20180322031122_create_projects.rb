@@ -8,6 +8,7 @@ Hanami::Model.migration do
       column :name, String
       column :des, String
       column :image_data, String
+      column :default_image, String
       column :address, String
       column :latitude, Float
       column :longitude, Float

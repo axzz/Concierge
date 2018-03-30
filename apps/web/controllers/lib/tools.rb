@@ -15,4 +15,33 @@ class Tools
             return "error token"
         end        
     end
+
+    def self.parse_time_state time_state
+        time_state_parse={
+            Mon: [],
+            Tues: [],
+            Wed: [],
+            Thur: [],
+            Fri: [],
+            Sat: [],
+            Sun: [],
+            Holiday: [],
+            Special: []
+        }
+        time_state[:normal].each do |period|
+            period[:weekday].each do |day|
+                return "fail" unless period[:time] =~ /\d{2}:\d{2}-\d{2}:\d{2}/
+                return "fail" unless period[:limit].class==Fixnum
+                time_state_parse[day.to_sym]<<{time: period[:time],limit: period[:limit]}
+            end
+        end
+        time_state_parse[:Special]=time_state[:special]
+        time_state_parse.each do |key,value|
+            value=value.sort do |a, b|  
+                a[:time]<=>b[:time]
+            end
+            time_state_parse[key]=value
+        end
+        time_state_parse
+    end
 end

@@ -3,7 +3,7 @@ module Web::Controllers::Project
     include Web::Action
 
     def call(params)
-      self.body={"state":"success"}.to_json
+      projects=ProjectRepository.new.get_list user
     end
   end
 end

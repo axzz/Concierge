@@ -10,10 +10,10 @@ module Web::Controllers::Index
       self.format=:json
       if params[:tel].nil?
         self.status=403
-        self.body={error: '没有填写手机号码'}.to_json
+        self.body={error: 'Invalid Params'}.to_json
       elsif !(params[:tel] =~ /^1[34578]\d{9}$/)
         self.status=403
-        self.body={error: '手机号不符规范'}.to_json
+        self.body={error: 'Invalid Params'}.to_json
       else
         tel=params[:tel]
         repository=UserRepository.new
@@ -32,9 +32,7 @@ module Web::Controllers::Index
           error=verify_SMS_service(tel,params[:code])
           if error==""
             token=Tools.make_token(user.id)
-            #redis=Redis.new
-            #redis.set(tel+".token",token)
-            #redis.expire(tel+".token",3600*36)
+            Redis.new.del(tel+".code")
             self.headers.merge!({'Authorization' => token})
             self.body=""
           else
@@ -61,7 +59,7 @@ module Web::Controllers::Index
 
     def verify_SMS_service(tel,code)
       if Redis.new.get(tel+".code")!=code
-        return "验证码输入错误"
+        return "Invalid Params"
       else
         return ""
       end
@@ -74,15 +72,7 @@ module Web::Controllers::Index
       return code
     end
 
-    #def make_token
-    #  chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
-    #  token = ""
-    #  1.upto(32) { |i| token << chars[rand(chars.size-1)] }
-    #  return token
-    #end
-
     def authenticate!
-      self.headers.merge!({ 'Access-Control-Allow-Origin' => '*','Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept' })
       #登录页跳过权限判断中间件
     end
   end
