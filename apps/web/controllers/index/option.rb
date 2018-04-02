@@ -5,8 +5,8 @@ module Web::Controllers::Index
     def call(params)
       self.headers.merge!({'Access-Control-Allow-Methods'=>'POST, GET, HEAD, OPTIONS, PUT'})
       self.headers.merge!({'Access-Control-Allow-Origin' => '*'})
-      self.headers.merge!({'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header' })
-      self.headers.merge!({'Access-Control-Max-Age' => 1728000})
+      self.headers.merge!({'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header, Authorization' })
+      self.headers.merge!({'Access-Control-Max-Age' => "1728000"})
       self.body=""
     end
 

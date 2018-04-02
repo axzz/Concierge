@@ -11,7 +11,7 @@ Hanami::Model.migration do
       column :default_image, String
       column :address, String
       column :latitude, Float
-      column :longitude, Float
+      column :longtitude, Float
       column :time_state,"jsonb"
       column :time_state_parsed,"jsonb"
       column :state,String
