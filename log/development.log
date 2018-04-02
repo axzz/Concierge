@@ -3734,3 +3734,523 @@ LINE 1: SELECT * FROM projects WHERE creator_id = 1 AND delete != st...
 [app] [INFO] [2018-04-02 16:42:01 +0800] (0.000149s) SET DateStyle = 'ISO'
 [app] [INFO] [2018-04-02 16:42:01 +0800] (0.000734s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
 [app] [INFO] [2018-04-02 16:42:01 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.013791913
+[app] [INFO] [2018-04-02 16:44:08 +0800] (0.000179s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:44:08 +0800] (0.000153s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:44:08 +0800] (0.000167s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:44:08 +0800] (0.000714s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:44:08 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.013529836
+[app] [INFO] [2018-04-02 16:44:10 +0800] (0.000210s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:44:10 +0800] (0.000166s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:44:10 +0800] (0.000111s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:44:10 +0800] (0.000829s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:44:10 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.021001283
+[app] [INFO] [2018-04-02 16:44:47 +0800] (0.000245s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:44:47 +0800] (0.000192s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:44:47 +0800] (0.000141s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:44:47 +0800] (0.001574s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:44:47 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.020834685
+[app] [INFO] [2018-04-02 16:44:50 +0800] (0.000205s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:44:50 +0800] (0.000120s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:44:50 +0800] (0.000120s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:44:50 +0800] (0.000687s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:44:50 +0800] HTTP/1.1 POST 200 192.168.31.228 /sms - {"tel"=>"13402878236", "code"=>"123456"} 0.013560474
+[app] [INFO] [2018-04-02 16:44:50 +0800] HTTP/1.1 OPTIONS 200 192.168.31.228 /projects - {} 0.003291226
+[app] [INFO] [2018-04-02 16:44:51 +0800] (0.000194s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:44:51 +0800] (0.000163s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:44:51 +0800] (0.000159s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:44:51 +0800] (0.000706s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:44:51 +0800] (0.000432s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 16:44:51 +0800] (0.000531s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 16:44:51 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects 201 {} 0.012846424
+[app] [INFO] [2018-04-02 16:46:48 +0800] (0.000204s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:46:48 +0800] (0.000160s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:46:48 +0800] (0.000169s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:46:48 +0800] (0.000796s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:46:48 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.014751964
+[app] [INFO] [2018-04-02 16:46:50 +0800] (0.000192s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:46:50 +0800] (0.000094s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:46:50 +0800] (0.000139s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:46:50 +0800] (0.000782s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:46:50 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.014008912
+[app] [INFO] [2018-04-02 16:51:17 +0800] (0.000194s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:51:17 +0800] (0.000171s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:51:17 +0800] (0.000140s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:51:17 +0800] (0.000781s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:51:17 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.014159106
+[app] [INFO] [2018-04-02 16:51:20 +0800] (0.000138s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:51:20 +0800] (0.000127s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:51:20 +0800] (0.000159s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:51:20 +0800] (0.000834s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:51:20 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.013930293
+[app] [INFO] [2018-04-02 16:51:34 +0800] (0.000213s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:51:34 +0800] (0.000172s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:51:34 +0800] (0.000125s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:51:34 +0800] (0.000840s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:51:34 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.014464322
+[app] [INFO] [2018-04-02 16:51:39 +0800] (0.000215s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:51:39 +0800] (0.000171s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:51:39 +0800] (0.000146s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:51:39 +0800] (0.002074s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:51:39 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.023091759
+[app] [INFO] [2018-04-02 16:53:07 +0800] (0.000206s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:53:07 +0800] (0.000176s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:53:07 +0800] (0.000165s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:53:07 +0800] (0.000896s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:53:07 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.01621295
+[app] [INFO] [2018-04-02 16:53:15 +0800] (0.000202s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:53:15 +0800] (0.000130s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:53:15 +0800] (0.000131s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:53:15 +0800] (0.000906s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:53:15 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.014712933
+[app] [INFO] [2018-04-02 16:53:53 +0800] (0.000185s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:53:53 +0800] (0.000137s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:53:53 +0800] (0.000174s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:53:53 +0800] (0.000999s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:53:53 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.01683808
+[app] [INFO] [2018-04-02 16:54:13 +0800] (0.000194s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 16:54:13 +0800] (0.000154s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 16:54:13 +0800] (0.000164s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 16:54:13 +0800] (0.000840s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 16:54:13 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"134567"} 0.013730861
+[app] [INFO] [2018-04-02 17:05:59 +0800] (0.000220s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:05:59 +0800] (0.000166s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:05:59 +0800] (0.000126s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:05:59 +0800] (0.001198s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:05:59 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.02002921
+[app] [INFO] [2018-04-02 17:06:04 +0800] (0.000218s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:06:04 +0800] (0.000176s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:06:04 +0800] (0.000150s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:06:04 +0800] (0.000871s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:06:04 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.019756853
+[app] [INFO] [2018-04-02 17:09:36 +0800] (0.000209s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:09:36 +0800] (0.000143s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:09:36 +0800] (0.000156s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:09:36 +0800] (0.000752s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:09:36 +0800] (0.000259s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-04-02 17:09:36 +0800] (0.007447s) INSERT INTO "users" ("name", "tel", "created_at", "updated_at") VALUES ('管理员8236', '13402878236', '2018-04-02 09:09:36.038348+0000', '2018-04-02 09:09:36.038348+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:09:36 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.023618399
+[app] [INFO] [2018-04-02 17:09:40 +0800] (0.000209s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:09:40 +0800] (0.000124s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:09:40 +0800] (0.000124s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:09:40 +0800] (0.000721s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:09:40 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.013292667
+[app] [INFO] [2018-04-02 17:09:50 +0800] (0.000182s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:09:50 +0800] (0.000128s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:09:50 +0800] (0.000125s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:09:50 +0800] (0.000846s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:09:50 +0800] (0.000275s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" LIMIT 1
+[app] [INFO] [2018-04-02 17:09:50 +0800] (0.007131s) INSERT INTO "users" ("name", "tel", "created_at", "updated_at") VALUES ('管理员8303', '13408058303', '2018-04-02 09:09:50.005075+0000', '2018-04-02 09:09:50.005075+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:09:50 +0800] HTTP/1.1 POST 200 192.168.31.208 /telephone - {"tel"=>"13408058303"} 0.025246396
+[app] [INFO] [2018-04-02 17:09:54 +0800] (0.000188s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:09:54 +0800] (0.000146s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:09:54 +0800] (0.000130s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:09:54 +0800] (0.000804s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13408058303') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:09:54 +0800] HTTP/1.1 POST 200 192.168.31.208 /sms - {"tel"=>"13408058303", "code"=>"123456"} 0.019662847
+[app] [INFO] [2018-04-02 17:09:54 +0800] HTTP/1.1 OPTIONS 200 192.168.31.208 /projects - {} 0.003839788
+[app] [INFO] [2018-04-02 17:09:55 +0800] (0.000185s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:09:55 +0800] (0.000149s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:09:55 +0800] (0.000090s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:09:55 +0800] (0.000738s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:09:55 +0800] (0.000462s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:09:55 +0800] (0.000614s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:09:55 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 25 {} 0.011932859
+[app] [INFO] [2018-04-02 17:10:27 +0800] (0.000183s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:10:27 +0800] (0.000118s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:10:27 +0800] (0.000131s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:10:27 +0800] (0.000722s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:10:27 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.012914658
+[app] [INFO] [2018-04-02 17:10:30 +0800] (0.000190s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:10:30 +0800] (0.000169s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:10:30 +0800] (0.000134s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:10:30 +0800] (0.000980s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:10:30 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.0138827
+[app] [INFO] [2018-04-02 17:11:56 +0800] (0.000188s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:11:56 +0800] (0.000155s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:11:56 +0800] (0.000142s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:11:56 +0800] (0.000854s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:12:13 +0800] (0.000190s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:12:13 +0800] (0.000088s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:12:13 +0800] (0.000098s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:12:13 +0800] (0.000958s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:12:13 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.014571922
+[app] [INFO] [2018-04-02 17:12:17 +0800] (0.000217s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:12:17 +0800] (0.000137s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:12:17 +0800] (0.000140s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:12:17 +0800] (0.002483s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:12:17 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.025092628
+[app] [INFO] [2018-04-02 17:12:53 +0800] (0.000184s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:12:53 +0800] (0.000148s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:12:53 +0800] (0.000163s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:12:53 +0800] (0.000764s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:13:03 +0800] (0.000204s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:13:03 +0800] (0.000119s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:13:03 +0800] (0.000265s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:13:03 +0800] (0.000744s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:13:03 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.014337122
+[app] [INFO] [2018-04-02 17:13:08 +0800] (0.000193s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:13:08 +0800] (0.000160s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:13:08 +0800] (0.000164s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:13:08 +0800] (0.000742s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:13:08 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.013043655
+[app] [INFO] [2018-04-02 17:13:55 +0800] (0.000204s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:13:55 +0800] (0.000139s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:13:55 +0800] (0.000133s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:13:55 +0800] (0.000995s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:13:55 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.01486932
+[app] [INFO] [2018-04-02 17:13:58 +0800] (0.000192s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:13:58 +0800] (0.000168s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:13:58 +0800] (0.000156s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:13:58 +0800] (0.000791s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:13:58 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.013278405
+[app] [INFO] [2018-04-02 17:14:58 +0800] (0.000212s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:14:58 +0800] (0.000148s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:14:58 +0800] (0.000079s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:14:58 +0800] (0.000794s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:14:58 +0800] HTTP/1.1 POST 200 192.168.31.228 /telephone - {"tel"=>"13402878236"} 0.013206879
+[app] [INFO] [2018-04-02 17:15:01 +0800] (0.000209s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:15:01 +0800] (0.000208s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:15:01 +0800] (0.000200s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:15:01 +0800] (0.001512s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:15:01 +0800] HTTP/1.1 POST 403 192.168.31.228 /sms 26 {"tel"=>"13402878236", "code"=>"123457"} 0.020264047
+[app] [INFO] [2018-04-02 17:15:06 +0800] (0.000282s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:15:06 +0800] (0.000372s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:15:06 +0800] (0.000256s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:15:06 +0800] (0.000974s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("tel" = '13402878236') ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:15:06 +0800] HTTP/1.1 POST 200 192.168.31.228 /sms - {"tel"=>"13402878236", "code"=>"123456"} 0.021576106
+[app] [INFO] [2018-04-02 17:15:07 +0800] HTTP/1.1 OPTIONS 200 192.168.31.228 /projects - {} 0.004676744
+[app] [INFO] [2018-04-02 17:15:08 +0800] (0.000190s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:15:08 +0800] (0.000107s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:15:08 +0800] (0.000088s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:15:08 +0800] (0.000692s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:15:08 +0800] (0.000480s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 1) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:15:08 +0800] (0.000502s) SELECT * FROM projects WHERE creator_id = 1 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:15:08 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects 25 {} 0.011945964
+[app] [INFO] [2018-04-02 17:15:56 +0800] HTTP/1.1 OPTIONS 200 192.168.31.208 /projects - {} 0.002808888
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000161s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000153s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000110s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000714s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000657s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.007757s) INSERT INTO "projects" ("creator_id", "name", "des", "image_url", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "created_at", "updated_at") VALUES (2, '111', '111', '/static/images/img1.jpg', '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', 30.682278, 104.054132, '{"normal":[{"time":"09:00-10:00","limit":10,"weekday":["Mon","Tues","Wed","Thur","Fri"]}],"special":[]}'::jsonb, '{"Mon":[{"time":"09:00-10:00","limit":10}],"Tues":[{"time":"09:00-10:00","limit":10}],"Wed":[{"time":"09:00-10:00","limit":10}],"Thur":[{"time":"09:00-10:00","limit":10}],"Fri":[{"time":"09:00-10:00","limit":10}],"Sat":[],"Sun":[],"Holiday":[],"Special":[]}'::jsonb, 'open', 'auto', '2018-04-02 09:15:57.111636+0000', '2018-04-02 09:15:57.111636+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:15:57 +0800] HTTP/1.1 POST 201 192.168.31.208 /projects 2 {"name"=>"111", "des"=>"111", "address"=>"四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)", "latitude"=>"30.682278", "longtitude"=>"104.054132", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]}],\"special\":[]}", "check_mode"=>"auto", "image"=>"", "default_image"=>"./static/images/img1.jpg"} 0.03195669
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000204s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000162s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000120s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000858s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000509s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:15:57 +0800] (0.000612s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:15:57 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 95 {} 0.016665161
+[app] [INFO] [2018-04-02 17:15:59 +0800] HTTP/1.1 OPTIONS 200 192.168.31.208 /projects/1 - {} 0.003382098
+[app] [INFO] [2018-04-02 17:15:59 +0800] (0.000177s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:15:59 +0800] (0.000129s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:15:59 +0800] (0.000118s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:15:59 +0800] (0.001337s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:15:59 +0800] (0.000848s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:15:59 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects/1 362 {} 0.015703231
+[app] [INFO] [2018-04-02 17:16:09 +0800] (0.000186s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:16:09 +0800] (0.000147s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:16:09 +0800] (0.000151s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:16:09 +0800] (0.000687s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:16:09 +0800] (0.000460s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:16:09 +0800] (0.000373s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:16:09 +0800] (0.003191s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:16:09.440004+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:16:45 +0800] (0.000177s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:16:45 +0800] (0.000145s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:16:45 +0800] (0.000165s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:16:45 +0800] (0.000640s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:16:45 +0800] (0.000411s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:16:45 +0800] (0.000273s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:16:45 +0800] (0.002854s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:16:45.131342+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:18:33 +0800] (0.000188s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:18:33 +0800] (0.000160s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:18:33 +0800] (0.000154s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:18:33 +0800] (0.000749s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:18:33 +0800] (0.000487s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:18:33 +0800] (0.000399s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:18:33 +0800] (0.007241s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:18:33.086693+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000170s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000109s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000119s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000646s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000402s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000346s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.003195s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:18:53.778828+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000525s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.004848s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"f6d424509064d35044ca5adf07e4ee23.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-13405-vcy6jk.jpg","size":362695,"mime_type":null}}', '2018-04-02 09:18:53.793807+0000', '2018-04-02 09:18:53.793807+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:18:53 +0800] (0.000479s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" WHERE ("images"."id" IS NULL) ORDER BY "images"."id"
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.000179s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.000126s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.000124s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.000831s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.000421s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.000328s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.007249s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:19:33.689591+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.000559s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:19:33 +0800] (0.001278s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"3f5f6fb3a70ddff9dcac8a9326892715.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-13455-12s8dh2.jpg","size":362695,"mime_type":null}}', '2018-04-02 09:19:33.705995+0000', '2018-04-02 09:19:33.705995+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.000163s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.000057s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.000283s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.000704s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.000400s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.000323s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.002930s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:20:01.079102+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.000589s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.001177s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"6a1e2c417a17a40aec7e993e3214d777.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-13510-paj33w.jpg","size":362695,"mime_type":null}}', '2018-04-02 09:20:01.092910+0000', '2018-04-02 09:20:01.092910+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:20:01 +0800] (0.001097s) UPDATE "projects" SET "image_id" = 3, "updated_at" = '2018-04-02 09:20:01.097278+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.000187s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.000122s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.000120s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.000790s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.000440s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.000281s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.007166s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:20:37.395740+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.000631s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.001290s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"d289511f633b4baa9fc2dfb382cb310c.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-13556-tdz6nx.jpg","size":362695,"mime_type":null}}', '2018-04-02 09:20:37.414131+0000', '2018-04-02 09:20:37.414131+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:20:37 +0800] (0.001260s) UPDATE "projects" SET "image_url" = '/uploads/store/d289511f633b4baa9fc2dfb382cb310c.jpg', "image_id" = 4, "updated_at" = '2018-04-02 09:20:37.418705+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000189s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000142s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000093s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000788s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000515s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000280s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.002831s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:21:44.963225+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000383s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.000950s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"29aee5e22bc769c9366e71a1629bbbf7.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-13630-1onetz9.jpg","size":362695,"mime_type":null}}', '2018-04-02 09:21:44.970933+0000', '2018-04-02 09:21:44.970933+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:21:44 +0800] (0.001006s) UPDATE "projects" SET "image_url" = '/uploads/store/29aee5e22bc769c9366e71a1629bbbf7.jpg', "image_id" = 5, "updated_at" = '2018-04-02 09:21:44.974082+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:22:39 +0800] (0.000220s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:22:39 +0800] (0.000261s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:22:39 +0800] (0.000277s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:22:39 +0800] (0.000884s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:22:39 +0800] (0.000571s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:22:39 +0800] (0.000733s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:22:39 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 123 {} 0.02135297
+[app] [INFO] [2018-04-02 17:23:30 +0800] (0.000415s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:23:30 +0800] (0.000196s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:23:30 +0800] (0.000124s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:23:30 +0800] (0.000983s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:23:30 +0800] (0.001596s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:23:30 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects/1 390 {} 0.017880553
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.000194s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.000155s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.000126s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.000739s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.000481s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.000332s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.007368s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:23:41.976862+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.001046s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:23:41 +0800] (0.001709s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"e3a75e92b8e2f93fcda9ff3f4ed8d72e.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-13843-bpg83h.jpg","size":19215,"mime_type":null}}', '2018-04-02 09:23:41.997068+0000', '2018-04-02 09:23:41.997068+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:23:42 +0800] (0.001909s) UPDATE "projects" SET "image_url" = '/uploads/store/e3a75e92b8e2f93fcda9ff3f4ed8d72e.jpg', "image_id" = 6, "updated_at" = '2018-04-02 09:23:42.005721+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:23:42 +0800] HTTP/1.1 PUT 200 192.168.31.208 /projects/1 - {"name"=>"111", "des"=>"111", "address"=>"四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)", "latitude"=>"30.682278", "longtitude"=>"104.054132", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]}],\"special\":[]}", "check_mode"=>"auto", "image"=>{:filename=>"test.jpg", :type=>"image/jpeg", :name=>"image", :tempfile=>#<Tempfile:/tmp/RackMultipart20180402-13843-bpg83h.jpg>, :head=>"Content-Disposition: form-data; name=\"image\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "default_image"=>""} 0.053695292
+[app] [INFO] [2018-04-02 17:23:50 +0800] (0.000226s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:23:50 +0800] (0.000279s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:23:50 +0800] (0.000278s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:23:50 +0800] (0.001269s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:23:50 +0800] (0.000574s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:23:50 +0800] (0.000676s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:23:50 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 123 {} 0.016909175
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000189s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000124s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000125s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000671s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000433s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.007184s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"2c8659a54b88122b4ad8a64c6a5dcf0b.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-13982-1j6a7k9.jpg","size":362695,"mime_type":null}}', '2018-04-02 09:24:46.209255+0000', '2018-04-02 09:24:46.209255+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000712s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.001975s) INSERT INTO "projects" ("creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "created_at", "updated_at") VALUES (2, '123', '123', '/uploads/store/2c8659a54b88122b4ad8a64c6a5dcf0b.jpg', '7', '四川省成都市金牛区西安路街道安居苑(翠堤雅筑东)安居苑(安居巷)', 30.678066, 104.032845, '{"normal":[{"time":"09:00-10:00","limit":10,"weekday":["Mon","Tues","Wed","Thur","Fri"]}],"special":[]}'::jsonb, '{"Mon":[{"time":"09:00-10:00","limit":10}],"Tues":[{"time":"09:00-10:00","limit":10}],"Wed":[{"time":"09:00-10:00","limit":10}],"Thur":[{"time":"09:00-10:00","limit":10}],"Fri":[{"time":"09:00-10:00","limit":10}],"Sat":[],"Sun":[],"Holiday":[],"Special":[]}'::jsonb, 'open', 'auto', '2018-04-02 09:24:46.225686+0000', '2018-04-02 09:24:46.225686+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:24:46 +0800] HTTP/1.1 POST 201 192.168.31.208 /projects 2 {"name"=>"123", "des"=>"123", "address"=>"四川省成都市金牛区西安路街道安居苑(翠堤雅筑东)安居苑(安居巷)", "latitude"=>"30.678066", "longtitude"=>"104.032845", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]}],\"special\":[]}", "check_mode"=>"auto", "image"=>{:filename=>"6095368_p0.jpg", :type=>"image/jpeg", :name=>"image", :tempfile=>#<Tempfile:/tmp/RackMultipart20180402-13982-1j6a7k9.jpg>, :head=>"Content-Disposition: form-data; name=\"image\"; filename=\"6095368_p0.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "default_image"=>""} 0.051698566
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000210s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000168s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000170s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000839s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000590s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:24:46 +0800] (0.000705s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:24:46 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 222 {} 0.015700612
+[app] [INFO] [2018-04-02 17:25:31 +0800] (0.000193s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:25:31 +0800] (0.000155s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:25:31 +0800] (0.000168s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:25:31 +0800] (0.000716s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:25:31 +0800] (0.000500s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:25:31 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects/1 390 {} 0.01190166
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000189s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000153s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000143s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000790s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000456s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000456s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.007092s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:25:51.122875+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000412s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000997s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"c61603146a050ad20866db093da53ea4.png","storage":"store","metadata":{"filename":"RackMultipart20180402-14201-j19pga.png","size":4676665,"mime_type":null}}', '2018-04-02 09:25:51.141731+0000', '2018-04-02 09:25:51.141731+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:25:51 +0800] (0.000255s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" WHERE ("images"."id" = '6') ORDER BY "images"."id"
+[app] [INFO] [2018-04-02 17:29:47 +0800] HTTP/1.1 OPTIONS 200 192.168.31.208 /projects/1 - {} 0.002874281
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000190s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000152s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000157s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000746s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000454s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000305s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.007373s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:29:48.021335+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000375s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.000931s) UPDATE "images" SET "image_data" = '{"id":"6a92370fabc8f9c25804f03d9568ba26.png","storage":"store","metadata":{"filename":"RackMultipart20180402-14899-qvjuh3.png","size":4676665,"mime_type":null}}', "updated_at" = '2018-04-02 09:29:48.040936+0000' WHERE ("images"."id" = '6') RETURNING *
+[app] [INFO] [2018-04-02 17:29:48 +0800] (0.001121s) UPDATE "projects" SET "image_url" = '/uploads/store/6a92370fabc8f9c25804f03d9568ba26.png', "image_id" = 6, "updated_at" = '2018-04-02 09:29:48.043994+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:29:48 +0800] HTTP/1.1 PUT 200 192.168.31.208 /projects/1 - {"name"=>"111", "des"=>"111", "address"=>"四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)", "latitude"=>"30.682278", "longtitude"=>"104.054132", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]}],\"special\":[]}", "check_mode"=>"auto", "image"=>{:filename=>"36681907_p0.png", :type=>"image/png", :name=>"image", :tempfile=>#<Tempfile:/tmp/RackMultipart20180402-14899-qvjuh3.png>, :head=>"Content-Disposition: form-data; name=\"image\"; filename=\"36681907_p0.png\"\r\nContent-Type: image/png\r\n"}, "default_image"=>""} 0.082625397
+[app] [INFO] [2018-04-02 17:29:49 +0800] HTTP/1.1 OPTIONS 200 192.168.31.208 /projects - {} 0.003367702
+[app] [INFO] [2018-04-02 17:29:49 +0800] (0.000251s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:29:49 +0800] (0.000451s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:29:49 +0800] (0.000277s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:29:49 +0800] (0.001126s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:29:49 +0800] (0.000520s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:29:49 +0800] (0.000777s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:29:49 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 222 {} 0.018329635
+[app] [INFO] [2018-04-02 17:30:28 +0800] HTTP/1.1 OPTIONS 200 192.168.31.208 /projects/2 - {} 0.003389065
+[app] [INFO] [2018-04-02 17:30:28 +0800] (0.000195s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:30:28 +0800] (0.000161s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:30:28 +0800] (0.000166s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:30:28 +0800] (0.000851s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:30:28 +0800] (0.000554s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '2') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:30:28 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects/2 371 {} 0.013484063
+[app] [INFO] [2018-04-02 17:30:29 +0800] (0.000203s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:30:29 +0800] (0.000157s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:30:29 +0800] (0.000137s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:30:29 +0800] (0.000803s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:30:29 +0800] (0.000549s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:30:29 +0800] (0.000711s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:30:29 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 222 {} 0.015506606
+[app] [INFO] [2018-04-02 17:30:30 +0800] (0.000197s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:30:30 +0800] (0.000136s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:30:30 +0800] (0.000106s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:30:30 +0800] (0.000888s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:30:30 +0800] (0.000473s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:30:30 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects/1 390 {} 0.012679219
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.000175s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.000140s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.000154s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.000847s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.001510s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '1') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.000376s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.007343s) UPDATE "projects" SET "name" = '111', "des" = '111', "address" = '四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)', "latitude" = 30.682278, "longtitude" = 104.054132, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:30:38.504789+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.001400s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.001446s) UPDATE "images" SET "image_data" = '{"id":"102511443532504b6a76d95b6bb8223f.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-15006-t19q7v.jpg","size":19215,"mime_type":null}}', "updated_at" = '2018-04-02 09:30:38.535156+0000' WHERE ("images"."id" = '6') RETURNING *
+[app] [INFO] [2018-04-02 17:30:38 +0800] (0.001484s) UPDATE "projects" SET "image_url" = '/uploads/store/102511443532504b6a76d95b6bb8223f.jpg', "image_id" = 6, "updated_at" = '2018-04-02 09:30:38.542660+0000' WHERE ("projects"."id" = '1') RETURNING *
+[app] [INFO] [2018-04-02 17:30:38 +0800] HTTP/1.1 PUT 200 192.168.31.208 /projects/1 - {"name"=>"111", "des"=>"111", "address"=>"四川省成都市金牛区人民北路街道中铁二局集团调度大楼中铁鹭岛艺术城(建设中)", "latitude"=>"30.682278", "longtitude"=>"104.054132", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]}],\"special\":[]}", "check_mode"=>"auto", "image"=>{:filename=>"test.jpg", :type=>"image/jpeg", :name=>"image", :tempfile=>#<Tempfile:/tmp/RackMultipart20180402-15006-t19q7v.jpg>, :head=>"Content-Disposition: form-data; name=\"image\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "default_image"=>""} 0.070466091
+[app] [INFO] [2018-04-02 17:30:39 +0800] (0.000207s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:30:39 +0800] (0.000138s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:30:39 +0800] (0.000128s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:30:39 +0800] (0.000811s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:30:39 +0800] (0.000548s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:30:39 +0800] (0.000654s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:30:39 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 222 {} 0.01488753
+[app] [INFO] [2018-04-02 17:31:15 +0800] HTTP/1.1 OPTIONS 200 192.168.31.228 /projects - {} 0.002935806
+[app] [INFO] [2018-04-02 17:31:15 +0800] (0.000196s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:31:15 +0800] (0.000122s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:31:15 +0800] (0.000121s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:31:15 +0800] (0.000672s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:31:15 +0800] (0.000480s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:31:15 +0800] (0.007447s) INSERT INTO "projects" ("creator_id", "name", "des", "image_url", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "created_at", "updated_at") VALUES (1, '图书馆', '这是描述', '/static/images/img1.jpg', '四川省成都市成华区青龙街道蓝润蓝客城', 30.722052, 104.135671, '{"normal":[{"time":"09:00-10:00","limit":10,"weekday":["Mon","Tues","Wed","Thur","Fri"]},{"time":"17:31-18:31","limit":121,"weekday":["Tues","Wed","Thur","Sun"]}],"special":[]}'::jsonb, '{"Mon":[{"time":"09:00-10:00","limit":10}],"Tues":[{"time":"09:00-10:00","limit":10},{"time":"17:31-18:31","limit":121}],"Wed":[{"time":"09:00-10:00","limit":10},{"time":"17:31-18:31","limit":121}],"Thur":[{"time":"09:00-10:00","limit":10},{"time":"17:31-18:31","limit":121}],"Fri":[{"time":"09:00-10:00","limit":10}],"Sat":[],"Sun":[{"time":"17:31-18:31","limit":121}],"Holiday":[],"Special":[]}'::jsonb, 'open', 'manual', '2018-04-02 09:31:15.642900+0000', '2018-04-02 09:31:15.642900+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:31:15 +0800] HTTP/1.1 POST 201 192.168.31.228 /projects 2 {"name"=>"图书馆", "des"=>"这是描述", "address"=>"四川省成都市成华区青龙街道蓝润蓝客城", "latitude"=>"30.722052", "longtitude"=>"104.135671", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]},{\"time\":\"17:31-18:31\",\"limit\":121,\"weekday\":[\"Tues\",\"Wed\",\"Thur\",\"Sun\"]}],\"special\":[]}", "check_mode"=>"manual", "image"=>"", "default_image"=>"./static/images/img1.jpg"} 0.027964387
+[app] [INFO] [2018-04-02 17:31:16 +0800] (0.000188s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:31:16 +0800] (0.000161s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:31:16 +0800] (0.000131s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:31:16 +0800] (0.000729s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:31:16 +0800] (0.000488s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 1) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:31:16 +0800] (0.000592s) SELECT * FROM projects WHERE creator_id = 1 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:31:16 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects 101 {} 0.012594189
+[app] [INFO] [2018-04-02 17:31:24 +0800] HTTP/1.1 OPTIONS 200 192.168.31.228 /projects/3 - {} 0.002775971
+[app] [INFO] [2018-04-02 17:31:25 +0800] (0.000203s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:31:25 +0800] (0.000129s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:31:25 +0800] (0.000122s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:31:25 +0800] (0.000779s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:31:25 +0800] (0.000442s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '3') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:31:25 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects/3 399 {} 0.011794106
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000203s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000166s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000156s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000746s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000561s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '3') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000270s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.002914s) UPDATE "projects" SET "name" = '图书馆11', "des" = '这是描述', "address" = '四川省成都市成华区青龙街道蓝润蓝客城', "latitude" = 30.722052, "longtitude" = 104.135671, "check_mode" = 'manual', "updated_at" = '2018-04-02 09:32:19.354880+0000' WHERE ("projects"."id" = '3') RETURNING *
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.001016s) UPDATE "projects" SET "image_url" = '/static/images/img3.jpg', "updated_at" = '2018-04-02 09:32:19.360454+0000' WHERE ("projects"."id" = '3') RETURNING *
+[app] [INFO] [2018-04-02 17:32:19 +0800] HTTP/1.1 PUT 200 192.168.31.228 /projects/3 - {"name"=>"图书馆11", "des"=>"这是描述", "address"=>"四川省成都市成华区青龙街道蓝润蓝客城", "latitude"=>"30.722052", "longtitude"=>"104.135671", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]},{\"time\":\"17:31-18:31\",\"limit\":121,\"weekday\":[\"Tues\",\"Wed\",\"Thur\",\"Sun\"]}],\"special\":[]}", "check_mode"=>"manual", "image"=>"", "default_image"=>"./static/images/img3.jpg"} 0.027931251
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000117s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000148s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000126s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000792s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000442s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 1) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:32:19 +0800] (0.000564s) SELECT * FROM projects WHERE creator_id = 1 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:32:19 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects 103 {} 0.012335267
+[app] [INFO] [2018-04-02 17:32:58 +0800] (0.000188s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:32:58 +0800] (0.000132s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:32:58 +0800] (0.000102s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:32:58 +0800] (0.000672s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:32:58 +0800] (0.000421s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '3') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:32:58 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects/3 401 {} 0.01165245
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.000173s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.000121s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.000174s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.000752s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.000438s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '3') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.000299s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.003025s) UPDATE "projects" SET "name" = '图书馆11', "des" = '这是描述11', "address" = '四川省成都市成华区青龙街道蓝润蓝客城', "latitude" = 30.722052, "longtitude" = 104.135671, "check_mode" = 'manual', "updated_at" = '2018-04-02 09:33:25.456781+0000' WHERE ("projects"."id" = '3') RETURNING *
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.000398s) SELECT "id", "image_data", "created_at", "updated_at" FROM "images" LIMIT 1
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.001019s) INSERT INTO "images" ("image_data", "created_at", "updated_at") VALUES ('{"id":"49eb876097831e6631fb9d2ac71fd939.jpg","storage":"store","metadata":{"filename":"RackMultipart20180402-15229-1w5enid.jpg","size":296235,"mime_type":null}}', '2018-04-02 09:33:25.465166+0000', '2018-04-02 09:33:25.465166+0000') RETURNING *
+[app] [INFO] [2018-04-02 17:33:25 +0800] (0.001310s) UPDATE "projects" SET "image_url" = '/uploads/store/49eb876097831e6631fb9d2ac71fd939.jpg', "image_id" = 9, "updated_at" = '2018-04-02 09:33:25.468578+0000' WHERE ("projects"."id" = '3') RETURNING *
+[app] [INFO] [2018-04-02 17:33:25 +0800] HTTP/1.1 PUT 200 192.168.31.228 /projects/3 - {"name"=>"图书馆11", "des"=>"这是描述11", "address"=>"四川省成都市成华区青龙街道蓝润蓝客城", "latitude"=>"30.722052", "longtitude"=>"104.135671", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]},{\"time\":\"17:31-18:31\",\"limit\":121,\"weekday\":[\"Tues\",\"Wed\",\"Thur\",\"Sun\"]}],\"special\":[]}", "check_mode"=>"manual", "image"=>{:filename=>"111111111.jpg", :type=>"image/jpeg", :name=>"image", :tempfile=>#<Tempfile:/tmp/RackMultipart20180402-15229-1w5enid.jpg>, :head=>"Content-Disposition: form-data; name=\"image\"; filename=\"111111111.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "default_image"=>""} 0.038033449
+[app] [INFO] [2018-04-02 17:33:26 +0800] (0.000172s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:33:26 +0800] (0.000110s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:33:26 +0800] (0.000122s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:33:26 +0800] (0.000687s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:33:26 +0800] (0.000462s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 1) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:33:26 +0800] (0.000543s) SELECT * FROM projects WHERE creator_id = 1 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:33:26 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects 131 {} 0.012684075
+[app] [INFO] [2018-04-02 17:34:26 +0800] (0.000204s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:34:26 +0800] (0.000167s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:34:26 +0800] (0.000141s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:34:26 +0800] (0.000738s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:34:26 +0800] (0.000507s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '2') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:34:26 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects/2 371 {} 0.013441216
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.000198s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.000161s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.000154s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.000780s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.000514s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '2') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.000256s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" LIMIT 1
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.006946s) UPDATE "projects" SET "name" = '123', "des" = '123', "address" = '四川省成都市金牛区西安路街道安居苑(翠堤雅筑东)安居苑(安居巷)', "latitude" = 30.678066, "longtitude" = 104.032845, "check_mode" = 'auto', "updated_at" = '2018-04-02 09:34:35.775605+0000' WHERE ("projects"."id" = '2') RETURNING *
+[app] [INFO] [2018-04-02 17:34:35 +0800] (0.001056s) UPDATE "projects" SET "image_url" = '/static/images/img2.png', "updated_at" = '2018-04-02 09:34:35.784973+0000' WHERE ("projects"."id" = '2') RETURNING *
+[app] [INFO] [2018-04-02 17:34:35 +0800] HTTP/1.1 PUT 200 192.168.31.208 /projects/2 - {"name"=>"123", "des"=>"123", "address"=>"四川省成都市金牛区西安路街道安居苑(翠堤雅筑东)安居苑(安居巷)", "latitude"=>"30.678066", "longtitude"=>"104.032845", "time_state"=>"{\"normal\":[{\"time\":\"09:00-10:00\",\"limit\":10,\"weekday\":[\"Mon\",\"Tues\",\"Wed\",\"Thur\",\"Fri\"]}],\"special\":[]}", "check_mode"=>"auto", "image"=>"", "default_image"=>"./static/images/img2.png"} 0.031523428
+[app] [INFO] [2018-04-02 17:34:36 +0800] (0.000170s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:34:36 +0800] (0.000104s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:34:36 +0800] (0.000070s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:34:36 +0800] (0.000931s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 2) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:34:36 +0800] (0.000701s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 2) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:34:36 +0800] (0.000813s) SELECT * FROM projects WHERE creator_id = 2 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:34:36 +0800] HTTP/1.1 GET 200 192.168.31.208 /projects 194 {} 0.016589457
+[app] [INFO] [2018-04-02 17:36:25 +0800] (0.000224s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:36:25 +0800] (0.000173s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:36:25 +0800] (0.000207s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:36:25 +0800] (0.001517s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:36:25 +0800] (0.000616s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '3') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:36:25 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects/3 431 {} 0.015460493
+[app] [INFO] [2018-04-02 17:37:24 +0800] (0.000181s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:37:24 +0800] (0.000228s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:37:24 +0800] (0.000188s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:37:24 +0800] (0.000907s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:37:24 +0800] (0.000642s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 1) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:37:24 +0800] (0.000739s) SELECT * FROM projects WHERE creator_id = 1 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:37:24 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects 131 {} 0.015751354
+[app] [INFO] [2018-04-02 17:37:28 +0800] (0.000497s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:37:28 +0800] (0.000424s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:37:28 +0800] (0.000216s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:37:28 +0800] (0.001421s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:37:28 +0800] (0.000781s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '3') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:37:28 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects/3 431 {} 0.018891601
+[app] [INFO] [2018-04-02 17:37:46 +0800] (0.000229s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:37:46 +0800] (0.000178s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:37:46 +0800] (0.000186s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:37:46 +0800] (0.000908s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:37:46 +0800] (0.000731s) SELECT count(*) AS "count" FROM "projects" WHERE (("creator_id" = 1) AND ("state" != 'delete')) LIMIT 1
+[app] [INFO] [2018-04-02 17:37:46 +0800] (0.000807s) SELECT * FROM projects WHERE creator_id = 1 AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11
+[app] [INFO] [2018-04-02 17:37:46 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects 131 {} 0.016580585
+[app] [INFO] [2018-04-02 17:37:47 +0800] (0.000247s) SET standard_conforming_strings = ON
+[app] [INFO] [2018-04-02 17:37:47 +0800] (0.000353s) SET client_min_messages = 'WARNING'
+[app] [INFO] [2018-04-02 17:37:47 +0800] (0.000730s) SET DateStyle = 'ISO'
+[app] [INFO] [2018-04-02 17:37:47 +0800] (0.002053s) SELECT "id", "name", "openid", "tel", "created_at", "updated_at" FROM "users" WHERE ("users"."id" = 1) ORDER BY "users"."id"
+[app] [INFO] [2018-04-02 17:37:47 +0800] (0.000767s) SELECT "id", "creator_id", "name", "des", "image_url", "image_id", "address", "latitude", "longtitude", "time_state", "time_state_parsed", "state", "check_mode", "share_pic", "created_at", "updated_at" FROM "projects" WHERE ("projects"."id" = '3') ORDER BY "projects"."id"
+[app] [INFO] [2018-04-02 17:37:47 +0800] HTTP/1.1 GET 200 192.168.31.228 /projects/3 431 {} 0.023088012

@@ -14,7 +14,7 @@ module Web::Controllers::Project
       self.body={
         name:       project.name,
         des:        project.des,
-        image:      project.get_image_url,
+        image:      project.image_url,
         address:    project.address,
         latitude:   project.latitude,
         longtitude: project.longtitude,

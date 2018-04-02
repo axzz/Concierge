@@ -1,8 +1,4 @@
-require_relative '../image_uploader'
-
 class ProjectRepository < Hanami::Repository
-    prepend ImageUploader.repository(:image)
-
     def get_list id,page
         if page==1
             return projects.read("SELECT * FROM projects WHERE creator_id = "+id.to_s+" AND state != 'delete' ORDER BY state DESC,created_at DESC LIMIT 11")

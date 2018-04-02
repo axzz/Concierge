@@ -56,15 +56,18 @@ module Web::Controllers::Project
       creator_id=@user.id
 
       if params[:default_image]&&params[:default_image]!=""
-        default_image= params[:default_image]
-        default_image= default_image[1..-1] if default_image[0]=="."
+        image_url= params[:default_image]
+        image_url= image_url[1..-1] if image_url[0]=="."
         project=Project.new(name: name,des: des,address: address,latitude: latitude,longtitude: longtitude,time_state_parsed: time_state_parsed,
-          time_state: time_state,state: state,check_mode: check_mode,creator_id: creator_id,default_image: default_image)
+          time_state: time_state,state: state,check_mode: check_mode,creator_id: creator_id,image_url: image_url)
       elsif params[:image]!=nil
         tempfile = params[:image][:tempfile]
         image= ::File.open(tempfile)
+        image=Image.new(image: image)
+        image=ImageRepository.new.create(image)
+        
         project=Project.new(name: name,des: des,address: address,latitude: latitude,longtitude: longtitude,time_state_parsed: time_state_parsed,
-          time_state: time_state,state: state,check_mode: check_mode,creator_id: creator_id,image: image)
+          time_state: time_state,state: state,check_mode: check_mode,creator_id: creator_id,image_id: image.id,image_url: image.image_url)
       else
         p "wrong in image"
         halt 403, ({ error: "Invalid Params" }.to_json)

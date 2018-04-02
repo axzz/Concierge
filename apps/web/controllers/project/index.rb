@@ -18,7 +18,7 @@ module Web::Controllers::Project
       projects=projectRepository.get_list @user.id,page
       back_projects=[]
       projects.each do |project|
-        back_project={id: project.id,name: project.name,image: project.get_image_url,state: project.state}
+        back_project={id: project.id,name: project.name,image: project.image_url,state: project.state}
         back_projects << back_project
       end
       self.status=200
