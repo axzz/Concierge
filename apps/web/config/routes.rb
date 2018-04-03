@@ -6,7 +6,6 @@
 
 options '/*', to: 'index#option'
 
-
 post '/telephone', to: 'index#sms'
 post '/sms', to: 'index#token'
 

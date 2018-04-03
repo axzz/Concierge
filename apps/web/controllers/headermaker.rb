@@ -6,13 +6,13 @@ module Web
             end
         end
 
-    private
+        private
 
         def make_header
             self.headers.merge!({'Access-Control-Expose-Headers'=>'Authorization'})
             self.headers.merge!({'Access-Control-Allow-Methods'=>'POST, GET, HEAD, OPTIONS, PUT'})
-            self.headers.merge!({ 'Access-Control-Allow-Origin' => '*'})
-            self.headers.merge!({'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization' })
+            self.headers.merge!({'Access-Control-Allow-Origin' => '*'})
+            self.headers.merge!({'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header, Authorization' })
             self.format= :json
         end
     end

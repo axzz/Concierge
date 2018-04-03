@@ -4,7 +4,7 @@ class UserRepository < Hanami::Repository
     end
 
     def change_name(tel,new_name)
-        user=users.where(tel: tel).first
-        UserRepository.new.update(user.id,name: new_name)
+        user = users.where(tel: tel).first
+        UserRepository.new.update(user.id, name: new_name)
     end
 end
