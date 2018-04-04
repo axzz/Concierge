@@ -6,6 +6,7 @@ module Web::Controllers::Project
 
     params do
       optional(:token).maybe(:str?)
+
       required(:name).filled(:str?)
       required(:des).maybe(:str?)
       required(:address).maybe(:str?)
@@ -20,63 +21,64 @@ module Web::Controllers::Project
     end
 
     def call(params)
-      #防止重复提交
-      Tools.prevent_frequent_submission(id: @user.id.to_s,method: "create_project")
+      # 防止重复提交
+      halt 403 if Tools.prevent_frequent_submission(id: @user.id.to_s,method: "create_project")
+      halt 422, ({ error: "Invalid Params" }.to_json) unless params.valid?
 
-      unless params.valid?
-        p "wrong in params"
-        halt 403, ({ error: "Invalid Params" }.to_json)
-      end
-
-      name=params[:name]
-      des=params[:des]
-
-      address=params[:address]
-
+      address = params[:address]
       if address
-        begin
-          latitude=params[:latitude].to_f
-          longtitude=params[:longtitude].to_f
-        rescue
-          p "wrong in address"
-          halt 403, ({ error: "Invalid Params" }.to_json)
-        end
+        latitude = params[:latitude].to_f
+        longtitude = params[:longtitude].to_f
       end
 
       begin
-        time_state=JSON.parse(params[:time_state])
-        time_state_parsed=Tools.parse_time_state(time_state)
+        time_state = JSON.parse(params[:time_state])
+        time_state_parsed = Tools.parse_time_state(time_state)
       rescue
-        p "wrong in json"
-        halt 403, ({ error: "Invalid Params" }.to_json)
+        halt 422, ({ error: "Invalid Params in Json" }.to_json)
       end
       
-      state="open"
-      check_mode=params[:check_mode]
-      creator_id=@user.id
+      state = "open"
+      check_mode = params[:check_mode]
+      creator_id = @user.id
 
-      if params[:default_image]&&params[:default_image]!=""
-        image_url= params[:default_image]
-        image_url= image_url[1..-1] if image_url[0]=="."
-        project=Project.new(name: name,des: des,address: address,latitude: latitude,longtitude: longtitude,time_state_parsed: time_state_parsed,
-          time_state: time_state,state: state,check_mode: check_mode,creator_id: creator_id,image_url: image_url)
+      if params[:default_image]&&params[:default_image] != ""
+        image_id = nil
+        image_url = params[:default_image]
+        image_url = image_url[1..-1] if image_url[0] == '.' # 消除有时前端传上的'.'
       elsif params[:image]!=nil
-        tempfile = params[:image][:tempfile]
-        image= ::File.open(tempfile)
-        image=Image.new(image: image)
-        image=ImageRepository.new.create(image)
-        
-        project=Project.new(name: name,des: des,address: address,latitude: latitude,longtitude: longtitude,time_state_parsed: time_state_parsed,
-          time_state: time_state,state: state,check_mode: check_mode,creator_id: creator_id,image_id: image.id,image_url: image.image_url)
+        begin
+          tempfile = params[:image][:tempfile]
+          imagefile = ::File.open(tempfile)
+
+          image = Image.new(image: imagefile)
+          image = ImageRepository.new.create(image)
+          image_url = image.image_url
+          image_id = image.id
+        rescue
+          halt 422, ({ error: "Invalid Params in Image" }.to_json)
+        end
       else
-        p "wrong in image"
-        halt 403, ({ error: "Invalid Params" }.to_json)
+        halt 422, ({ error: "Invalid Params in Image" }.to_json)
       end
 
+      project=Project.new(
+        name: params[:name],
+        des: params[:des],
+        address: address,
+        latitude: latitude,
+        longtitude: longtitude,
+        time_state_parsed: time_state_parsed,
+        time_state: time_state,
+        state: state,
+        check_mode: check_mode,
+        creator_id: creator_id,
+        image_id: image_id,
+        image_url: image_url)
       ProjectRepository.new.create(project)
 
-      self.status=201
-      self.body={}.to_json
+      self.status = 201
+      self.body = ""
     end
   end
 end
