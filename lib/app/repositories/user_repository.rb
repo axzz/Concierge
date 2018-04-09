@@ -1,5 +1,5 @@
 class UserRepository < Hanami::Repository
-    def find_user_by_tel(tel)
+    def find_by_tel(tel)
         users.where(tel: tel).first
     end
 

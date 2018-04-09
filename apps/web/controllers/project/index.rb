@@ -11,12 +11,13 @@ module Web::Controllers::Project
       page = params[:page] ? params[:page].to_i : 1
 
       projectRepository = ProjectRepository.new
-      count = projectRepository.get_count @user.id
-      projects = projectRepository.get_list @user.id,page
+      count = @user.projects_num
+      projects = @user.projects(page: page)
 
       back_projects = []
       projects.each do |project|
-        back_project = {id: project.id, name: project.name, image: project.image_url, state: project.state}
+        image_url = project.image_url[0] == '/' ? "http://192.168.31.208" + project.image_url : project.image_url
+        back_project = {id: project.id, name: project.name, image: image_url, state: project.state}
         back_projects << back_project
       end
 
