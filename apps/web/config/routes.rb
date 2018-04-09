@@ -6,7 +6,6 @@
 
 options '/*',            to: 'index#option'
 
-get     '/covers',       to: 'index#covers'
 
 post    '/code',         to: 'index#sms'
 post    '/login',        to: 'index#token'
@@ -16,3 +15,6 @@ get     '/projects/:id', to: 'project#show'
 get     '/projects',     to: 'project#index'
 put     '/projects/:id', to: 'project#update'
 
+get     '/covers',       to: 'index#covers'
+
+post    '/image',        to: 'index#upload_image'

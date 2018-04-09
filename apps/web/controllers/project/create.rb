@@ -5,15 +5,15 @@ module Web::Controllers::Project
     include Web::Action
     #include VerifyParams
     params do
-      optional(:token).filled(:str?)
+      optional(:token).maybe(:str?)
       required(:name).filled(:str?)
-      optional(:description).filled(:str?)
-      optional(:address).filled(:str?)
-      optional(:latitude).filled()
-      optional(:longtitude).filled()
+      optional(:description).maybe(:str?)
+      optional(:address).maybe(:str?)
+      optional(:latitude).maybe()
+      optional(:longtitude).maybe()
 
-      optional(:default_image).filled(:str?)
-      optional(:image).filled()
+      optional(:default_image).maybe(:str?)
+      optional(:image).maybe()
 
       required(:time_state).filled(:str?)
       required(:check_mode).filled(:str?)
@@ -22,7 +22,7 @@ module Web::Controllers::Project
     def call(params)
       # 防止重复提交
       halt 403 if Tools.prevent_frequent_submission(id: @user.id.to_s, method: "create_project")
-      halt 422, ({ error: "Invalid Params" }.to_json) unless params.valid?
+      halt 422, ({ error: "Invalid Params in basic" }.to_json) unless params.valid?
       
       begin
         time_state = JSON.parse(params[:time_state])
@@ -65,7 +65,7 @@ module Web::Controllers::Project
         image_id = image.id
         return image_url, image_id
       else
-        "/static/images/img0" #默认图片
+        "/static/images/img0.jpg" #默认图片
       end
     end
   end

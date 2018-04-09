@@ -9,6 +9,8 @@ module Web::Controllers::Index
       Dir["./public/static/images/*"].sort[0..8].each { |str| str['./public'] = '' }
     end
 
+    private
+    
     def authenticate!
       #登录页跳过权限判断中间件
     end

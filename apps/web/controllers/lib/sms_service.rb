@@ -19,11 +19,18 @@ class SmsService
         
     code = "123456" # for test
     redis = Redis.new
-    redis.set("#{@tel}.code", code, ex: 600)
+    redis.set(key, code, ex: 600)
     return true
   end
 
   def verify_sms(code)
-    Redis.new.get("#{@tel}.code") == code ? Redis.new.del("#{@tel}.code") : false
+    Redis.new.get(key) == code ? Redis.new.del(key) : false
+  end
+
+  private
+
+  # 存储短信所用的redis键
+  def key
+    "#{@tel}.code"
   end
 end

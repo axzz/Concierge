@@ -14,6 +14,8 @@ module Web::Controllers::Index
       self.body = ''
     end
 
+    private
+    
     def authenticate!
       #登录页跳过权限判断中间件
     end
