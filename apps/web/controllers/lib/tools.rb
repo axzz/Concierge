@@ -18,10 +18,14 @@ class Tools
 
   def self.prevent_frequent_submission (id: "0", method: "all", interval: 1000)
     redis = Redis.new
-    fobbiden = redis.get ('#{id}.#{method}')
-    return "halt" if fobbiden
-    redis.set '#{id}.#{method}','on use'
-    redis.pexpire '#{id}.#{method}',interval
-    return 
+    fobbiden = redis.get (key(id, method))
+    return false if fobbiden
+    redis.set(key(id, method), 'on use')
+    redis.pexpire(key(id, method), interval)
+    return true
+  end
+
+  def self.key(id, method)
+    '#{id}.#{method}'
   end
 end

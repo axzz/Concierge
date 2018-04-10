@@ -12,8 +12,7 @@ module Web::Controllers::Project
       optional(:latitude).maybe()
       optional(:longtitude).maybe()
 
-      optional(:default_image).maybe(:str?)
-      optional(:image).maybe()
+      required(:image).filled(:str?)
 
       required(:time_state).filled(:str?)
       required(:check_mode).filled(:str?)
@@ -21,13 +20,12 @@ module Web::Controllers::Project
 
     def call(params)
       # 防止重复提交
-      halt 403 if Tools.prevent_frequent_submission(id: @user.id.to_s, method: "create_project")
       halt 422, ({ error: "Invalid Params in basic" }.to_json) unless params.valid?
-      
+      halt 403 unless Tools.prevent_frequent_submission(id: @user.id.to_s, method: "create_project")
+
       begin
         time_state = JSON.parse(params[:time_state])
         time_state_parsed = TimeTableUtils.parse_time_state(time_state)
-        image_url, image_id = get_image(params)
       rescue
         halt 422, ({ error: "Invalid Params" }.to_json)
       end
@@ -43,30 +41,11 @@ module Web::Controllers::Project
         state:              "open",
         check_mode:         params[:check_mode],
         creator_id:         @user.id,
-        image_id:           image_id,
-        image_url:          image_url)
+        image_url:          params[:image])
       ProjectRepository.new.create(project)
 
       self.status = 201
       self.body = ""
-    end
-
-    def get_image(params)
-      if params[:default_image]&&params[:default_image] != "" #用户使用默认图片
-        image_url = params[:default_image]
-        image_url[0] = '' if image_url[0] == '.' # 消除有时前端传上的'.'
-        image_url
-      elsif params[:image]!=nil #用户自定义图片
-        imagefile = ::File.open(params[:image][:tempfile])
-        image = Image.new(image: imagefile)
-        image = ImageRepository.new.create(image)
-
-        image_url = image.image_url
-        image_id = image.id
-        return image_url, image_id
-      else
-        "/static/images/img0.jpg" #默认图片
-      end
     end
   end
 end
