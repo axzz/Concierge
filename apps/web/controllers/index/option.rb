@@ -5,7 +5,6 @@ module Web::Controllers::Index
     include Web::Action
 
     def call(params)
-      self.headers.merge!({'Access-Control-Max-Age' => '1728000'})
       self.body = ''
     end
 

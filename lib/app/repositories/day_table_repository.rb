@@ -3,6 +3,10 @@ class DayTableRepository < Hanami::Repository
     day_tables.where(project_id: id, date: date).first
   end
 
+  def clear_day_table(id)
+    day_tables.where(creator_id: id).delete
+  end
+
   def get_tables(project_id, num)
     tables = day_tables.where(project_id: project_id).where{ date >= Date.today }.limit(num)
     if tables.count < num

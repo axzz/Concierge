@@ -9,10 +9,7 @@ module Web::Controllers::Project
       optional(:address).maybe(:str?)
       optional(:latitude).maybe()
       optional(:longitude).maybe()
-
-      optional(:default_image).maybe(:str?)
       required(:image).filled(:str?)
-
       required(:time_state).filled(:str?)
       required(:check_mode).filled(:str?)
     end
@@ -42,7 +39,6 @@ module Web::Controllers::Project
 
     def update_time_state(params)
       begin
-        
         time_state = JSON.parse(params[:time_state])
         time_state_parsed = TimeTableUtils.parse_time_state(time_state)
         if @old_project.time_state_parsed != time_state_parsed

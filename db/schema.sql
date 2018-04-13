@@ -34,39 +34,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: customers; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.customers (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    openid text,
-    name text,
-    tel text
-);
-
-
---
--- Name: customers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.customers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: customers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.customers_id_seq OWNED BY public.customers.id;
-
-
---
 -- Name: day_tables; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -178,7 +145,7 @@ ALTER SEQUENCE public.projects_id_seq OWNED BY public.projects.id;
 
 CREATE TABLE public.reservations (
     id integer NOT NULL,
-    customer_id integer NOT NULL,
+    creator_id integer NOT NULL,
     project_id integer NOT NULL,
     state text,
     date date,
@@ -275,13 +242,6 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: customers id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.customers ALTER COLUMN id SET DEFAULT nextval('public.customers_id_seq'::regclass);
-
-
---
 -- Name: day_tables id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -321,14 +281,6 @@ ALTER TABLE ONLY public.time_tables ALTER COLUMN id SET DEFAULT nextval('public.
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
-
-
---
--- Name: customers customers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.customers
-    ADD CONSTRAINT customers_pkey PRIMARY KEY (id);
 
 
 --
@@ -396,11 +348,11 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: reservations reservations_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: reservations reservations_creator_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reservations
-    ADD CONSTRAINT reservations_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES public.customers(id) ON DELETE CASCADE;
+    ADD CONSTRAINT reservations_creator_id_fkey FOREIGN KEY (creator_id) REFERENCES public.users(id) ON DELETE CASCADE;
 
 
 --
@@ -471,6 +423,8 @@ COPY public.schema_migrations (filename) FROM stdin;
 20180412081733_reservation.rb
 20180412084151_customers.rb
 20180413042034_users.rb
+20180413074527_drop_table.rb
+20180413082134_create_reservations.rb
 \.
 
 

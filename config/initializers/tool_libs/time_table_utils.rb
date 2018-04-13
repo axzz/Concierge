@@ -1,9 +1,10 @@
 class TimeTableUtils
-  @@day_table_repository = DayTableRepository.new
-  @@time_table_repository = TimeTableRepository.new
+  @day_table_repository = DayTableRepository.new
+  @time_table_repository = TimeTableRepository.new
   DAY_NUM = 20
+
   def self.parse_time_state(time_state)
-    time_state_parsed={
+    time_state_parsed = {
       Mon: [],
       Tues: [],
       Wed: [],
@@ -22,7 +23,7 @@ class TimeTableUtils
       end
     end
     time_state_parsed[:Special] = time_state["special"]
-  
+    
     time_state_parsed.each do |key,value|
       time_state_parsed[key] = value.sort { |a, b|  a[:time] <=> b[:time] }
     end
@@ -32,7 +33,8 @@ class TimeTableUtils
     # TODO (L): 取消所有不符的预约
 
     # 重置time_tables
-    @@time_table_repository.clear_time_table(project_id)
+    @day_table_repository.clear_day_table(project_id)
+    @time_table_repository.clear_time_table(project_id)
     make_time_table(project_id, new_time_state)
     # TODO (L): 计算remain
 
@@ -72,14 +74,14 @@ class TimeTableUtils
 private
 
   def self.create_time_table(date, state, project_id)
-    unless @@day_table_repository.have_date?(project_id, date)
-      date_table = DayTable.new(project_id: project_id,date: date)
-      @@day_table_repository.create(date_table)
+    unless @day_table_repository.have_date?(project_id, date)
+      date_table = DayTable.new(project_id: project_id, date: date)
+      @day_table_repository.create(date_table)
     end
     state.each do |period|
-      unless @@time_table_repository.have_time_table?(project_id, date, period[:time])
+      unless @time_table_repository.have_time_table?(project_id, date, period[:time])
         time_table = TimeTable.new(project_id: project_id, date: date, period: period[:time], remain: period[:limit])
-        @@time_table_repository.create(time_table)
+        @time_table_repository.create(time_table)
       end
     end
   end

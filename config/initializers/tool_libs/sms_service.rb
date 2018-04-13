@@ -17,7 +17,6 @@ class SmsService
     #   @error = "Error in sending sms" 
     #   return false
     # end
-    # TODO (L):parse response
     
     code = "123456" # for test
     redis = Redis.new

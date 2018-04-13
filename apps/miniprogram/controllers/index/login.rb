@@ -28,9 +28,9 @@ module Miniprogram::Controllers::Index
       # 唯一指定登录界面
       
       # get token
-      token = Tools.make_token(user.id)
+      token = Tools.make_miniprogram_token(user.id)
 
-      self.body = {token: token}.to_json
+      self.body = { token: token }.to_json
     end
   end
 end

@@ -8,9 +8,7 @@ module Web::Controllers::Project
       optional(:address).maybe(:str?)
       optional(:latitude).maybe()
       optional(:longitude).maybe()
-
       required(:image).filled(:str?)
-
       required(:time_state).filled(:str?)
       required(:check_mode).filled(:str?)
     end

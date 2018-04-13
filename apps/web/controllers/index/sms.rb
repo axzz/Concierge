@@ -5,8 +5,6 @@ module Web::Controllers::Index
     include Web::Action
 
     def call(params)
-      # halt 422, {error: 'Invalid Params'}.to_json unless params[:tel] =~ /^1[34578]\d{9}$/
-      
       tel = params[:tel]
       
       sms_service = SmsService.new(tel)

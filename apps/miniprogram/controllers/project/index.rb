@@ -1,7 +1,6 @@
 module Miniprogram::Controllers::Project
   class Index
     include Miniprogram::Action
-
     def call(params)
       project_repository = ProjectRepository.new
       page = params[:page] || 1

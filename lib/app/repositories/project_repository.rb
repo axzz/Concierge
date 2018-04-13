@@ -7,34 +7,40 @@ class ProjectRepository < Hanami::Repository
     # else 
     #  projects.read("SELECT * FROM projects WHERE creator_id = #{id.to_s} AND state != 'delete' ORDER BY state DESC,created_at DESC OFFSET #{(page*12 - 13).to_s} LIMIT 12")
     # end
-    projects.where(creator_id: id).where{ state.not('delete') }.order{ created_at.desc }
+    projects
+    .where(creator_id: id)
+    .where{ state.not('delete') }
+    .order{ created_at.desc }
   end
 
   def get_count(id)
-    projects.where(creator_id: id).where { state.not("delete") }.count
+    projects
+    .where(creator_id: id)
+    .where { state.not("delete") }
+    .count
   end
 
   def get_all_projects(page)
-    projects.where(state: 'open').limit(NUM_PER_PAGE_MINI).offset(NUM_PER_PAGE_MINI * page - NUM_PER_PAGE_MINI)
+    projects
+    .where(state: 'open')
+    .limit(NUM_PER_PAGE_MINI)
+    .offset(NUM_PER_PAGE_MINI * page - NUM_PER_PAGE_MINI)
   end
 
-  def get_all_count
-    projects.where(state: 'open').count
-  end
 
   def get_projects_in_distance(distance, latitude, longitude, page)
-    projects.read("SELECT * FROM projects WHERE #{calculate_distance(latitude, longitude)} < #{distance.to_f} LIMIT #{NUM_PER_PAGE_MINI} OFFSET #{NUM_PER_PAGE_MINI * page.to_i - NUM_PER_PAGE_MINI}")
-  end
+    calculate_distance = 
+    "(6371 * acos(cos(radians(#{latitude.to_f})) * " \
+    "cos(radians(latitude)) * " \
+    "cos(radians(longitude) - " \
+    "radians(#{longitude.to_f})) + " \
+    "sin(radians(#{latitude.to_f})) * " \
+    "sin(radians(latitude))))"
 
-  def get_count_in_distance(distance, latitude, longitude)
-    projects.read("SELECT * FROM projects WHERE #{calculate_distance(latitude, longitude)} < #{distance.to_f}").count
-  end
-
-  def search_count data
-    projects
-    .where { state.not('delete') }
-    .where { (name.ilike("%#{data}%") | address.ilike("%#{data}%")) }
-    .count
+    projects.read("SELECT * FROM projects " \
+      "WHERE #{calculate_distance} < #{distance.to_f} " \
+      "LIMIT #{NUM_PER_PAGE_MINI} " \
+      "OFFSET #{NUM_PER_PAGE_MINI * page.to_i - NUM_PER_PAGE_MINI}")
   end
 
   def search(data, page)
@@ -43,14 +49,5 @@ class ProjectRepository < Hanami::Repository
     .where { (name.ilike("%#{data}%") | address.ilike("%#{data}%")) }
     .limit(NUM_PER_PAGE_MINI)
     .offset(NUM_PER_PAGE_MINI * page - NUM_PER_PAGE_MINI)
-  end
-
-  def calculate_distance(latitude, longitude)
-    "(6371 * acos(cos(radians(#{latitude.to_f})) * " \
-    "cos(radians(latitude)) * " \
-    "cos(radians(longitude) - " \
-    "radians(#{longitude.to_f})) + " \
-    "sin(radians(#{latitude.to_f})) * " \
-    "sin(radians(latitude))))"
   end
 end
