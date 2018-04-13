@@ -17,7 +17,7 @@ module Web::Controllers::Project
         image:        project.image_url, # [0] == '/' ? "http://192.168.31.208" + project.image_url : project.image_url,
         address:      project.address||"",
         latitude:     project.latitude||"",
-        longtitude:   project.longtitude||"",
+        longitude:   project.longitude||"",
         time_state:   project.time_state,
         check_mode:   project.check_mode
       }.to_json

@@ -13,6 +13,7 @@ module Web::Controllers::Project
       projectRepository = ProjectRepository.new
       count = @user.projects_num
       projects = @user.projects(page: page)
+      puts @user.id
 
       back_projects = []
       projects.each do |project|

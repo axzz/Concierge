@@ -1,9 +1,6 @@
-#require_relative './verify_params'
-
 module Web::Controllers::Project
   class Update
     include Web::Action
-    #include VerifyParams
     params do
       optional(:token).maybe(:str?)
       optional(:id).maybe(:str?)
@@ -11,7 +8,7 @@ module Web::Controllers::Project
       optional(:description).maybe(:str?)
       optional(:address).maybe(:str?)
       optional(:latitude).maybe()
-      optional(:longtitude).maybe()
+      optional(:longitude).maybe()
 
       optional(:default_image).maybe(:str?)
       required(:image).filled(:str?)
@@ -23,6 +20,8 @@ module Web::Controllers::Project
     def call(params)
       halt 422, ({ error: "Invalid Params" }.to_json) unless params.valid?
       halt 403 unless Tools.prevent_frequent_submission(id: @user.id.to_s,method: "update_project") # 防止重复提交
+      @old_project = ProjectRepository.new.find(params[:id].to_i)
+      halt 401 unless @old_project.creator_id == @user.id
 
       ProjectRepository.new.update(
         params[:id].to_i,
@@ -31,7 +30,7 @@ module Web::Controllers::Project
         check_mode:    params[:check_mode],
         address:       params[:address],
         latitude:      params[:latitude].to_f,
-        longtitude:    params[:longtitude].to_f,
+        longitude:    params[:longitude].to_f,
         image_url:     params[:image]
       )
 
@@ -43,11 +42,12 @@ module Web::Controllers::Project
 
     def update_time_state(params)
       begin
-        old_project = ProjectRepository.new.find(params[:id].to_i)
+        
         time_state = JSON.parse(params[:time_state])
         time_state_parsed = TimeTableUtils.parse_time_state(time_state)
-        if old_project.time_state_parsed != time_state_parsed
+        if @old_project.time_state_parsed != time_state_parsed
           # TODO (L): 处理预约
+          TimeTableUtils.change_time_state(params[:id], time_state_parsed)
           ProjectRepository.new.update(params[:id], time_state: time_state, time_state_parsed: time_state_parsed)
         end
       rescue

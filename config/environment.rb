@@ -2,9 +2,11 @@ require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
 require_relative '../lib/app'
+require_relative '../apps/miniprogram/application'
 require_relative '../apps/web/application'
 
 Hanami.configure do
+  mount Miniprogram::Application, at: '/miniprogram'
   
   mount Web::Application, at: '/'
 
