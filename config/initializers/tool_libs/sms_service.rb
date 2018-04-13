@@ -1,4 +1,6 @@
 class SmsService
+  TEST = true
+
   def initialize(tel)
     @error = "Invaild Telphone Number" unless tel =~ /^1[34578]\d{9}$/
     @tel = tel
@@ -10,15 +12,17 @@ class SmsService
 
   def send_sms
     return false if @error
-    # 生成code，发送短信
-    # code = Tools.make_random_string()
-    # res = Aliyun::Sms.send(@tel, 'SMS_117390014', {'code'=> code}.to_json, '')
-    # if res.body["OK"] != "OK"
-    #   @error = "Error in sending sms" 
-    #   return false
-    # end
+    if TEST
+      code = "123456" # for test
+    else
+      code = Tools.make_random_string()
+      res = Aliyun::Sms.send(@tel, 'SMS_117390014', {'code'=> code}.to_json, '')
+      if res.body["OK"] != "OK"
+        @error = "Error in sending sms" 
+        return false
+      end
+    end
     
-    code = "123456" # for test
     redis = Redis.new
     redis.set(key, code, ex: 600)
     true
