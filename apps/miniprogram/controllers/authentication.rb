@@ -1,6 +1,3 @@
-require 'json'
-import './lib/test1'
-
 module Miniprogram
   module Authentication
     def self.included(action)
@@ -12,15 +9,16 @@ module Miniprogram
 
     private
 
-    def authenticate! (params)
-      token = params[:token] unless token = request.env["HTTP_AUTHORIZATION"]
+    def authenticate!(params)
+      token = request.env['HTTP_AUTHORIZATION']
+      token ||= params[:token]
       begin
         id = Tools.parse_token(token)
-      rescue
-        halt 401, "Invalid Token"
+      rescue StandardError
+        halt 401, 'Invalid Token'
       end
       @user = UserRepository.new.find(id)
-      halt 401, "No User" unless @user
-	  end
+      halt 401, 'No User' unless @user
+    end
   end
 end

@@ -1,17 +1,18 @@
-# 处理用户的所有 OPTIONs 请求
-
 module Web::Controllers::Index
+  # Handle all options requist
+  # Explorer will send options requist first
+  # When complex requist will send
   class Option
     include Web::Action
 
-    def call(params)
+    def call(_params)
       self.body = ''
     end
 
     private
-    
+
     def authenticate!
-      # 登录页跳过权限判断中间件
+      # skip auth
     end
   end
 end

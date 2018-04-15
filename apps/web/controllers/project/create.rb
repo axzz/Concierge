@@ -14,15 +14,15 @@ module Web::Controllers::Project
     end
 
     def call(params)
-      # 防止重复提交
-      halt 422, ({ error: "Invalid Params in basic" }.to_json) unless params.valid?
-      halt 403 unless Tools.prevent_frequent_submission(id: @user.id.to_s, method: "create_project")
-
+      halt 422, { error: 'Invalid Params' }.to_json unless params.valid?
+      halt 403 unless Tools.prevent_frequent_submission(id: @user.id.to_s,
+                                                        method: 'create')
+      # get time_states
       begin
         time_state = JSON.parse(params[:time_state])
         time_state_parsed = TimeTableUtils.parse_time_state(time_state)
-      rescue
-        halt 422, ({ error: "Invalid Params" }.to_json)
+      rescue StandardError
+        halt 422, ({ error: 'Invalid Params' }.to_json)
       end
 
       project = Project.new(
@@ -33,15 +33,16 @@ module Web::Controllers::Project
         longitude:          params[:longitude].to_f,
         time_state_parsed:  time_state_parsed,
         time_state:         time_state,
-        state:              "open",
+        state:              'open',
         check_mode:         params[:check_mode],
         creator_id:         @user.id,
-        image_url:          params[:image])
+        image_url:          params[:image]
+      )
       project = ProjectRepository.new.create(project)
 
       TimeTableUtils.make_time_table(project.id)
       self.status = 201
-      self.body = ""
+      self.body = ''
     end
   end
 end

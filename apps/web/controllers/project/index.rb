@@ -3,27 +3,36 @@ module Web::Controllers::Project
     include Web::Action
 
     params do
-      optional(:token).maybe()
-      optional(:page).maybe()
+      optional(:token).maybe
+      optional(:page).maybe
     end
 
     def call(params)
-      page = params[:page] ? params[:page].to_i : 1
+      page = params[:page] || 1
+      page = page.to_i > 0 ? page.to_i : 1
 
-      projectRepository = ProjectRepository.new
       count = @user.projects_num
       projects = @user.projects(page: page)
 
-      back_projects = []
-      projects.each do |project|
-        back_project = { id: project.id, name: project.name, image: project.image_url, state: project.state }
-        back_projects << back_project
-      end
-
       self.body = {
         count: count,
-        projects: back_projects
+        projects: transform_project(projects)
       }.to_json
+    end
+
+    def transform_project(projects)
+      response = []
+      projects.each do |project|
+        back_project = {
+          id: project.id,
+          name: project.name,
+          image: project.image_url,
+          state: project.state
+        }
+        # TODO: change image to cover
+        response << back_project
+      end
+      response
     end
   end
 end

@@ -7,19 +7,24 @@ module Web::Controllers::Index
     end
 
     def call(params)
-      halt 422, { error: "Invalid params in basic" }.to_json unless params.valid?
-      halt 422, { error: "No such user" }.to_json unless user = UserRepository.new.find_by_tel(params[:tel])
-      halt 422, {error: "Invalid params in code"}.to_json unless SmsService.new(params[:tel]).verify_sms(params[:code])
+      halt 422, { error: 'Invalid params' }.to_json unless params.valid?
+      user = UserRepository.new.find_by_tel(params[:tel])
+      halt 422, { error: 'No such user' }.to_json unless user
 
-      token=Tools.make_token(user.id)
+      result = SmsService.new(params[:tel]).verify_sms(params[:code])
+      halt 422, { error: 'Invalid params in code' }.to_json unless result
+
+      token = Tools.make_token(user.id)
       self.headers.merge!({'Authorization' => token})
+      # headers['Authorization'] = token
+      # TODO: test this code
       self.body = ''
     end
 
     private
 
     def authenticate!
-      #登录页跳过权限判断中间件
+      # skip auth
     end
   end
 end

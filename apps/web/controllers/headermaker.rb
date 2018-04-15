@@ -14,7 +14,7 @@ module Web
       self.headers.merge!({'Access-Control-Allow-Origin' => '*'})
       self.headers.merge!({'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header, Authorization' })
       self.headers.merge!({'Access-Control-Max-Age' => '1728000'})
-      self.format= :json
+      self.format = :json
     end
   end
 end
