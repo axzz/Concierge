@@ -2,9 +2,9 @@ module Web::Controllers::Index
   class UploadImage
     include Web::Action
     params do
-      optional(:token).maybe(:str?)
-      optional(:tag).filled(:str?)
-      required(:image).filled(:str?)
+      optional(:token).maybe
+      optional(:tag).maybe
+      required(:image).filled
     end
 
     def call(params)

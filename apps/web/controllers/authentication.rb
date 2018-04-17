@@ -10,17 +10,14 @@ module Web
     private
 
     def authenticate!(params)
-      token = request.env['HTTP_AUTHORIZATION']
-      token ||= params[:token]
+      token = request.env['HTTP_AUTHORIZATION'] || params[:token]
       begin
         id = Tools.parse_token(token)
       rescue StandardError
         halt 401, 'Invalid Token'
       end
       new_token = Tools.make_token(id)
-      self.headers.merge!({'Authorization' => new_token})
-      # headers['Authorization'] = token
-      # TODO: test this code
+      headers['Authorization'] = new_token
       @user = UserRepository.new.find(id)
       halt 401, 'No User' unless @user
     end

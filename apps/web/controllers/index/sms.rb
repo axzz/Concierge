@@ -5,6 +5,9 @@ module Web::Controllers::Index
 
     def call(params)
       tel = params[:tel]
+      unless UserRepository.new.find_by_tel(tel)
+        halt 401, { error: 'Unregistered' }.to_json
+      end
 
       sms_service = SmsService.new(tel)
       if sms_service.send_sms
@@ -12,10 +15,6 @@ module Web::Controllers::Index
       else
         halt 400, { error: sms_service.error }.to_json
       end
-
-      repository = UserRepository.new
-      repository.create(tel: tel, name: ('管理员' + tel[-4..-1])) unless repository.find_by_tel(tel)
-      # halt 400, { error: 'Unregistered' }.to_json unless repository.find_by_tel(tel)
     end
 
     private

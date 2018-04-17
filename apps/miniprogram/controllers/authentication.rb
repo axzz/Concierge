@@ -9,9 +9,8 @@ module Miniprogram
 
     private
 
-    def authenticate!(params)
+    def authenticate!
       token = request.env['HTTP_AUTHORIZATION']
-      token ||= params[:token]
       begin
         id = Tools.parse_token(token)
       rescue StandardError

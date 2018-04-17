@@ -16,9 +16,13 @@ module Miniprogram::Controllers::Index
       rescue StandardError
         halt 400, 'Invaild code'
       end
-      token = get_token(openid)
-      self.body = { token: token }.to_json
+      user = find_user(openid)
+      token = Tools.make_miniprogram_token(user.id)
+      role = user.tel ? 'manager' : 'customer'
+      self.body = { token: token, role: role }.to_json
     end
+
+    private
 
     def get_url(code)
       appid = 'wxd6d2d2ba6ca5b4ba'
@@ -31,13 +35,9 @@ module Miniprogram::Controllers::Index
       'grant_type=authorization_code'
     end
 
-    def get_token(openid)
-      # find user
+    def find_user(openid)
       repository = UserRepository.new
-      user = repository.find_by_openid(openid)
-      user ||= repository.create(openid: openid)
-
-      Tools.make_miniprogram_token(user.id)
+      repository.find_by_openid(openid) || repository.create(openid: openid)
     end
   end
 end

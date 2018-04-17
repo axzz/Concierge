@@ -1,4 +1,5 @@
 module Web
+  # Set default headers at every page
   module Headermaker
     def self.included(action)
       action.class_eval do
@@ -9,11 +10,11 @@ module Web
     private
 
     def make_header
-      self.headers.merge!({'Access-Control-Expose-Headers'=>'Authorization'})
-      self.headers.merge!({'Access-Control-Allow-Methods'=>'POST, GET, HEAD, OPTIONS, PUT'})
-      self.headers.merge!({'Access-Control-Allow-Origin' => '*'})
-      self.headers.merge!({'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header, Authorization' })
-      self.headers.merge!({'Access-Control-Max-Age' => '1728000'})
+      headers['Access-Control-Expose-Headers'] = 'Authorization'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, HEAD, OPTIONS, PUT'
+      headers['Access-Control-Allow-Origin'] = '*' # for TEST
+      headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header, Authorization'
+      headers['Access-Control-Max-Age'] = '1728000'
       self.format = :json
     end
   end

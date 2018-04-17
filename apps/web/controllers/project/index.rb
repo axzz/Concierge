@@ -29,7 +29,6 @@ module Web::Controllers::Project
           image: project.image_url,
           state: project.state
         }
-        # TODO: change image to cover
         response << back_project
       end
       response

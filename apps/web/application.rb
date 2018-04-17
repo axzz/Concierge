@@ -75,8 +75,6 @@ module Web
       # cookies true
       # or
       # cookies max_age: 300
-      
-
 
       # Enable sessions
       # Argument: Symbol the Rack session adapter
@@ -106,7 +104,7 @@ module Web
       #             (only `:json` is supported)
       #           Object, the parser
       #
-      # body_parsers :json
+      body_parsers :json
 
       # When it's true and the router receives a non-encrypted request (http),
       # it redirects to the secure equivalent (https). Disabled by default.

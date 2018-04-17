@@ -10,7 +10,7 @@ module Miniprogram::Controllers::Project
       self.body = { projects: transform_projects(projects) }.to_json
     end
 
-    def get_projects(params)
+    def get_projects(params, page)
       project_repository = ProjectRepository.new
       if params[:search]
         project_repository.search(params[:search], page)

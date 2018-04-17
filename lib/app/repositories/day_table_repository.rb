@@ -1,10 +1,10 @@
 class DayTableRepository < Hanami::Repository
-  def have_date?(id, date)
+  def date?(id, date)
     day_tables.where(project_id: id, date: date).first
   end
 
   def clear_day_table(id)
-    day_tables.where(creator_id: id).delete
+    day_tables.where(project_id: id).delete
   end
 
   def get_tables(project_id, num)

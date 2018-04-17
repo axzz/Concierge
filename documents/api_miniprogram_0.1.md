@@ -1,14 +1,17 @@
-# 小程序接口 V0.1
+# 小程序普通用户端接口 V0.1
 
 **获取token**
 -----------
+小程序token不会过期
+
+除了这个接口外，所有接口请在header中携带token
 * **URL**
 
     /miniprogram/login
 
 * **Method**
 
-    `GET`
+    `POST`
 
 * **URL Params**
 
@@ -24,7 +27,7 @@
 
   * **Code:** 200 <br/>
     **Content:** 
-    `{"token":"token"}`
+    `{"token":"token","role":"manager/customer"}`
 
 * **Error Response:**
 
@@ -33,7 +36,6 @@
 
   * **Code:** 400 Bad request <br />
     **Content:** `{ error : "Bad request" }`
-
 
 **获得项目列表** 
 -----------
@@ -170,37 +172,8 @@
   * **Code:** 422 Forbidden <br />
     **Content:** `{ error : "Invalid Params" }`
 
-**短信登录** 
------------
-
-* **URL**
-
-    /code
-
-* **Method**
-
-    `POST`
-
-* **URL Params**
-
-    **Required:**
- 
-   `tel=[string]`
-
-* **Data Params**
-
-    None
-
-* **Success Response:**
-
-  * **Code:** 200 <br />
-    **Content:** None
-
-* **Error Response:**
-
-  * **Code:** 403 Forbidden <br />
-    **Content:** `{ error : "Invalid Params" }`
-    
+**预约短信**
+----------
 **发起预约** 
 -----------
 **查询预约列表** 
