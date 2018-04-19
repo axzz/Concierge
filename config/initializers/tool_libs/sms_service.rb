@@ -1,6 +1,5 @@
 class SmsService
   attr_reader :error
-  TEST = true
 
   def initialize(tel, type = 'web_login')
     @error = 'Invaild Telphone Number' unless tel =~ /^1[34578]\d{9}$/

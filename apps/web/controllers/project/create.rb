@@ -14,9 +14,9 @@ module Web::Controllers::Project
     end
 
     def call(params)
-      halt 422, { error: 'Invalid Params' }.to_json unless params.valid?
-      halt 403 unless Tools.prevent_frequent_submission(id: @user.id.to_s,
-                                                        method: 'create')
+      halt 422 unless params.valid?
+      halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
+                                                  method: 'create')
       # get time_states
       begin
         time_state = JSON.parse(params[:time_state])
@@ -41,8 +41,8 @@ module Web::Controllers::Project
       project = ProjectRepository.new.create(project)
 
       TimeTableUtils.make_time_table(project.id)
-      self.status = 201
-      self.body = ''
+      
+      halt 201, ''
     end
   end
 end

@@ -17,8 +17,8 @@ module Web::Controllers::Project
     def call(params)
       @old_project = ProjectRepository.new.find(params[:id])
       halt 422, { error: 'Invalid Params' }.to_json unless params.valid?
-      halt 403 unless Tools.prevent_frequent_submission(id: @user.id.to_s,
-                                                        method: 'update')
+      halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
+                                                  method: 'update')
       halt 401 unless @old_project.creator_id == @user.id
 
       ProjectRepository.new.update(

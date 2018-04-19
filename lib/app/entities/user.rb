@@ -6,4 +6,8 @@ class User < Hanami::Entity
   def projects_num
     ProjectRepository.new.get_count(id)
   end
+
+  def manager?
+    tel
+  end
 end

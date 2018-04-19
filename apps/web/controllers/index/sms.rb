@@ -6,7 +6,7 @@ module Web::Controllers::Index
     def call(params)
       tel = params[:tel]
       unless UserRepository.new.find_by_tel(tel)
-        halt 401, { error: 'Unregistered' }.to_json
+        halt 403, { error: 'Unregistered' }.to_json
       end
 
       sms_service = SmsService.new(tel)

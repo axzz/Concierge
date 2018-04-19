@@ -1,4 +1,5 @@
 module Web::Controllers::Index
+  # First token get
   class Token
     include Web::Action
     params do

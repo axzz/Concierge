@@ -1,5 +1,6 @@
 module Web
   module Authentication
+    # Get @user and refresh token
     def self.included(action)
       action.class_eval do
         before :authenticate!
@@ -20,6 +21,7 @@ module Web
       headers['Authorization'] = new_token
       @user = UserRepository.new.find(id)
       halt 401, 'No User' unless @user
+      halt 403, 'No Permission' unless @user.manager?
     end
   end
 end

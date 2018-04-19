@@ -9,8 +9,8 @@ module Web::Controllers::Project
 
     def call(params)
       project = ProjectRepository.new.find(params[:id])
-      halt 422, 'Project not exist' unless project
-      halt 401, 'No Auth to access' unless project.creator_id == @user.id
+      halt 404 unless project
+      halt 401 unless project.creator_id == @user.id
       self.body = {
         name:         project.name,
         description:  project.description || '',

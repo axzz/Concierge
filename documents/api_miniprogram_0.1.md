@@ -15,13 +15,13 @@
 
 * **URL Params**
 
-    **Require:**
-
-    `code = [String] 通过wx.login 获得的code`
+    None
 
 * **Data Params**
 
-    None
+    **Require:**
+
+    `code = [String] 通过wx.login 获得的code`
 
 * **Success Response:**
 
@@ -73,7 +73,6 @@
     **Content:** 
     ```JSON
     {
-        "count" : 77,
         "projects" : [{
             "id" : 1,
             "cover" : "url",
@@ -129,7 +128,9 @@
         "latitude" : "经度 Float",
         "longtitude" : "维度 Float",
         "time_state" : "可预约时间，详见下",
-        "time_table" : "目前预约时间表，详见下"
+        "time_table" : "目前预约时间表，详见下",
+        "tmp_name" : "用户上次使用的名字",
+        "tmp_tel" : "用户上次使用的电话号码"
     }
     ```
 
@@ -174,9 +175,196 @@
 
 **预约短信**
 ----------
+* **URL**
+
+    /miniprogram/project/:id/code
+
+* **Method**
+
+    `POST`
+
+* **URL Params**
+
+    **Required:**
+ 
+   `tel=[string]`
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** None
+
+* **Error Response:**
+
+  * **Code:** 400 Forbidden <br />
+    **Content:** `{ error : "Error in sending msg" }`
+
+  * **Code:** 422  <br />
+    **Content:** `{ error : "Invalid Params" }`
+
 **发起预约** 
 -----------
+* **URL**
+
+    /miniprogram/reservations
+
+* **Method:**
+
+  `POST`
+
+*  **URL Params**
+
+    None
+
+* **Data Params**
+
+```JSON
+{
+    "code":"短信验证码",
+    "project_id":"项目id",
+    "name":"张三",
+    "tel":"18888888888",
+    "date":"2018-04-17",
+    "time":"09:00-10:00"
+}
+```
+
+* **Success Response:**
+
+  * **Code:** 201 <br/>
+    **Content:** None
+
+* **Error Response:**
+
+  * **Code:** 422 Forbidden <br />
+    **Content:** `{ error : "Invalid Params" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "Error sms code" }`
+
+  OR
+
+  * **Code:** 403 Forbidden <br />
+    **Content:** `{ error : "ERROR in create reservation" }`
+
+
 **查询预约列表** 
 -----------
+* **URL**
+
+    /miniprogram/reservations
+
+* **Method:**
+
+  `GET`
+
+*  **URL Params**
+
+    **Optional:**
+
+    `page = [Interger]`
+
+    `search = [String]`
+
+    `type = [String]`
+
+    type为'current','finished','cancelled','refused' 对应四个页面
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 201 <br/>
+    **Content:** 
+    ```JSON
+    {
+        "reservations":[
+            {
+                "id":1,
+                "state" : "success等 见注1",
+                "project_name" : "成华区图书馆",
+                "address" : "天益街高新区",
+                "date" : "2018-03-10",
+                "time" : "09:00-12:00",
+                "name" : "张三",
+                "tel" : "18888888888"
+            }
+        ]
+    }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 422 Forbidden <br />
+    **Content:** `{ error : "Invalid Params" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "No Permission" }`
+
+  OR
+
+  * **Code:** 403 Forbidden <br />
+    **Content:** `{ error : "ERROR in create reservation" }`
+
+
 **查询单一预约** 
 -----------
+* **URL**
+
+    /miniprogram/reservations/:id
+
+* **Method:**
+
+  `GET`
+
+*  **URL Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 201 <br/>
+    **Content:** 
+    ```JSON
+    {
+        "state" : "success等 见注1",
+        "project_name" : "成华区图书馆",
+        "address" : "天益街高新区",
+        "latitude" : "经度",
+        "longitude" : "纬度",
+        "share_code" : "现在版本还没有",
+        "date" : "2018-03-10",
+        "time" : "09:00-12:00",
+        "name" : "张三",
+        "tel" : "18888888888"
+    }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 422 Forbidden <br />
+    **Content:** `{ error : "Invalid Params" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "No Permission" }`
+
+  OR
+
+  * **Code:** 403 Forbidden <br />
+    **Content:** `{ error : "ERROR in create reservation" }`

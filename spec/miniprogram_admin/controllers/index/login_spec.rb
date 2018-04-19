@@ -1,6 +1,6 @@
 require_relative '../../../spec_helper'
 
-describe MiniprogramAdmin::Controllers::Index::Login do
+describe MiniprogramAdmin::Controllers::Index::Sign do
   let(:action) { MiniprogramAdmin::Controllers::Index::Login.new }
   let(:params) { Hash[] }
 

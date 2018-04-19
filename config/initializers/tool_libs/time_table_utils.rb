@@ -1,6 +1,4 @@
 class TimeTableUtils
-  @day_table_repository = DayTableRepository.new
-  @time_table_repository = TimeTableRepository.new
   DAY_NUM = 20
 
   def self.parse_time_state(time_state)
@@ -32,8 +30,10 @@ class TimeTableUtils
 
   def self.change_time_state(project_id, new_time_state)
     # TODO: cancel reservations
-    @day_table_repository.clear_day_table(project_id)
-    @time_table_repository.clear_time_table(project_id)
+    day_table_repository = DayTableRepository.new(project_id)
+    time_table_repository = TimeTableRepository.new(project_id)
+    day_table_repository.clear_day_table
+    time_table_repository.clear_time_table
     make_time_table(project_id, new_time_state)
     # TODO: calculate remain
   end
@@ -58,17 +58,21 @@ class TimeTableUtils
   end
 
   def self.create_time_table(date, state, project_id)
-    unless @day_table_repository.date?(project_id, date)
+    day_table_repository = DayTableRepository.new(project_id)
+    time_table_repository = TimeTableRepository.new(project_id)
+
+    unless day_table_repository.date?(date)
       date_table = DayTable.new(project_id: project_id, date: date)
-      @day_table_repository.create(date_table)
+      day_table_repository.create(date_table)
     end
+    
     state.each do |period|
-      next if @time_table_repository.period?(project_id, date, period[:time])
+      next if time_table_repository.period?(date, period[:time])
       time_table = TimeTable.new(project_id: project_id,
                                  date: date,
                                  period: period[:time],
                                  remain: period[:limit])
-      @time_table_repository.create(time_table)
+      time_table_repository.create(time_table)
     end
   end
 

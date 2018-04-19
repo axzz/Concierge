@@ -1,4 +1,5 @@
 module Miniprogram
+  # Middleware to auth
   module Authentication
     def self.included(action)
       action.class_eval do

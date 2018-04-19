@@ -22,7 +22,7 @@ class Tools
     string
   end
 
-  def self.prevent_frequent_submission(id: '0', method: 'all', interval: 1000)
+  def self.prevent_repeat_submit(id: '0', method: 'all', interval: 1000)
     redis = Redis.new
     fobbiden = redis.get(key(id, method))
     return false if fobbiden

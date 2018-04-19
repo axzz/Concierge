@@ -151,7 +151,9 @@ CREATE TABLE public.reservations (
     date date,
     "time" text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    name text,
+    tel text
 );
 
 
@@ -218,7 +220,9 @@ CREATE TABLE public.users (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     tel text,
-    openid text
+    openid text,
+    tmp_tel text,
+    tmp_name text
 );
 
 
@@ -425,6 +429,9 @@ COPY public.schema_migrations (filename) FROM stdin;
 20180413042034_users.rb
 20180413074527_drop_table.rb
 20180413082134_create_reservations.rb
+20180417043329_reservation.rb
+20180418030358_add_data_to_user.rb
+20180418031009_add_data_to_user.rb
 \.
 
 

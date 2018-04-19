@@ -1,3 +1,5 @@
+require 'net/http'
+
 module Miniprogram::Controllers::Index
   class Login
     include Miniprogram::Action
@@ -8,36 +10,38 @@ module Miniprogram::Controllers::Index
 
     def call(params)
       halt 422 unless params.valid?
-      url = get_url(params[:code])
-      html_response = nil
-      open(url) { |http| html_response = http.read }
+      html_response = Net::HTTP.get(get_uri(params[:code]))
       begin
-        openid = JSON.parse(html_response)[:openid]
+        openid = JSON.parse(html_response)['openid']
       rescue StandardError
         halt 400, 'Invaild code'
       end
       user = find_user(openid)
       token = Tools.make_miniprogram_token(user.id)
-      role = user.tel ? 'manager' : 'customer'
+      role = user.manager? ? 'manager' : 'customer'
       self.body = { token: token, role: role }.to_json
     end
 
     private
 
-    def get_url(code)
-      appid = 'wxd6d2d2ba6ca5b4ba'
-      secret = '90ba8c9320ee3b3acab58d4873343029'
-
-      'https://api.weixin.qq.com/sns/jscode2session?' \
-      "appid=#{appid}&" \
-      "secret=#{secret}&" \
-      "js_code=#{code}&" \
+    def get_uri(code)
+      str = 'https://api.weixin.qq.com/sns/jscode2session?' \
+      "appid=#{APP_ID}&"   \
+      "secret=#{APP_SECRET}&" \
+      "js_code=#{code}&"  \
       'grant_type=authorization_code'
+
+      URI(str)
     end
 
     def find_user(openid)
       repository = UserRepository.new
-      repository.find_by_openid(openid) || repository.create(openid: openid)
+      repository.find_by_openid(openid) ||
+        repository.create(name: 'temp_custormer', openid: openid)
+    end
+
+    def authenticate!
+      # skip auth
     end
   end
 end

@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe MiniprogramAdmin::Views::ApplicationLayout do
   let(:layout)   { MiniprogramAdmin::Views::ApplicationLayout.new(template, {}) }

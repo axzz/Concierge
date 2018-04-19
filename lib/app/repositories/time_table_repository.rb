@@ -1,17 +1,27 @@
 class TimeTableRepository < Hanami::Repository
-  def find_time_table(project_id, date)
-    time_tables.where(project_id: project_id, date: date).order{ id.desc }
+  def initialize(project_id)
+    super()
+    @project_id = project_id
   end
 
-  def period?(project_id, date, period)
-    time_tables.where(project_id: project_id, date: date, period: period).first
+  def find_time_table(date)
+    time_tables.where(project_id: @project_id, date: date).order{ id.desc }
   end
 
-  def clear_time_table(project_id)
-    time_tables.where(project_id: project_id).delete
+  def period?(date, period)
+    time_tables.where(project_id: @project_id, date: date, period: period).first
   end
 
-  def get_tables(project_id, date)
-    time_tables.where(project_id: project_id).where(date: date)
+  def clear_time_table
+    time_tables.where(project_id: @project_id).delete
+  end
+
+  def get_tables(date)
+    time_tables.where(project_id: @project_id).where(date: date)
+  end
+
+  def reduce_remain(date, time)
+    time_table = time_tables.where(project_id: @project_id, date: date, period: time).first
+    update(time_table.id, remain: time_table.remain - 1)
   end
 end

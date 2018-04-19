@@ -1,5 +1,7 @@
 module Miniprogram::Controllers::Project
   # Api for get projects list
+  # TODO: 校验
+
   class Index
     include Miniprogram::Action
     def call(params)
