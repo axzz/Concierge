@@ -1,9 +1,15 @@
 module Miniprogram::Controllers::Project
   # Api for get projects list
-  # TODO: 校验
-
   class Index
     include Miniprogram::Action
+    params do
+      optional(:page).maybe
+      optional(:search).maybe
+      optional(:distance).maybe
+      optional(:latitude).maybe
+      optional(:longitude).maybe
+      
+    end
     def call(params)
       page = params[:page] || 1
       page = page.to_i > 0 ? page.to_i : 1
@@ -33,13 +39,11 @@ module Miniprogram::Controllers::Project
     def transform_projects(projects)
       response = []
       projects.each do |project|
-        response << {
-          id:           project.id,
-          name:         project.name,
-          description:  project.description || '',
-          address:      project.address || '',
-          cover:        project.image_url
-        }
+        response << { id:           project.id,
+                      name:         project.name,
+                      description:  project.description || '',
+                      address:      project.address || '',
+                      cover:        project.image_url }
       end
       response
     end

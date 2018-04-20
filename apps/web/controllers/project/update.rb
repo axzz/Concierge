@@ -28,26 +28,26 @@ module Web::Controllers::Project
         check_mode:    params[:check_mode],
         address:       params[:address],
         latitude:      params[:latitude].to_f,
-        longitude:    params[:longitude].to_f,
+        longitude:     params[:longitude].to_f,
         image_url:     params[:image]
       )
 
       begin
         update_time_state(params)
       rescue StandardError
-        halt 422, ({ error: 'Invalid Params in Json' }.to_json)
+        halt 400
       end
 
-      self.status = 201
-      self.body = ''
+      halt 201, ''
     end
+
+    private
 
     def update_time_state(params)
       time_state = JSON.parse(params[:time_state])
       time_state_parsed = TimeTableUtils.parse_time_state(time_state)
-      
+
       return if @old_project.time_state_parsed == time_state_parsed
-      # TODO: handle reservations
       TimeTableUtils.change_time_state(params[:id], time_state_parsed)
       ProjectRepository.new.update(
         params[:id],

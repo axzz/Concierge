@@ -1,5 +1,5 @@
 class ProjectRepository < Hanami::Repository
-  NUM_PER_PAGE_MINI = 3
+  NUM_PER_PAGE_MINI = 4
 
   def get_projects_for_manager(id, page)
     # if page==1
@@ -7,11 +7,19 @@ class ProjectRepository < Hanami::Repository
     # else 
     #  projects.read("SELECT * FROM projects WHERE creator_id = #{id.to_s} AND state != 'delete' ORDER BY state DESC,created_at DESC OFFSET #{(page*12 - 13).to_s} LIMIT 12")
     # end
-    # TODO: problem in sort
-    projects
-      .where(creator_id: id)
-      .where{ state.not('delete') }
-      .order{ created_at.desc }
+
+    # problem in sort
+    # projects
+    #   .where(creator_id: id)
+    #   .where { state.in('open', 'pause') }
+    #   .order { created_at.desc }
+
+    projects.read(
+      'SELECT * FROM projects '\
+      "WHERE creator_id = #{id.to_i} "\
+      "AND state IN ('open','pause')"\
+      'ORDER BY state DESC,id DESC'
+    )
   end
 
   def get_count(id)
@@ -47,5 +55,13 @@ class ProjectRepository < Hanami::Repository
       .where { (name.ilike("%#{data}%") | address.ilike("%#{data}%")) }
       .limit(NUM_PER_PAGE_MINI)
       .offset(NUM_PER_PAGE_MINI * page - NUM_PER_PAGE_MINI)
+  end
+
+  associations do
+    has_many :reservations
+  end
+
+  def test
+    projects.right_join(reservations).where
   end
 end

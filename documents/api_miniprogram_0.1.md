@@ -236,7 +236,7 @@
 * **Success Response:**
 
   * **Code:** 201 <br/>
-    **Content:** None
+    **Content:** `{ id : "new reservation's id" }`
 
 * **Error Response:**
 

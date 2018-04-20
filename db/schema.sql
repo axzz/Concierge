@@ -184,7 +184,7 @@ CREATE TABLE public.time_tables (
     id integer NOT NULL,
     project_id integer NOT NULL,
     date date,
-    period text,
+    time text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     remain integer

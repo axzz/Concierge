@@ -16,7 +16,7 @@ module Miniprogram::Controllers::Reservation
       halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
                                                   method: 'create_reservation')
       halt 422 unless verify_sms(params)
-      
+
       project = ProjectRepository.new.find(params[:project_id])
       halt 404 unless project
       halt 403 unless project.state == 'open'
@@ -26,14 +26,15 @@ module Miniprogram::Controllers::Reservation
 
       reservation = make_reservation(params, state, date)
 
+      halt 422 if TimePeriod.new(params[:time]).error
       # Database handle
       TimeTableRepository.new(params[:project_id])
                          .reduce_remain(date, params[:time])
-      ReservationRepository.new.create(reservation)
+      reservation = ReservationRepository.new.create(reservation)
       UserRepository.new.update(@user.id,
                                 tmp_tel: params[:tel],
                                 tmp_name: params[:name])
-      halt 201, ''
+      halt 201, { id: reservation.id }.to_json
     end
 
     def verify_sms(params)
