@@ -5,8 +5,7 @@ module MiniprogramAdmin::Controllers::Index
     def call(params)
       tel = params[:tel]
       repository = UserRepository.new
-      user = repository.find_by_openid(@user.openid)
-      halt 403, 'Already manager' if user.manager?
+      halt 403, 'Already manager' if @user.manager?
       halt 403, 'Telephone number have been used' if repository.find_by_tel(tel)
 
       sms_service = SmsService.new(tel, 'sign_admin')

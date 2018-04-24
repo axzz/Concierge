@@ -18,11 +18,13 @@ module Miniprogram::Controllers::Project
       self.body = { projects: transform_projects(projects) }.to_json
     end
 
+    private
+    
     def get_projects(params, page)
       project_repository = ProjectRepository.new
       if params[:search]
         project_repository.search(params[:search], page)
-      elsif params[:distance] && !params[:distance].empty?
+      elsif !params[:distance].blank?
         project_repository
           .get_projects_in_distance(
             params[:distance],

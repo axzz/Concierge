@@ -25,6 +25,8 @@ module Miniprogram::Controllers::Project
       }.to_json
     end
 
+    private
+    
     # Solve postgres incorrect sort
     def sort_time_state(time_state)
       { Mon:     time_state[:Mon],

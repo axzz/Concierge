@@ -10,16 +10,15 @@ module Miniprogram::Controllers::Index
 
     def call(params)
       halt 422 unless params.valid?
-      html_response = Net::HTTP.get(get_uri(params[:code]))
+      html_response = Net::HTTP.get(get_uri(params[:code])) #TODO: 超时
       begin
         openid = JSON.parse(html_response)['openid']
       rescue StandardError
         halt 400, 'Invaild code'
       end
-      user = find_user(openid)
-      token = Tools.make_miniprogram_token(user.id)
-      role = user.manager? ? 'manager' : 'customer'
-      self.body = { token: token, role: role }.to_json
+      user = find_or_create_user(openid)
+      token = Tools.make_miniprogram_jwt(user.id)
+      self.body = { token: token, role: user.role }.to_json
     end
 
     private
@@ -34,7 +33,7 @@ module Miniprogram::Controllers::Index
       URI(str)
     end
 
-    def find_user(openid)
+    def find_or_create_user(openid)
       repository = UserRepository.new
       repository.find_by_openid(openid) ||
         repository.create(name: 'temp_custormer', openid: openid)

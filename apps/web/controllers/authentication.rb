@@ -17,7 +17,7 @@ module Web
       rescue StandardError
         halt 401, 'Invalid Token'
       end
-      new_token = Tools.make_token(id)
+      new_token = Tools.make_jwt(id)
       headers['Authorization'] = new_token
       @user = UserRepository.new.find(id)
       halt 401, 'No User' unless @user

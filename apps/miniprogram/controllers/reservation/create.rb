@@ -37,6 +37,8 @@ module Miniprogram::Controllers::Reservation
       halt 201, { id: reservation.id }.to_json
     end
 
+    private
+
     def verify_sms(params)
       SmsService.new(params[:tel], "reservation_#{params[:project_id]}")
                 .verify_sms(params[:code])

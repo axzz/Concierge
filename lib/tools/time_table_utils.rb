@@ -1,6 +1,6 @@
 class TimeTableUtils
   DAY_NUM = 20
-
+# TODO: 测试
   def self.parse_time_state(time_state)
     time_state_parsed = default_time_state
     time_state['normal'].each do |time|

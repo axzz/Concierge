@@ -15,7 +15,7 @@ module Web::Controllers::Index
       result = SmsService.new(params[:tel]).verify_sms(params[:code])
       halt 422, { error: 'Invalid params in code' }.to_json unless result
 
-      new_token = Tools.make_token(user.id)
+      new_token = Tools.make_jwt(user.id)
       headers['Authorization'] = new_token
       self.body = ''
     end

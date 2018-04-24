@@ -10,7 +10,7 @@ describe Web::Controllers::Project::Show do
   end
 
   it 'no permission' do
-    response = action.call({token: Tools.make_token(1),id: "1"})
+    response = action.call({token: Tools.make_jwt(1),id: "1"})
     response[0].must_equal 200
   end
 end

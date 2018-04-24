@@ -1,7 +1,7 @@
 class SmsService
   attr_reader :error
 
-  def initialize(tel, type = 'web_login')
+  def initialize(tel, type = :web_login)
     @error = 'Invaild Telphone Number' unless tel =~ /^1[34578]\d{9}$/
     @tel = tel
     @type = type
@@ -13,9 +13,10 @@ class SmsService
       code = '123456' # for test
     else
       code = Tools.make_random_string
-      res = Aliyun::Sms.send(@tel, 'SMS_117390014', { 'code' => code }.to_json, '')
-      if res.body['OK'] != 'OK'
-        @error = 'Error in sending sms'
+      res = Aliyun::Sms.send(@tel, 'SMS_117390014', { 'code' => code }.to_json, '').body
+      res = JSON.parse(res)
+      if res['Message'] != 'OK'
+        @error = res['Message']
         return false
       end
     end

@@ -15,6 +15,8 @@ module Miniprogram::Controllers::Reservation
       self.body = { reservations: transform_reservations(reservations) }.to_json
     end
 
+    private
+
     def get_reservations(params, page)
       repository = ReservationRepository.new
       if params[:search]
@@ -42,6 +44,9 @@ module Miniprogram::Controllers::Reservation
           state:        reservation.state,
           project_name: project.name,
           address:      project.address || '',
+          latitude:     project.latitude || '',
+          longitude:    project.longitude || '',
+          share_code:   '',
           date:         reservation.date,
           time:         reservation.time,
           name:         reservation.name,

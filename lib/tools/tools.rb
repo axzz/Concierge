@@ -1,11 +1,11 @@
 class Tools
   TOKEN_SECRET = '0rder_$ecret_token_2018'.freeze
-  def self.make_token(id)
+  def self.make_jwt(id)
     payload = { id: id, exp: Time.now.to_i+3600*36 }
     JWT.encode(payload, TOKEN_SECRET, 'HS256', { typ: 'JWT' })
   end
 
-  def self.make_miniprogram_token(id)
+  def self.make_miniprogram_jwt(id)
     payload = { id: id }
     JWT.encode(payload, TOKEN_SECRET, 'HS256', { typ: 'JWT' })
   end

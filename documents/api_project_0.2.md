@@ -264,3 +264,67 @@ V0.3
 
   * **Code:** 422 Forbidden <br />
     **Content:** `{ error : "Invalid Params" }`
+
+**暂停预约项目**
+--------------
+
+* **URL**
+
+    /projects/:id/pause
+
+* **Method:**
+
+  `GET`
+
+*  **URL Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** ""
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "No Permission" }`
+
+  * **Code:** 403 Forbidden <br />
+    **Content:** `{ error : "No Permission" }`
+
+**开启预约项目**
+--------------
+
+* **URL**
+
+    /projects/:id/open
+
+* **Method:**
+
+  `GET`
+
+*  **URL Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** ""
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "No Permission" }`
+
+  * **Code:** 403 Forbidden <br />
+    **Content:** `{ error : "No Permission" }`

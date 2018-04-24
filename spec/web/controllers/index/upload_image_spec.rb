@@ -10,7 +10,7 @@ describe Web::Controllers::Index::UploadImage do
   end
 
   it 'no image' do
-    response = action.call({ token: Tools.make_token(1) })
+    response = action.call({ token: Tools.make_jwt(1) })
     response[0].must_equal 422
   end
 end

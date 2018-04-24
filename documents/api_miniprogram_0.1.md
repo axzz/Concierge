@@ -292,6 +292,9 @@
                 "state" : "success等 见注1",
                 "project_name" : "成华区图书馆",
                 "address" : "天益街高新区",
+                "latitude" : "经度",
+                "longitude" : "纬度",
+                "share_code" : "现在版本还没有",
                 "date" : "2018-03-10",
                 "time" : "09:00-12:00",
                 "name" : "张三",
@@ -368,3 +371,17 @@
 
   * **Code:** 403 Forbidden <br />
     **Content:** `{ error : "ERROR in create reservation" }`
+
+注1:
+```
+state:
+{
+    success: 成功申请,
+    wait: 审核中,
+    overtime: 过期,
+    checked: 核销,
+    cancelled: 取消,
+    refused: 拒绝
+}
+
+```

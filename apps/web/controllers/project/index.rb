@@ -27,7 +27,7 @@ module Web::Controllers::Project
           id: project.id,
           name: project.name,
           image: project.image_url,
-          state: project.state
+          state: project.state,
         }
         response << back_project
       end

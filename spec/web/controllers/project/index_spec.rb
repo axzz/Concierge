@@ -10,8 +10,8 @@ describe Web::Controllers::Project::Index do
   end
 
   it 'have permission' do
-    response = action.call({token: Tools.make_token(1)})
+    response = action.call({token: Tools.make_jwt(1)})
     response[0].must_equal 200
-    response[1]["Authorization"].must_equal(Tools.make_token(1))
+    response[1]["Authorization"].must_equal(Tools.make_jwt(1))
   end
 end

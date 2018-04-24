@@ -71,3 +71,48 @@
 
   * **Code:** 403 Forbidden <br />
     **Content:** `{ error : "Invalid Params" }`
+
+**预约项目列表**
+-------------------
+
+* **URL**
+
+    /miniprogram/admin/projects
+
+* **Method**
+
+    `GET`
+
+* **URL Params**
+
+    **OPTIONAL:**
+
+    `page=[integer]`
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 <br/>
+    **Content:** 
+```JSON
+{
+    "count": "2(总预约数量 num类型)",
+    "projects": [
+        {"id":111,"name":"标题","image":"图片url","state":"open"},
+        {"id":208,"name":"标题","image":"图片url","state":"close"}
+    ]
+}
+```
+
+* **Error Response:**
+
+  * **Code:** 422 Forbidden <br />
+    **Content:** `{ error : "Invalid Params" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "No Permission" }`

@@ -5,6 +5,8 @@ gem 'hanami',       '~> 1.1'
 gem 'hanami-model', '~> 1.1'
 gem 'aliyun-sms'
 
+gem 'sidekiq'
+
 gem 'redis'
 gem 'jwt'
 
