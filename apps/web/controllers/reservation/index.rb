@@ -9,8 +9,8 @@ module Web::Controllers::Reservation
 
       page = params[:page].to_i > 0 ? params[:page].to_i : 1
       reservations = get_reservations(project.id, params, page)
-      
-      self.body = { reservations: transform_reservations(reservations) }.to_json
+      count = get_reservations_count(project.id, params)
+      self.body = { reservations: transform_reservations(reservations),count: count }.to_json
     end
 
     private
@@ -22,6 +22,14 @@ module Web::Controllers::Reservation
                                         params[:tel],
                                         params[:state],
                                         page)
+    end
+
+    def get_reservations_count(project_id, params)
+      ReservationRepository.new.count_inquire(project_id,
+                                              params[:date_from],
+                                              params[:date_to],
+                                              params[:tel],
+                                              params[:state])
     end
 
     def transform_reservations(reservations)

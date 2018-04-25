@@ -10,3 +10,8 @@ end
 
 task default: :test
 task spec: :test
+
+# TODO: deal with crontab when deploy
+task refresh_reservations: :environment do
+  ReservationRepository.new.refresh_reservations
+end

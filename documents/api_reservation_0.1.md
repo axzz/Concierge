@@ -35,6 +35,7 @@
     **Content:** 
 ```JSON
 {
+  "count":"总数",
     "reservations":[
       {"id": "预约id",
         "name": "用户名",
@@ -69,7 +70,7 @@
 
 * **URL**
 
-    /projects/:id/reservation/:id/pass
+    /projects/:id/reservations/:id/pass
 
 * **Method:**
 
@@ -102,7 +103,7 @@
 
 * **URL**
 
-    /projects/:id/reservation/:id/refuse
+    /projects/:id/reservations/:id/refuse
 
 * **Method:**
 
@@ -136,7 +137,7 @@
 
 * **URL**
 
-    /projects/:id/reservation/:id/cancel
+    /projects/:id/reservations/:id/cancel
 
 * **Method:**
 
@@ -170,7 +171,7 @@
 
 * **URL**
 
-    /projects/:id/reservation/:id/check
+    /projects/:id/reservations/:id/check
 
 * **Method:**
 

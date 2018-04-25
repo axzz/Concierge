@@ -8,7 +8,8 @@ module Miniprogram::Controllers::Project
     def call(params)
       project = ProjectRepository.new.find(params[:id].to_i)
       halt 404 unless project
-      time_table = DayTableRepository.new(project.id).get_tables(DISPLAY_NUM)
+      time_tables = DayTableRepository.new(project.id).get_tables(DISPLAY_NUM)
+      # time_tables.full_table?
       time_state_parsed = sort_time_state(project.time_state_parsed)
 
       self.body = {
@@ -19,7 +20,8 @@ module Miniprogram::Controllers::Project
         latitude:     project.latitude    || '',
         longitude:    project.longitude   || '',
         time_state:   time_state_parsed,
-        time_table:   time_table.to_json,
+        full:         time_tables.full_table?,
+        time_table:   time_tables.to_json,
         tmp_tel:      @user.tmp_tel       || '',
         tmp_name:     @user.tmp_name      || ''
       }.to_json
@@ -39,5 +41,18 @@ module Miniprogram::Controllers::Project
         Holiday: time_state[:Holiday],
         Special: time_state[:Special] }
     end
+  end
+end
+
+class Array
+  def full_table?
+    self.each do |time_table|
+      time_table[:table].each do |period|
+        if period[:remain].nil? || period[:remain] > 0
+          return false
+        end
+      end
+    end
+    true
   end
 end

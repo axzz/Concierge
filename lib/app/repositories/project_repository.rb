@@ -15,8 +15,8 @@ class ProjectRepository < Hanami::Repository
       'SELECT * FROM projects '\
       "WHERE creator_id = #{id.to_i} "\
       "AND state IN ('open','pause')"\
-      'ORDER BY state DESC,id DESC'\
-      "limit #{NUM_PER_PAGE_MINI}"\
+      'ORDER BY state DESC,id DESC '\
+      "limit #{NUM_PER_PAGE_MINI} "\
       "OFFSET #{NUM_PER_PAGE_MINI * page - NUM_PER_PAGE_MINI}"
     )
   end
@@ -44,6 +44,7 @@ class ProjectRepository < Hanami::Repository
                          'sin(radians(latitude))))'
     projects.read('SELECT * FROM projects ' \
                   "WHERE #{calculate_distance} < #{distance.to_f} " \
+                  "ORDER BY id DESC " \
                   "LIMIT #{NUM_PER_PAGE_MINI} " \
                   "OFFSET #{NUM_PER_PAGE_MINI * page.to_i - NUM_PER_PAGE_MINI}")
   end
@@ -58,9 +59,5 @@ class ProjectRepository < Hanami::Repository
 
   associations do
     has_many :reservations
-  end
-
-  def test
-    projects.right_join(reservations).where
   end
 end

@@ -67,12 +67,35 @@ class ReservationRepository < Hanami::Repository
     tmp
   end
 
+  def count_inquire(project_id, date_from, date_to, tel, state)
+    tmp = reservations.where(project_id: project_id)
+
+    tmp = tmp.where { date >= Date.parse(date_from) } unless date_from.blank?
+    tmp = tmp.where { date <= Date.parse(date_to) } unless date_to.blank?
+    tmp = tmp.where(tel: tel) unless tel.blank?
+    tmp = tmp.where(state: state) unless state.blank?
+    tmp.count
+  end
+
+  def count(project_id)
+    tmp = reservations.where(project_id: project_id)
+    {
+      total: tmp.count,
+      success: tmp.where(state: 'success').count,
+      wait: tmp.where(state: 'wait').count,
+      overtime: tmp.where(state: 'overtime').count,
+      checked: tmp.where(state: 'checked').count,
+      cancelled: tmp.where(state: 'cancelled').count,
+      refused: tmp.where(state: 'refused').count
+    }
+  end
+
   def refresh_reservations()
-    tmp = reservations.where(state: 'success')
-                      .where{ date <= date.today }
+    tmp = reservations.where { state.in('success', 'wait')}
+                      .where { date < Date.today }
     overtime(tmp)
-    tmp = reservation.where(state: 'success')
-                     .where(date: date.today)
+    tmp = reservations.where { state.in('success', 'wait')}
+                     .where(date: Date.today)
     overtime_today(tmp)
   end
 
@@ -87,7 +110,7 @@ class ReservationRepository < Hanami::Repository
     repository = ReservationRepository.new
     tmp_reservations.each do |reservation|
       period = TimePeriod.new(reservation.time)
-      repository.update(reservation.id, state: 'overtime') if period.end_time > DateTime.now
+      repository.update(reservation.id, state: 'overtime') if period.end_time < DateTime.now
     end
   end
 

@@ -8,12 +8,10 @@ module MiniprogramAdmin::Controllers::Project
     end
 
     def call(params)
-      page = params[:page] || 1
-      page = page.to_i > 0 ? page.to_i : 1
+      page = params[:page].to_i > 0 ? params[:page].to_i : 1
 
       count = @user.projects_num
       projects = @user.projects_miniprogram(page: page)
-
       self.body = {
         count: count,
         projects: transform_project(projects)
