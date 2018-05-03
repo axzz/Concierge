@@ -14,7 +14,7 @@ module Miniprogram
       token = request.env['HTTP_AUTHORIZATION']
       begin
         id = Tools.parse_token(token)
-      rescue StandardError
+      rescue RuntimeError
         halt 401, 'Invalid Token'
       end
       @user = UserRepository.new.find(id)

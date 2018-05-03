@@ -10,6 +10,6 @@ post '/projects/:id/code', to: 'index#sms'
 post '/login',            to: 'index#login'
 
 get  '/reservations',      to: 'reservation#index'
-get  '/reservations/:id',  to: 'reservation#show'
 post '/reservations',      to: 'reservation#create'
 
+post '/reservations/:id/cancel', to: 'reservation#cancel'

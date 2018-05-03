@@ -1,6 +1,12 @@
+require_relative './find_project'
+
 module Web::Controllers::Project
   class Update
     include Web::Action
+    include FindProject
+
+    handle_exception JSON::ParserError => 400
+
     params do
       optional(:token).maybe(:str?)
       optional(:id).maybe(:str?)
@@ -14,13 +20,9 @@ module Web::Controllers::Project
       required(:check_mode).filled(:str?)
     end
 
-    def call(params)
-      @old_project = ProjectRepository.new.find(params[:id])
-      halt 422, { error: 'Invalid Params' }.to_json unless params.valid?
-      halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
-                                                  method: 'update')
-      halt 401 unless @old_project.creator_id == @user.id
+    before :validate_params
 
+    def call(params)
       ProjectRepository.new.update(
         params[:id].to_i,
         name:          params[:name],
@@ -31,23 +33,28 @@ module Web::Controllers::Project
         longitude:     params[:longitude].to_f,
         image_url:     params[:image]
       )
-
-      begin
+      #begin
         update_time_state(params)
-      rescue StandardError
-        halt 400
-      end
+      #rescue
+       # halt 400
+      #end
 
       halt 201, ''
     end
 
     private
 
+    def validate_params(params)
+      halt 422 unless params.valid?
+      halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
+                                                  method: 'update')
+    end
+
     def update_time_state(params)
       time_state = JSON.parse(params[:time_state])
       time_state_parsed = TimeTableUtils.parse_time_state(time_state)
 
-      return if @old_project.time_state_parsed == time_state_parsed
+      return if @project.time_state_parsed == time_state_parsed
       TimeTableUtils.change_time_state(params[:id], time_state_parsed)
       ProjectRepository.new.update(
         params[:id],

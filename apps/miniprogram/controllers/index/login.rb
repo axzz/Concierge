@@ -10,10 +10,10 @@ module Miniprogram::Controllers::Index
 
     def call(params)
       halt 422 unless params.valid?
-      html_response = Net::HTTP.get(get_uri(params[:code])) #TODO: 超时
+      html_response = Net::HTTP.get(get_uri(params[:code]))
       begin
         openid = JSON.parse(html_response)['openid']
-      rescue StandardError
+      rescue RuntimeError
         halt 400, 'Invaild code'
       end
       user = find_or_create_user(openid)

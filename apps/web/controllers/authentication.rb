@@ -14,13 +14,13 @@ module Web
       token = request.env['HTTP_AUTHORIZATION'] || params[:token]
       begin
         id = Tools.parse_token(token)
-      rescue StandardError
+      rescue JWT::DecodeError
         halt 401, 'Invalid Token'
       end
       new_token = Tools.make_jwt(id)
       headers['Authorization'] = new_token
       @user = UserRepository.new.find(id)
-      halt 401, 'No User' unless @user
+      halt 401, 'Invalid Token' unless @user
       halt 403, 'No Permission' unless @user.manager?
     end
   end

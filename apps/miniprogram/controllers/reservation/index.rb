@@ -7,12 +7,11 @@ module Miniprogram::Controllers::Reservation
       optional(:type).maybe(:str?)
     end
 
+    expose :reservations
+
     def call(params)
       page = params[:page].to_i > 0 ? params[:page].to_i : 1
-
-      reservations = get_reservations(params, page)
-
-      self.body = { reservations: transform_reservations(reservations) }.to_json
+      @reservations = get_reservations(params, page).to_a
     end
 
     private
@@ -32,28 +31,6 @@ module Miniprogram::Controllers::Reservation
       else
         repository.basic_user_reservations(@user.id, page)
       end
-    end
-
-    def transform_reservations(reservations)
-      response = []
-      project_repository = ProjectRepository.new
-      reservations.each do |reservation|
-        project = project_repository.find(reservation.project_id)
-        response << {
-          id:           reservation.id,
-          state:        reservation.state,
-          project_name: project.name,
-          address:      project.address || '',
-          latitude:     project.latitude || '',
-          longitude:    project.longitude || '',
-          share_code:   '',
-          date:         reservation.date,
-          time:         reservation.time,
-          name:         reservation.name,
-          tel:          reservation.tel
-        }
-      end
-      response
     end
   end
 end

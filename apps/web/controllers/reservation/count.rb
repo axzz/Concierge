@@ -1,13 +1,14 @@
+require_relative './find_project'
+
 module Web::Controllers::Reservation
   class Count
     include Web::Action
+    include FindProject
 
     def call(params)
-      project = ProjectRepository.new.find(params[:project_id].to_i)
-      halt 404 unless project
-      halt 403 unless project.creator_id == @user.id
-
-      self.body = ReservationRepository.new.count(params[:project_id].to_i).to_json
+      self.body = ReservationRepository.new
+                                       .count(@project.id)
+                                       .to_json
     end
   end
 end

@@ -1,18 +1,14 @@
 class TimePeriod
-  attr_reader :error
+  TIME_PERIOD_FORMAT = /([01][0-9]|2[0-3]):[0-5][0-9]-([01][0-9]|2[0-3]):[0-5][0-9]/
+  TIME_ZONE = '+08'
+  
+  attr_reader :start, :end
 
   def initialize(time_str)
-    @time_str = time_str
-    @error =~ /([01][0-9]|2[0-3]):[0-5][0-9]-([01][0-9]|2[0-3]):[0-5][0-9]/
-  end
+    raise 'Unsupport format' unless (time_str =~ TIME_PERIOD_FORMAT)
 
-  def start_time
-    str = @time_str[0..4] + '+08'
-    DateTime.parse(str)
-  end
-
-  def end_time
-    str = @time_str[-5..-1] + '+08'
-    DateTime.parse(str)
+    start_str, end_str = time_str.split('-')
+    @start = DateTime.parse(start_str + TIME_ZONE)
+    @end = DateTime.parse(end_str + TIME_ZONE)
   end
 end

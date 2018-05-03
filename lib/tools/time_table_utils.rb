@@ -5,7 +5,7 @@ class TimeTableUtils
     time_state_parsed = default_time_state
     time_state['normal'].each do |time|
       time['weekday'].each do |day|
-        raise 'Fail in parse time' if TimePeriod.new(time['time']).error
+        TimePeriod.new(time['time'])
         time_state_parsed[day.to_sym] << { time: time['time'], limit: time['limit'] }
       end
     end
@@ -47,9 +47,9 @@ class TimeTableUtils
       time = reservation.time
       time_table = time_table_repository.time?(date, time)
       if time_table
-        time_table.reduce_remain(date, time)
+        time_table.reduce_remain
       else
-        repository.update(reservation.id, state: 'cancelled')
+        repository.update(reservation.reservation_id, state: 'cancelled')
       end
     end
   end
@@ -83,7 +83,7 @@ class TimeTableUtils
     end
     
     state.each do |time|
-      raise 'Error in time period' if TimePeriod.new(time[:time]).error
+      TimePeriod.new(time[:time])
       next if time_table_repository.time?(date, time[:time])
       time_table = TimeTable.new(project_id: project_id,
                                  date: date,

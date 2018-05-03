@@ -14,16 +14,13 @@ class DayTableRepository < Hanami::Repository
 
   def get_tables(num)
     tables = get_day_table(num)
-    TimeTableUtils.make_time_table(@project_id) if tables.count < num
-    tables = get_day_table(num)
     all = []
     tables.each do |day|
       times = TimeTableRepository.new(@project_id).get_tables(day.date)
       dayline = []
       times.each do |time|
         time_period = TimePeriod.new(time.time)
-        raise 'error' if time_period.error
-        unless time_period.start_time < DateTime.now && day.date == Date.today
+        unless time_period.start < DateTime.now && day.date == Date.today
           dayline << { time: time.time, remain: time.remain }
         end
       end
@@ -33,6 +30,16 @@ class DayTableRepository < Hanami::Repository
   end
 
   def get_day_table(num)
-    day_tables.where(project_id: @project_id).where { date >= Date.today }.limit(num)
+    tables = day_tables.where(project_id: @project_id)
+                       .where { date >= Date.today }
+                       .limit(num)
+    if tables.count < num
+      TimeTableUtils.make_time_table(@project_id)
+      day_tables.where(project_id: @project_id)
+                       .where { date >= Date.today }
+                       .limit(num)
+    else
+      tables
+    end
   end
 end

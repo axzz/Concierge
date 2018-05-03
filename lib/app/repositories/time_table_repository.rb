@@ -24,6 +24,14 @@ class TimeTableRepository < Hanami::Repository
     time_table = time_tables
                  .where(project_id: @project_id, date: date, time: time)
                  .first
+    return false if time_table.remain < 1
     update(time_table.id, remain: time_table.remain - 1) unless time_table.remain.nil?
+  end
+
+  def add_remain(date,time)
+    time_table = time_tables
+                 .where(project_id: @project_id, date: date, time: time)
+                 .first
+    update(time_table.id, remain: time_table.remain + 1) unless time_table.remain.nil?
   end
 end

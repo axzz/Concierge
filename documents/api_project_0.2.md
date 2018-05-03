@@ -146,6 +146,7 @@ V0.3
     "name": "项目名称",
     "description": "项目详情",
     "image": "图片相对路径",
+    "state":"open or pause",
     "address":"详细地址",
     "latitude":"经度(float)",
     "longtitude":"纬度(float)",

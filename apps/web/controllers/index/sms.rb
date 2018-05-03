@@ -11,6 +11,7 @@ module Web::Controllers::Index
       end
 
       sms_service = SmsService.new(tel)
+      
       if sms_service.send_sms
         self.body = ''
       else

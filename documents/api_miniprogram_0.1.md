@@ -289,6 +289,7 @@
         "reservations":[
             {
                 "id":1,
+                "project_id":1,
                 "state" : "success等 见注1",
                 "project_name" : "成华区图书馆",
                 "address" : "天益街高新区",
@@ -319,16 +320,16 @@
   * **Code:** 403 Forbidden <br />
     **Content:** `{ error : "ERROR in create reservation" }`
 
+**取消预约**
+-------------
 
-**查询单一预约** 
------------
 * **URL**
 
-    /miniprogram/reservations/:id
+    /miniprogram/reservations/:id/cancel
 
 * **Method:**
 
-  `GET`
+  `POST`
 
 *  **URL Params**
 
@@ -340,37 +341,17 @@
 
 * **Success Response:**
 
-  * **Code:** 201 <br/>
-    **Content:** 
-    ```JSON
-    {
-        "state" : "success等 见注1",
-        "project_name" : "成华区图书馆",
-        "address" : "天益街高新区",
-        "latitude" : "经度",
-        "longitude" : "纬度",
-        "share_code" : "现在版本还没有",
-        "date" : "2018-03-10",
-        "time" : "09:00-12:00",
-        "name" : "张三",
-        "tel" : "18888888888"
-    }
-    ```
+  * **Code:** 201 <br />
+    **Content:** ""
 
 * **Error Response:**
-
-  * **Code:** 422 Forbidden <br />
-    **Content:** `{ error : "Invalid Params" }`
-
-  OR
 
   * **Code:** 401 UNAUTHORIZED <br />
     **Content:** `{ error : "No Permission" }`
 
-  OR
-
   * **Code:** 403 Forbidden <br />
-    **Content:** `{ error : "ERROR in create reservation" }`
+    **Content:** `{ error : "No Permission" }`
+
 
 注1:
 ```
@@ -385,3 +366,5 @@ state:
 }
 
 ```
+
+

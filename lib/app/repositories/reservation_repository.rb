@@ -7,12 +7,11 @@ class ReservationRepository < Hanami::Repository
   end
 
   def basic_user_reservations(user_id, page)
-    # TODO: 把过期的状态改为过期
     reservations
-      .order { id.desc }
+      .order { reservation_id.desc }
       .where(creator_id: user_id)
-      .limit(NUM_PER_PAGE)
-      .offset((page - 1) * NUM_PER_PAGE)
+      .limit(NUM_PER_PAGE_MINI)
+      .offset((page - 1) * NUM_PER_PAGE_MINI)
   end
 
   def current_user_reservations(user_id, page)
@@ -36,7 +35,7 @@ class ReservationRepository < Hanami::Repository
   end
 
   def search(data, user_id, page)
-    offset_num = (page - 1) * NUM_PER_PAGE
+    offset_num = (page - 1) * NUM_PER_PAGE_MINI
     reservations.read(
       'SELECT reservations.* ' \
       'From reservations ' \
@@ -45,24 +44,23 @@ class ReservationRepository < Hanami::Repository
       "WHERE (projects.name ILIKE '%#{data}%' " \
       "OR projects.address ILIKE '%#{data}%') " \
       "AND reservations.creator_id = #{user_id} " \
-      "ORDER BY id DESC " \
-      "LIMIT #{NUM_PER_PAGE} " \
+      "ORDER BY reservation_id DESC " \
+      "LIMIT #{NUM_PER_PAGE_MINI} " \
       "OFFSET #{offset_num}"
     )
   end
 
-  NUM_PER_PAGE_PC = 10
+  NUM_PER_PAGE_MINI = 10
 
-  def inquire(project_id, date_from, date_to, tel, state, page)
+  def inquire(project_id, date_from, date_to, tel_num, state, page)
     tmp = reservations.where(project_id: project_id)
-                      .limit(NUM_PER_PAGE_PC)
-                      .offset((page - 1) * NUM_PER_PAGE_PC)
-                      .order { id.desc }
-
+                      .limit(NUM_PER_PAGE_MINI)
+                      .offset((page - 1) * NUM_PER_PAGE_MINI)
+                      .order { reservation_id.desc }
 
     tmp = tmp.where { date >= Date.parse(date_from) } unless date_from.blank?
     tmp = tmp.where { date <= Date.parse(date_to) } unless date_to.blank?
-    tmp = tmp.where(tel: tel) unless tel.blank?
+    tmp = tmp.where{ tel.ilike("%#{tel_num}%") } unless tel_num.blank?
     tmp = tmp.where(state: state) unless state.blank?
     tmp
   end
@@ -102,7 +100,7 @@ class ReservationRepository < Hanami::Repository
   def overtime(tmp_reservations)
     repository = ReservationRepository.new
     tmp_reservations.each do |reservation|
-      repository.update(reservation.id, state: 'overtime')
+      repository.update(reservation.reservation_id, state: 'overtime', remark: '预约过期，系统自动取消')
     end
   end
 
@@ -110,7 +108,7 @@ class ReservationRepository < Hanami::Repository
     repository = ReservationRepository.new
     tmp_reservations.each do |reservation|
       period = TimePeriod.new(reservation.time)
-      repository.update(reservation.id, state: 'overtime') if period.end_time < DateTime.now
+      repository.update(reservation.reservation_id, state: 'overtime', remark: '预约过期，系统自动取消') if period.end < DateTime.now
     end
   end
 
@@ -118,35 +116,7 @@ class ReservationRepository < Hanami::Repository
     reservations.where(project_id: project_id)
                 .where { state.in('success','wait') }
                 .each do |reservation|
-                  update(reservation.id, state: 'cancelled')
+                  update(reservation.reservation_id, state: 'cancelled', remark: '管理员暂停了预约项目')
                 end
   end
-
-  # def test
-  #   reservations
-  # end
 end
-
-# class ROM::Relation::Composite
-#   def transform_to_miniprogram_reservation
-#     response = []
-#     project_repository = ProjectRepository.new
-#     reservations.each do |reservation|
-#       project = project_repository.find(reservation.project_id)
-#       response << {
-#         id:           reservation.id,
-#         state:        reservation.state,
-#         project_name: project.name,
-#         address:      project.address || '',
-#         latitude:     project.latitude || '',
-#         longitude:    project.longitude || '',
-#         share_code:   '',
-#         date:         reservation.date,
-#         time:         reservation.time,
-#         name:         reservation.name,
-#         tel:          reservation.tel
-#       }
-#     end
-#     response
-#   end
-# end

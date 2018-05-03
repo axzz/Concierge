@@ -27,7 +27,7 @@ module MiniprogramAdmin
       # Defaults to true.
       # See: http://www.rubydoc.info/gems/hanami-controller/#Exceptions_management
       #
-      # handle_exceptions true
+      handle_exceptions true
 
       ##
       # HTTP
@@ -95,7 +95,7 @@ module MiniprogramAdmin
       # Default format for responses that don't consider the request format
       # Argument: A symbol representation of a mime type, defaults to :html
       #
-      # default_response_format :html
+      default_response_format :json
 
       # HTTP Body parsers
       # Parse non GET responses body for a specific mime type
@@ -279,7 +279,7 @@ module MiniprogramAdmin
     #
     configure :development do
       # Don't handle exceptions, render the stack trace
-      handle_exceptions false
+      handle_exceptions true
     end
 
     ##
@@ -287,7 +287,7 @@ module MiniprogramAdmin
     #
     configure :test do
       # Don't handle exceptions, render the stack trace
-      handle_exceptions false
+      handle_exceptions true
     end
 
     ##

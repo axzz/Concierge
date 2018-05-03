@@ -1,12 +1,13 @@
-require_relative './test_params'
+require_relative './find_reservation'
 module Web::Controllers::Reservation
   class Pass
     include Web::Action
-    include TestParams
+    include FindReservation
 
     def call(params)
       halt 400 unless @reservation.state == 'wait'
-      ReservationRepository.new.update(@reservation.id, state: 'success')
+      ReservationRepository.new.update(@reservation.reservation_id,
+                                       state: 'success')
       halt 201,''
     end
   end

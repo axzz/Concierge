@@ -1,6 +1,7 @@
 module Web::Controllers::Project
   class Create
     include Web::Action
+
     params do
       optional(:token).maybe(:str?)
       required(:name).filled(:str?)
@@ -13,17 +14,28 @@ module Web::Controllers::Project
       required(:check_mode).filled(:str?)
     end
 
+    handle_exception RuntimeError => 400, 
+                     ArgumentError => 422
+
+    before :validate_params
+
     def call(params)
+      project = create_project(params)
+      TimeTableUtils.make_time_table(project.id)
+      halt 201, ''
+    end
+
+    private 
+
+    def validate_params(params)
       halt 422 unless params.valid?
       halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
                                                   method: 'create')
-      # Get time_states
-      begin
-        time_state = JSON.parse(params[:time_state])
-        time_state_parsed = TimeTableUtils.parse_time_state(time_state)
-      rescue StandardError
-        halt 422, ({ error: 'Invalid Params' }.to_json)
-      end
+    end
+
+    def create_project(params)
+      time_state = JSON.parse(params[:time_state])
+      time_state_parsed = TimeTableUtils.parse_time_state(time_state)
 
       project = Project.new(
         name:               params[:name],
@@ -38,15 +50,8 @@ module Web::Controllers::Project
         creator_id:         @user.id,
         image_url:          params[:image]
       )
-      project = ProjectRepository.new.create(project)
-
-      begin
-        TimeTableUtils.make_time_table(project.id)
-      rescue StandardError
-        halt 400
-      end
-
-      halt 201, ''
+      ProjectRepository.new.create(project)
     end
+
   end
 end

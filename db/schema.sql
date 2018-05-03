@@ -144,7 +144,7 @@ ALTER SEQUENCE public.projects_id_seq OWNED BY public.projects.id;
 --
 
 CREATE TABLE public.reservations (
-    id integer NOT NULL,
+    reservation_id integer NOT NULL,
     creator_id integer NOT NULL,
     project_id integer NOT NULL,
     state text,
@@ -174,7 +174,7 @@ CREATE SEQUENCE public.reservations_id_seq
 -- Name: reservations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.reservations_id_seq OWNED BY public.reservations.id;
+ALTER SEQUENCE public.reservations_id_seq OWNED BY public.reservations.reservation_id;
 
 
 --
@@ -268,10 +268,10 @@ ALTER TABLE ONLY public.projects ALTER COLUMN id SET DEFAULT nextval('public.pro
 
 
 --
--- Name: reservations id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: reservations reservation_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.reservations ALTER COLUMN id SET DEFAULT nextval('public.reservations_id_seq'::regclass);
+ALTER TABLE ONLY public.reservations ALTER COLUMN reservation_id SET DEFAULT nextval('public.reservations_id_seq'::regclass);
 
 
 --
@@ -317,7 +317,7 @@ ALTER TABLE ONLY public.projects
 --
 
 ALTER TABLE ONLY public.reservations
-    ADD CONSTRAINT reservations_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT reservations_pkey PRIMARY KEY (reservation_id);
 
 
 --
@@ -435,6 +435,7 @@ COPY public.schema_migrations (filename) FROM stdin;
 20180418031009_add_data_to_user.rb
 20180423024943_update_reservations.rb
 20180423025323_update_reservations.rb
+20180427040359_change_name.rb
 \.
 
 

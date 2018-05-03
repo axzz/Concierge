@@ -1,6 +1,11 @@
+require_relative './find_project'
+
 module Web::Controllers::Project
   class Show
     include Web::Action
+    include FindProject
+    
+    expose :project
 
     params do
       optional(:token).maybe(:str?)
@@ -8,19 +13,7 @@ module Web::Controllers::Project
     end
 
     def call(params)
-      project = ProjectRepository.new.find(params[:id])
-      halt 404 unless project
-      halt 401 unless project.creator_id == @user.id
-      self.body = {
-        name:         project.name,
-        description:  project.description || '',
-        image:        project.image_url,
-        address:      project.address || '',
-        latitude:     project.latitude || '',
-        longitude:    project.longitude || '',
-        time_state:   project.time_state,
-        check_mode:   project.check_mode
-      }.to_json
+      halt 422 unless params.valid?
     end
   end
 end

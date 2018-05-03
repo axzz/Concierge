@@ -10,12 +10,12 @@ module Miniprogram::Controllers::Project
       optional(:longitude).maybe
       
     end
+    expose :projects
+
     def call(params)
       page = params[:page] || 1
       page = page.to_i > 0 ? page.to_i : 1
-      projects = get_projects(params, page)
-
-      self.body = { projects: transform_projects(projects) }.to_json
+      @projects = get_projects(params, page)
     end
 
     private
@@ -35,19 +35,6 @@ module Miniprogram::Controllers::Project
       else
         project_repository.get_all_projects(page)
       end
-    end
-
-    # Transform projects dataform from object to hash
-    def transform_projects(projects)
-      response = []
-      projects.each do |project|
-        response << { id:           project.id,
-                      name:         project.name,
-                      description:  project.description || '',
-                      address:      project.address || '',
-                      cover:        project.image_url }
-      end
-      response
     end
   end
 end
