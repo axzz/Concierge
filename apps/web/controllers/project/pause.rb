@@ -8,7 +8,7 @@ module Web::Controllers::Project
     def call(params)
       repository = ProjectRepository.new
       repository.update(@project.id, state: 'pause')
-      repository.cancel_all(@project.id)
+      ReservationRepository.new.cancel_all(@project.id)
       self.body = ''
     end
   end

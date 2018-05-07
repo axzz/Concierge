@@ -6,6 +6,6 @@ describe Web::Controllers::Project::Open do
 
   it 'is successful' do
     response = action.call(params)
-    response[0].must_equal 200
+    response[0].must_equal 401
   end
 end

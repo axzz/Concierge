@@ -3,6 +3,7 @@ module Miniprogram::Controllers::Project
   class Index
     include Miniprogram::Action
     params do
+      optional(:token).maybe
       optional(:page).maybe
       optional(:search).maybe
       optional(:distance).maybe

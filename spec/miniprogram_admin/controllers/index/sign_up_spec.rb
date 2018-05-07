@@ -1,10 +1,10 @@
 require_relative '../../../spec_helper'
 
-describe Miniprogram::Controllers::Project::Index do
-  let(:action) { Miniprogram::Controllers::Project::Index.new }
+describe MiniprogramAdmin::Controllers::Index::SignUp do
+  let(:action) { MiniprogramAdmin::Controllers::Index::SignUp.new }
   let(:params) { Hash[] }
 
-  it 'is successful' do
+  it 'no token' do
     response = action.call(params)
     response[0].must_equal 401
   end

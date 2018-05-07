@@ -2,6 +2,7 @@ module Miniprogram::Controllers::Reservation
   class Index
     include Miniprogram::Action
     params do
+      optional(:token).maybe
       optional(:page).maybe
       optional(:search).maybe(:str?)
       optional(:type).maybe(:str?)

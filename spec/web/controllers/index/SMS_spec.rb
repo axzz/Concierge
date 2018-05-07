@@ -6,12 +6,12 @@ describe Web::Controllers::Index::Sms do
 
   it 'no params' do
     response = action.call(params)
-    response[0].must_equal 400
+    response[0].must_equal 403
   end
 
   it 'bad tel' do
     response = action.call({tel: '11408058303'})
-    response[0].must_equal 400
+    response[0].must_equal 403
   end
 
   it 'right tel' do

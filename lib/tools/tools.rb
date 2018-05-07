@@ -1,5 +1,4 @@
 class Tools
-  TOKEN_SECRET = '0rder_$ecret_token_2018'.freeze
   def self.make_jwt(id)
     payload = { id: id, exp: Time.now.to_i+3600*36 }
     JWT.encode(payload, TOKEN_SECRET, 'HS256', { typ: 'JWT' })
@@ -23,6 +22,7 @@ class Tools
   end
 
   def self.prevent_repeat_submit(id: '0', method: 'all', interval: 2000)
+    return true if TEST
     redis = Redis.new
     fobbiden = redis.get(key(id, method))
     return false if fobbiden

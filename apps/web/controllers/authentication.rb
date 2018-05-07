@@ -1,6 +1,7 @@
 module Web
   module Authentication
     # Get @user and refresh token
+    
     def self.included(action)
       action.class_eval do
         before :authenticate!

@@ -25,6 +25,7 @@ module Miniprogram::Views::Reservation
             state:        reservation.state,
             project_id:   project.id,
             project_name: project.name,
+            project_state: project.state,
             address:      project.address || '',
             latitude:     project.latitude || '',
             longitude:    project.longitude || '',

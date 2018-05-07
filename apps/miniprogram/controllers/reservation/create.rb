@@ -4,6 +4,7 @@ module Miniprogram::Controllers::Reservation
 
     params do
       required(:project_id).filled
+      optional(:token).maybe
       optional(:code).maybe
       required(:name).filled(:str?)
       required(:tel).filled(:str?)

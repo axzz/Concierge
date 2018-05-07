@@ -12,7 +12,7 @@ describe Web::Controllers::Index::Token do
   end
 
   it 'get token' do
-    response = sms.call({tel: true_tel})
+    sms.call({tel: true_tel})
     response = action.call({tel: true_tel, code: '123456'})
     response[0].must_equal 200
     user = UserRepository.new.find_by_tel(true_tel)

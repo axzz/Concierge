@@ -116,6 +116,8 @@ class ReservationRepository < Hanami::Repository
     reservations.where(project_id: project_id)
                 .where { state.in('success','wait') }
                 .each do |reservation|
+                  TimeTableRepository.new(project_id)
+                                     .add_remain(reservation.date, reservation.time) 
                   update(reservation.reservation_id, state: 'cancelled', remark: '管理员暂停了预约项目')
                 end
   end

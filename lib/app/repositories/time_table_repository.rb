@@ -16,16 +16,17 @@ class TimeTableRepository < Hanami::Repository
     time_tables.where(project_id: @project_id).delete
   end
 
-  def get_tables(date)
-    time_tables.where(project_id: @project_id).where(date: date)
+  def get_tables(max_date)
+    time_tables.where(project_id: @project_id).where{ date <= max_date }
   end
 
   def reduce_remain(date, time)
     time_table = time_tables
                  .where(project_id: @project_id, date: date, time: time)
                  .first
+    return true if time_table.remain == nil
     return false if time_table.remain < 1
-    update(time_table.id, remain: time_table.remain - 1) unless time_table.remain.nil?
+    update(time_table.id, remain: time_table.remain - 1)
   end
 
   def add_remain(date,time)

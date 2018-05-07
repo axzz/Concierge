@@ -6,6 +6,6 @@ describe Miniprogram::Controllers::Index::Login do
 
   it 'is successful' do
     response = action.call(params)
-    response[0].must_equal 200
+    response[0].must_equal 422
   end
 end
