@@ -4,8 +4,6 @@ module Web::Controllers::Index
     include Web::Action
     def call(_params)
       self.body = { images: covers }.to_json
-      puts Time.now.to_f
-      puts 11111111111
     end
 
     private
