@@ -31,3 +31,5 @@ post '/projects/:project_id/reservations/:reservation_id/check', to: 'reservatio
 post '/projects/:project_id/reservations/:reservation_id/pass', to: 'reservation#pass'
 
 get '/projects/:project_id/reservations/count', to: 'reservation#count'
+
+get '/', to: 'index#index'

@@ -35,6 +35,10 @@ V0.3
     "longtitude":"纬度(float)",
     "time_state":"未经处理的时间表JSON(详见下)",
     "check_mode":"auto or manual",
+    "multi_time":true,
+    "reservation_per_day":1,
+    "date_display":7,
+    "ahead_time":{day: 1, hour: 0, min: 0}
 }
 ```
 

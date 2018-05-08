@@ -16,7 +16,6 @@ module Miniprogram
       begin
         id = Tools.parse_token(token)
       rescue JWT::DecodeError
-        puts token
         halt 401, 'Invalid Token'
       end
       @user = UserRepository.new.find(id)
