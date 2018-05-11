@@ -18,6 +18,10 @@ module Web::Controllers::Project
       required(:image).filled(:str?)
       required(:time_state).filled(:str?)
       required(:check_mode).filled(:str?)
+      optional(:multi_time).maybe(:bool?)
+      optional(:reservation_per_user).maybe(:int?)
+      optional(:date_display).maybe(:int?)
+      optional(:ahead_time).maybe
     end
 
     before :validate_params
@@ -31,13 +35,16 @@ module Web::Controllers::Project
         address:       params[:address],
         latitude:      params[:latitude].to_f,
         longitude:     params[:longitude].to_f,
-        image_url:     params[:image]
+        image_url:     params[:image],
+        multi_time:    params[:multi_time],
+        reservation_per_user: params[:reservation_per_user],
+        date_display:  params[:date_display],
+        ahead_time:    JSON.parse(params[:ahead_time])
       )
-      #begin
-        update_time_state(params)
-      #rescue
-       # halt 400
-      #end
+      if @project.ahead_time != JSON.parse(params[:ahead_time])
+        TimeTableUtils.make_time_table(@project.id, @project.min_time.to_date)
+      end
+      update_time_state(params)
 
       halt 201, ''
     end
@@ -48,6 +55,7 @@ module Web::Controllers::Project
       halt 422 unless params.valid?
       halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
                                                   method: 'update')
+      halt 422 if params[:date_display] && params[:date_display].to_i > 10
     end
 
     def update_time_state(params)

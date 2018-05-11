@@ -26,7 +26,6 @@ get '/projects/:id/open',  to: 'project#open'
 
 get  '/projects/:project_id/reservations', to: 'reservation#index'
 post '/projects/:project_id/reservations/:reservation_id/cancel', to: 'reservation#cancel'
-post '/projects/:project_id/reservations/:reservation_id/refuse', to: 'reservation#refuse'
 post '/projects/:project_id/reservations/:reservation_id/check', to: 'reservation#check'
 post '/projects/:project_id/reservations/:reservation_id/pass', to: 'reservation#pass'
 

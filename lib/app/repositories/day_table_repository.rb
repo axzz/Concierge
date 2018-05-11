@@ -2,6 +2,7 @@ class DayTableRepository < Hanami::Repository
   def initialize(project_id)
     super()
     @project_id = project_id
+    @project = ProjectRepository.new.find(project_id)
   end
 
   def date?(date)
@@ -12,30 +13,14 @@ class DayTableRepository < Hanami::Repository
     day_tables.where(project_id: @project_id).delete
   end
 
-  # def get_tables(num)
-  #   tables = get_day_table(num)
-  #   all = []
-  #   tables.each do |day|
-  #     times = TimeTableRepository.new(@project_id).get_tables(day.date)
-  #     dayline = []
-  #     times.each do |time|
-  #       time_period = TimePeriod.new(time.time)
-  #       unless time_period.start < DateTime.now && day.date == Date.today
-  #         dayline << { time: time.time, remain: time.remain }
-  #       end
-  #     end
-  #     all << { date: day.date.to_s, wday: day.date.wday, table: dayline } unless dayline.empty?
-  #   end
-  #   all
-  # end
-
   def get_tables(num)
-    tables = get_day_table(num)
+    min_time = @project.min_time
+    tables = get_day_table(num, min_time.to_date)
     max_date = max_date(tables)
-    time_tables = TimeTableRepository.new(@project_id).get_tables(max_date).to_a
+    time_tables = TimeTableRepository.new(@project_id).get_tables(min_time.to_date, max_date).to_a
     all = []
     time_tables.each do |table|
-      append_table(all, table)
+      append_table(all, table, min_time)
     end
     all
   end
@@ -48,28 +33,30 @@ class DayTableRepository < Hanami::Repository
     max_date
   end
 
-  def append_table(all, time_table)
+  def append_table(all, time_table, min_time)
+    return if time_table.out_of_date?(min_time)
     all.each do |dayline|
-      if dayline[:date] == time_table.date.to_s && !time_table.out_of_date?
+      if dayline[:date] == time_table.date.to_s
         dayline[:table] << { time: time_table.time, remain: time_table.remain }
         return
       end
     end
-    unless time_table.out_of_date?
-      all << { date: time_table.date.to_s,
-               wday: time_table.date.wday,
-               table: [{ time: time_table.time, remain: time_table.remain }] } 
-    end
+    all << { date: time_table.date.to_s,
+             wday: time_table.date.wday,
+             table: [{ time: time_table.time, remain: time_table.remain }] } 
   end
 
-  def get_day_table(num)
+  def get_day_table(num, min_date)
     tables = day_tables.where(project_id: @project_id)
-                       .where { date >= Date.today }
+                       .where { date >= min_date }
                        .limit(num)
     if tables.count < num
-      TimeTableUtils.make_time_table(@project_id)
+      TimeTableUtils.make_time_table(@project_id,
+                                     min_date,
+                                     @project.time_state_parsed
+                                     )
       day_tables.where(project_id: @project_id)
-                       .where { date >= Date.today }
+                       .where { date >= min_date }
                        .limit(num)
     else
       tables

@@ -6,6 +6,17 @@ class ReservationRepository < Hanami::Repository
       .where { state.in('success', 'wait') }
   end
 
+  def user_achieve_limit?(user_id, project_id)
+    project = ProjectRepository.new.find(project_id)
+    return false unless project.reservation_per_user
+    count = reservations
+              .where(creator_id: user_id)
+              .where(project_id: project_id)
+              .count
+    count >= project.reservation_per_user
+  end
+
+
   def basic_user_reservations(user_id, page)
     reservations
       .order { reservation_id.desc }
@@ -107,8 +118,8 @@ class ReservationRepository < Hanami::Repository
   def overtime_today(tmp_reservations)
     repository = ReservationRepository.new
     tmp_reservations.each do |reservation|
-      period = TimePeriod.new(reservation.time)
-      repository.update(reservation.reservation_id, state: 'overtime', remark: '预约过期，系统自动取消') if period.end < DateTime.now
+      period = (reservation.time.map {|time| TimePeriod.new(time).end}).max
+      repository.update(reservation.reservation_id, state: 'overtime', remark: '预约过期，系统自动取消') if period < DateTime.now
     end
   end
 

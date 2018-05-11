@@ -9,20 +9,23 @@ module Miniprogram::Controllers::Reservation
       required(:name).filled(:str?)
       required(:tel).filled(:str?)
       required(:date).filled(:str?)
-      required(:time).filled(:str?)
+      required(:time).filled
     end
 
     before :validate_params
 
     def call(params)
       halt 422 unless verify_sms(params)
+      puts 111111111111111111111
+      halt 403 if @user.achieve_limit?(params[:project_id])
       state = @project.check_mode == 'auto' ? 'success' : 'wait'
       date = Date.parse(params[:date])
-      reservation = make_reservation(params, state, date)
+      time = params[:time]
+      reservation = make_reservation(params, state, date, time)
 
       # Database handle
       halt 403 unless TimeTableRepository.new(params[:project_id])
-                                         .reduce_remain(date, params[:time])
+                                         .reduce_remain(date, time)
       reservation = ReservationRepository.new.create(reservation)
       UserRepository.new.update(@user.id,
                                 tmp_tel: params[:tel],
@@ -33,8 +36,10 @@ module Miniprogram::Controllers::Reservation
 
     private
 
+
     def validate_params(params)
       halt 422 unless params.valid?
+      puts 111111111111111111111
       halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
                                                   method: 'create_reservation')
       @project = ProjectRepository.new.find(params[:project_id])
@@ -42,9 +47,11 @@ module Miniprogram::Controllers::Reservation
       halt 403,'Project is closed' unless @project.state == 'open'
       
       begin
-        TimePeriod.new(params[:time])
-      rescue RuntimeError
-        halt 400,'Unsupport time format'
+        times = params[:time]
+        times.each {|time| TimePeriod.new(time)}
+      rescue ArgumentError
+        puts 22222222222222222222222
+        halt 422,'Unsupport time format'
       end
     end
     
@@ -63,14 +70,14 @@ module Miniprogram::Controllers::Reservation
       Redis.new.set("need_sms.#{@user.id}","#{params[:tel]}",ex: 3600)
     end
 
-    def make_reservation(params, state, date)
+    def make_reservation(params, state, date, time)
       Reservation.new(
         creator_id: @user.id,
         project_id: params[:project_id],
         tel:        params[:tel],
         name:       params[:name],
         date:       date,
-        time:       params[:time],
+        time:       time,
         state:      state
       )
     end

@@ -2,4 +2,4 @@
 /tmp
 public/uploads/*
 log/development.log
-lib/tools/global_variables.rb
+lib/tools/global.rb

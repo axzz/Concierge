@@ -116,7 +116,11 @@ CREATE TABLE public.projects (
     check_mode text,
     share_pic text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    multi_time boolean,
+    reservation_per_user integer,
+    date_display integer,
+    ahead_time jsonb
 );
 
 
@@ -149,12 +153,12 @@ CREATE TABLE public.reservations (
     project_id integer NOT NULL,
     state text,
     date date,
-    "time" text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     name text,
     tel text,
-    remark text
+    remark text,
+    "time" text[]
 );
 
 
@@ -436,6 +440,8 @@ COPY public.schema_migrations (filename) FROM stdin;
 20180423024943_update_reservations.rb
 20180423025323_update_reservations.rb
 20180427040359_change_name.rb
+20180509015501_update_project.rb
+20180510032421_update_reservation.rb
 \.
 
 

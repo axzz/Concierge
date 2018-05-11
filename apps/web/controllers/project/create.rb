@@ -12,16 +12,21 @@ module Web::Controllers::Project
       required(:image).filled(:str?)
       required(:time_state).filled(:str?)
       required(:check_mode).filled(:str?)
+      optional(:multi_time).maybe(:bool?)
+      optional(:reservation_per_user).maybe(:int?)
+      optional(:date_display).maybe(:int?)
+      optional(:ahead_time).maybe
     end
 
-    handle_exception RuntimeError => 400, 
-                     ArgumentError => 422
+    handle_exception RuntimeError => 400,
+                     ArgumentError => 422,
+                     JSON::ParserError => 422
 
     before :validate_params
 
     def call(params)
       project = create_project(params)
-      TimeTableUtils.make_time_table(project.id)
+      TimeTableUtils.make_time_table(project.id, project.min_time.to_date)
       halt 201, ''
     end
 
@@ -36,7 +41,9 @@ module Web::Controllers::Project
     def create_project(params)
       time_state = JSON.parse(params[:time_state])
       time_state_parsed = TimeTableUtils.parse_time_state(time_state)
-
+      if params[:date_display].to_i > 10 || params[:date_display].to_i < 1
+        raise ArgumentError
+      end
       project = Project.new(
         name:               params[:name],
         description:        params[:description],
@@ -48,7 +55,11 @@ module Web::Controllers::Project
         state:              'open',
         check_mode:         params[:check_mode],
         creator_id:         @user.id,
-        image_url:          params[:image]
+        image_url:          params[:image],
+        multi_time:         params[:multi_time],
+        reservation_per_user: params[:reservation_per_user],
+        date_display:       params[:date_display],
+        ahead_time:         JSON.parse(params[:ahead_time])
       )
       ProjectRepository.new.create(project)
     end

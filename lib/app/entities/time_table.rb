@@ -3,12 +3,13 @@ class TimeTable < Hanami::Entity
     TimeTableRepository.new(project_id).reduce_remain(date, time)
   end
 
-  def out_of_date?
-    if date > Date.today
+  def out_of_date?(min_time = DateTime.now)
+    min_date = min_time.to_date
+    if date > min_date
       false
-    elsif date == Date.today
+    elsif date == min_date
       time_period = TimePeriod.new(time)
-      if time_period.start < DateTime.now
+      if time_period.start < min_time
         true
       else
         false

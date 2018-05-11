@@ -13,7 +13,7 @@ module Miniprogram::Controllers::Index
       html_response = Net::HTTP.get(get_uri(params[:code]))
       begin
         openid = JSON.parse(html_response)['openid']
-      rescue RuntimeError
+      rescue JSON::ParserError
         halt 400, 'Invaild code'
       end
       user = find_or_create_user(openid)

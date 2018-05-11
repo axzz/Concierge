@@ -13,7 +13,11 @@ module Web::Views::Project
           latitude:     project.latitude || '',
           longitude:    project.longitude || '',
           time_state:   project.time_state,
-          check_mode:   project.check_mode
+          check_mode:   project.check_mode,
+          multi_time:   project.multi_time,
+          reservation_per_user: project.reservation_per_user,
+          date_display: project.date_display,
+          ahead_time:   project.ahead_time
         }.to_json)
       end
   end

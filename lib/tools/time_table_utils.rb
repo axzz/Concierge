@@ -33,7 +33,8 @@ class TimeTableUtils
     time_table_repository = TimeTableRepository.new(project_id)
     day_table_repository.clear_day_table
     time_table_repository.clear_time_table
-    make_time_table(project_id, new_time_state)
+    project = ProjectRepository.new.find(project_id)
+    make_time_table(project_id, project.min_time.to_date, new_time_state)
     calculate_remain(project_id)
   end
 
@@ -45,22 +46,21 @@ class TimeTableUtils
     reservations.each do |reservation|
       date = reservation.date
       time = reservation.time
-      time_table = time_table_repository.time?(date, time)
-      if time_table
-        time_table.reduce_remain
-      else
-        repository.update(reservation.reservation_id, state: 'cancelled')
+      time_tables = time_table_repository.times?(date, time)
+      if time_tables.count < time.length
+        repository.update(reservation.reservation_id, state: 'cancelled', remark: '管理员改变了时间表')
       end
+      time_tables.each &:reduce_remain
     end
   end
 
-  def self.make_time_table(project_id, time_state = nil)
+  def self.make_time_table(project_id, min_date, time_state = nil)
     time_state ||= ProjectRepository.new.find(project_id).time_state_parsed
     created_day = 0
     add_day = 0
 
     while created_day < DAY_NUM
-      this_day = Date.today + add_day
+      this_day = min_date + add_day
       weekday = this_day.wday
       if this_day.holiday? && !time_state[:Holiday].empty?
         create_time_table(this_day, time_state[:Holiday], project_id)
@@ -81,7 +81,7 @@ class TimeTableUtils
       date_table = DayTable.new(project_id: project_id, date: date)
       day_table_repository.create(date_table)
     end
-    
+
     state.each do |time|
       TimePeriod.new(time[:time])
       next if time_table_repository.time?(date, time[:time])

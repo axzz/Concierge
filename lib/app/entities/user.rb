@@ -18,4 +18,8 @@ class User < Hanami::Entity
   def role
     tel ? 'manager' : 'customer'
   end
+
+  def achieve_limit?(project_id)
+    ReservationRepository.new.user_achieve_limit?(id, project_id)
+  end
 end

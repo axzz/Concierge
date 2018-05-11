@@ -12,27 +12,40 @@ class TimeTableRepository < Hanami::Repository
     time_tables.where(project_id: @project_id, date: date, time: time).first
   end
 
+  def times?(date, times)
+    time_tables
+      .where(project_id: @project_id, date: date)
+      .where { time.in(*times) }
+  end
+
   def clear_time_table
     time_tables.where(project_id: @project_id).delete
   end
 
-  def get_tables(max_date)
-    time_tables.where(project_id: @project_id).where{ date <= max_date }
+  def get_tables(min_date, max_date)
+    time_tables.where(project_id: @project_id).where { date >= min_date }.where { date <= max_date }
   end
 
-  def reduce_remain(date, time)
+  def reduce_remain(date, times)
     time_table = time_tables
-                 .where(project_id: @project_id, date: date, time: time)
-                 .first
-    return true if time_table.remain == nil
-    return false if time_table.remain < 1
-    update(time_table.id, remain: time_table.remain - 1)
+                  .where(project_id: @project_id, date: date)
+                  .where { time.in(*times) }
+
+    time_table.each do |time_line|
+      next if time_line.remain == nil
+      return false if time_line.remain < 1
+      update(time_line.id, remain: time_line.remain - 1)
+    end
+    true
   end
 
-  def add_remain(date,time)
+  def add_remain(date,times)
     time_table = time_tables
-                 .where(project_id: @project_id, date: date, time: time)
-                 .first
-    update(time_table.id, remain: time_table.remain + 1) unless time_table.remain.nil?
+                  .where(project_id: @project_id, date: date)
+                  .where { time.in(*times) }
+    time_table.each do |time_line|
+      next if time_line.remain == nil
+      update(time_line.id, remain: time_line.remain + 1)
+    end
   end
 end

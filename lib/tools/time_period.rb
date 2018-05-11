@@ -5,7 +5,7 @@ class TimePeriod
   attr_reader :start, :end
 
   def initialize(time_str)
-    raise 'Unsupport format' unless (time_str =~ TIME_PERIOD_FORMAT)
+    raise ArgumentError unless (time_str =~ TIME_PERIOD_FORMAT)
 
     start_str, end_str = time_str.split('-')
     @start = DateTime.parse(start_str + TIME_ZONE)
