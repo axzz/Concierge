@@ -6,7 +6,6 @@
 
 options '/*',            to: 'index#option'
 
-
 post    '/code',         to: 'index#sms'
 post    '/login',        to: 'index#token'
 
@@ -30,3 +29,5 @@ post '/projects/:project_id/reservations/:reservation_id/check', to: 'reservatio
 post '/projects/:project_id/reservations/:reservation_id/pass', to: 'reservation#pass'
 
 get '/projects/:project_id/reservations/count', to: 'reservation#count'
+
+get '/.well-known/acme-challenge/*', to: 'index#ssl_verfy'
