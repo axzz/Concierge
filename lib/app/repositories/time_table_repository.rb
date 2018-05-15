@@ -32,7 +32,7 @@ class TimeTableRepository < Hanami::Repository
                   .where { time.in(*times) }
 
     time_table.each do |time_line|
-      next if time_line.remain == nil
+      next if time_line.remain.nil?
       return false if time_line.remain < 1
       update(time_line.id, remain: time_line.remain - 1)
     end

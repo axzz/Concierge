@@ -10,6 +10,7 @@ class ReservationRepository < Hanami::Repository
     project = ProjectRepository.new.find(project_id)
     return false unless project.reservation_per_user
     count = reservations
+              .where{ state.in('success', 'wait') }
               .where(creator_id: user_id)
               .where(project_id: project_id)
               .count

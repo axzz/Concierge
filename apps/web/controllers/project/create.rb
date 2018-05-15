@@ -20,17 +20,17 @@ module Web::Controllers::Project
 
     handle_exception RuntimeError => 400,
                      ArgumentError => 422,
-                     JSON::ParserError => 422
+                     JSON::ParserError => 403
 
     before :validate_params
 
     def call(params)
       project = create_project(params)
       TimeTableUtils.make_time_table(project.id, project.min_time.to_date)
-      halt 201, ''
+      halt 201
     end
 
-    private 
+    private
 
     def validate_params(params)
       halt 422 unless params.valid?
@@ -59,7 +59,8 @@ module Web::Controllers::Project
         multi_time:         params[:multi_time],
         reservation_per_user: params[:reservation_per_user],
         date_display:       params[:date_display],
-        ahead_time:         JSON.parse(params[:ahead_time])
+        ahead_time:         JSON.parse(params[:ahead_time]),
+        wxcode:             WxcodeUtils.make_share_project_wxcode(project.id)
       )
       ProjectRepository.new.create(project)
     end

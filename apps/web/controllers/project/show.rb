@@ -4,7 +4,7 @@ module Web::Controllers::Project
   class Show
     include Web::Action
     include FindProject
-    
+
     expose :project
 
     params do

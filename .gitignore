@@ -1,5 +1,6 @@
 /public/assets*
 /tmp
 public/uploads/*
-log/development.log
+log/*
 lib/tools/global.rb
+public/wxcode/*

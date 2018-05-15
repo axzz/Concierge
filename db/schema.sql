@@ -120,7 +120,8 @@ CREATE TABLE public.projects (
     multi_time boolean,
     reservation_per_user integer,
     date_display integer,
-    ahead_time jsonb
+    ahead_time jsonb,
+    wxcode text
 );
 
 
@@ -442,6 +443,7 @@ COPY public.schema_migrations (filename) FROM stdin;
 20180427040359_change_name.rb
 20180509015501_update_project.rb
 20180510032421_update_reservation.rb
+20180515025520_add_wxcode_path.rb
 \.
 
 

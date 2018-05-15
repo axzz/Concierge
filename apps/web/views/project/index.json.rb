@@ -19,6 +19,7 @@ module Web::Views::Project
             name: project[:name],
             image: project[:image_url],
             state: project[:state],
+            wxcode: project[:wxcode]
           }
         end
       end

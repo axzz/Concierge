@@ -16,7 +16,6 @@ module Miniprogram::Controllers::Reservation
 
     def call(params)
       halt 422 unless verify_sms(params)
-      puts 111111111111111111111
       halt 403 if @user.achieve_limit?(params[:project_id])
       state = @project.check_mode == 'auto' ? 'success' : 'wait'
       date = Date.parse(params[:date])
@@ -39,19 +38,17 @@ module Miniprogram::Controllers::Reservation
 
     def validate_params(params)
       halt 422 unless params.valid?
-      puts 111111111111111111111
       halt 403 unless Tools.prevent_repeat_submit(id: @user.id.to_s,
                                                   method: 'create_reservation')
       @project = ProjectRepository.new.find(params[:project_id])
       halt 404 unless @project
-      halt 403,'Project is closed' unless @project.state == 'open'
-      
+      halt 403, 'Project is closed' unless @project.state == 'open'
+
       begin
         times = params[:time]
-        times.each {|time| TimePeriod.new(time)}
+        times.each { |time| TimePeriod.new(time) }
       rescue ArgumentError
-        puts 22222222222222222222222
-        halt 422,'Unsupport time format'
+        halt 422, 'Unsupport time format'
       end
     end
     
@@ -67,7 +64,7 @@ module Miniprogram::Controllers::Reservation
     end
 
     def no_need_sms
-      Redis.new.set("need_sms.#{@user.id}","#{params[:tel]}",ex: 3600)
+      Redis.new.set("need_sms.#{@user.id}", params[:tel].to_s, ex: 3600)
     end
 
     def make_reservation(params, state, date, time)
