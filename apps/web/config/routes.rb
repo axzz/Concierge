@@ -31,3 +31,5 @@ post '/projects/:project_id/reservations/:reservation_id/pass', to: 'reservation
 get '/projects/:project_id/reservations/count', to: 'reservation#count'
 
 get '/.well-known/acme-challenge/*', to: 'index#ssl_verfy'
+
+get '/', to: 'index#index'
