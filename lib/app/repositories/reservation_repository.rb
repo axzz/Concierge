@@ -10,13 +10,12 @@ class ReservationRepository < Hanami::Repository
     project = ProjectRepository.new.find(project_id)
     return false unless project.reservation_per_user
     count = reservations
-              .where{ state.in('success', 'wait') }
-              .where(creator_id: user_id)
-              .where(project_id: project_id)
-              .count
+            .where { state.in('success', 'wait') }
+            .where(creator_id: user_id)
+            .where(project_id: project_id)
+            .count
     count >= project.reservation_per_user
   end
-
 
   def basic_user_reservations(user_id, page)
     reservations
@@ -31,20 +30,20 @@ class ReservationRepository < Hanami::Repository
       .where { state.in('success', 'wait') }
   end
 
-  def finished_user_reservations(user_id, page)
-    basic_user_reservations(user_id, page)
-      .where { state.in('overtime', 'checked') }
-  end
+  # def finished_user_reservations(user_id, page)
+  #   basic_user_reservations(user_id, page)
+  #     .where { state.in('overtime', 'checked') }
+  # end
 
-  def cancelled_user_reservations(user_id, page)
-    basic_user_reservations(user_id, page)
-      .where(state: 'cancelled')
-  end
+  # def cancelled_user_reservations(user_id, page)
+  #   basic_user_reservations(user_id, page)
+  #     .where(state: 'cancelled')
+  # end
 
-  def refused_user_reservations(user_id, page)
-    basic_user_reservations(user_id, page)
-      .where(state: 'refused')
-  end
+  # def refused_user_reservations(user_id, page)
+  #   basic_user_reservations(user_id, page)
+  #     .where(state: 'refused')
+  # end
 
   def search(data, user_id, page)
     offset_num = (page - 1) * NUM_PER_PAGE_MINI
@@ -100,7 +99,7 @@ class ReservationRepository < Hanami::Repository
     }
   end
 
-  def refresh_reservations()
+  def refresh_reservations
     tmp = reservations.where { state.in('success', 'wait')}
                       .where { date < Date.today }
     overtime(tmp)
@@ -132,5 +131,15 @@ class ReservationRepository < Hanami::Repository
                                      .add_remain(reservation.date, reservation.time) 
                   update(reservation.reservation_id, state: 'cancelled', remark: '管理员暂停了预约项目')
                 end
+  end
+
+  def one_hour_notice
+    tmp = reservations.where(date: Date.today, state: 'success').to_a
+    tmp.each do |reservation|
+      period = TimePeriod.new(reservation.time)
+      if period.start.to_time == Time.now + 3600
+        one_hour_notice_sms(reservation)
+      end
+    end
   end
 end

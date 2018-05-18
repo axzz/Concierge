@@ -21,3 +21,11 @@ task spec: :test
 task refresh_reservations: :environment do
   ReservationRepository.new.refresh_reservations
 end
+
+task everyday_send_to_manager: :environment do
+
+end
+
+task one_hour_notice: :environment do
+  ReservationRepository.new.one_hour_notice
+end

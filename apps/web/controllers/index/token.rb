@@ -7,6 +7,8 @@ module Web::Controllers::Index
       required(:code).filled(:str?)
     end
 
+    handle_exception ArgumentError => 422
+    
     def call(params)
       halt 422, { error: 'Invalid params' }.to_json unless params.valid?
       user = UserRepository.new.find_by_tel(params[:tel])
@@ -17,7 +19,7 @@ module Web::Controllers::Index
 
       new_token = Tools.make_jwt(user.id)
       headers['Authorization'] = new_token
-      self.body = ''
+      self.body = { name: user.name }.to_json
     end
 
     private

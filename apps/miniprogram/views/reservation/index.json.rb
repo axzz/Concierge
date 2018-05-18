@@ -13,9 +13,8 @@ module Miniprogram::Views::Reservation
 
       def transformed_reservations
         project_repository = ProjectRepository.new
-        reservation_ids = reservations.map { |item| item.reservation_id }
-        projects = project_repository.get_projects_from_reservations(*reservation_ids)
-  
+        ids = reservations.map &:reservation_id
+        projects = project_repository.get_projects_from_reservations(*ids)
         i = 0
         reservations.map do |reservation|
           project = projects[i]
@@ -34,6 +33,7 @@ module Miniprogram::Views::Reservation
             time:         reservation.time,
             name:         reservation.name,
             tel:          reservation.tel,
+            update_time:  reservation.updated_at,
             remark:       reservation.remark
           }
         end

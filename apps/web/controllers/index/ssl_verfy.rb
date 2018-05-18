@@ -3,7 +3,6 @@ module Web::Controllers::Index
     include Web::Action
 
     def call
-      puts request.path_info
       path = './public/.well-known/acme-challenge' + request.path_info
       file = ::File.open(path, 'r')
       line = file.gets

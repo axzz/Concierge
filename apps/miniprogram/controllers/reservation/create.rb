@@ -13,6 +13,7 @@ module Miniprogram::Controllers::Reservation
     end
 
     before :validate_params
+    handle_exception ArgumentError => 422
 
     def call(params)
       halt 422 unless verify_sms(params)
@@ -30,11 +31,27 @@ module Miniprogram::Controllers::Reservation
                                 tmp_tel: params[:tel],
                                 tmp_name: params[:name])
       no_need_sms
+
+      if @project.check_mode == 'auto'
+        send_msg_to_customer(reservation)
+      else
+        send_msg_to_manager(reservation)
+      end
       halt 201, { id: reservation.reservation_id }.to_json
     end
 
     private
 
+    def send_msg_to_manager(reservation)
+      manager = UserRepository.new.find(@project.creator_id)
+      tel = manager.tel
+      SmsService.new(tel).review_notice_sms(reservation)
+    end
+
+    def send_msg_to_customer(reservation)
+      tel = reservation.tel
+      SmsService.new(tel).success_notice_sms(reservation)
+    end
 
     def validate_params(params)
       halt 422 unless params.valid?
@@ -44,14 +61,10 @@ module Miniprogram::Controllers::Reservation
       halt 404 unless @project
       halt 403, 'Project is closed' unless @project.state == 'open'
 
-      begin
-        times = params[:time]
-        times.each { |time| TimePeriod.new(time) }
-      rescue ArgumentError
-        halt 422, 'Unsupport time format'
-      end
+      times = params[:time]
+      times.each { |time| TimePeriod.new(time) }
     end
-    
+
     def verify_sms(params)
       tel = Redis.new.get("need_sms.#{@user.id}")
       if tel && tel == params[:tel]

@@ -27,24 +27,26 @@ class TimeTableRepository < Hanami::Repository
   end
 
   def reduce_remain(date, times)
-    time_table = time_tables
-                  .where(project_id: @project_id, date: date)
-                  .where { time.in(*times) }
+    time_table = time_tables.where(project_id: @project_id, date: date)
+                            .where { time.in(*times) }
 
     time_table.each do |time_line|
       next if time_line.remain.nil?
       return false if time_line.remain < 1
+    end
+
+    time_table.each do |time_line|
+      next if time_line.remain.nil?
       update(time_line.id, remain: time_line.remain - 1)
     end
-    true
   end
 
-  def add_remain(date,times)
+  def add_remain(date, times)
     time_table = time_tables
-                  .where(project_id: @project_id, date: date)
-                  .where { time.in(*times) }
+                 .where(project_id: @project_id, date: date)
+                 .where { time.in(*times) }
     time_table.each do |time_line|
-      next if time_line.remain == nil
+      next if time_line.remain.nil?
       update(time_line.id, remain: time_line.remain + 1)
     end
   end

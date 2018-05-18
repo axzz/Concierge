@@ -1,6 +1,7 @@
 module MiniprogramAdmin::Controllers::Index
   class SignUp
     include MiniprogramAdmin::Action
+    handle_exception ArgumentError => 422
 
     params do
       required(:name).filled(:str?)

@@ -23,12 +23,9 @@ module Miniprogram::Controllers::Reservation
         repository.search(params[:search], @user.id, page)
       elsif params[:type] == 'current' # on dealing
         repository.current_user_reservations(@user.id, page)
-      elsif params[:type] == 'finished' # history
-        repository.finished_user_reservations(@user.id, page)
-      elsif params[:type] == 'cancelled'
-        repository.cancelled_user_reservations(@user.id, page)
-      elsif params[:type] == 'refused'
-        repository.refused_user_reservations(@user.id, page)
+      elsif params[:type] # history
+        repository.basic_user_reservations(@user.id, page)
+                  .where(state: params[:type])
       else
         repository.basic_user_reservations(@user.id, page)
       end

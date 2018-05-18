@@ -26,7 +26,7 @@ class WxcodeUtils
 
   private
 
-  def require_wxcode(project_id)
+  def self.require_wxcode(project_id)
     uri = URI(WXCODE_URI + access_token)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -35,7 +35,7 @@ class WxcodeUtils
     http.request(req).body
   end
 
-  def save_wxcode(project_id, wxcode)
+  def self.save_wxcode(project_id, wxcode)
     path = "public/wxcode/wxcode_#{project_id}.png"
     file = File.new(path, 'a')
     file.binmode

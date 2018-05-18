@@ -8,14 +8,12 @@ module Miniprogram::Controllers::Index
       required(:code).filled(:str?)
     end
 
+    handle_exception JSON::ParserError => 400
+
     def call(params)
       halt 422 unless params.valid?
-      html_response = Net::HTTP.get(get_uri(params[:code]))
-      begin
-        openid = JSON.parse(html_response)['openid']
-      rescue JSON::ParserError
-        halt 400, 'Invaild code'
-      end
+      html_response = Net::HTTP.get(login_uri(params[:code]))
+      openid = JSON.parse(html_response)['openid']
       user = find_or_create_user(openid)
       token = Tools.make_miniprogram_jwt(user.id)
       self.body = { token: token, role: user.role }.to_json
@@ -23,14 +21,12 @@ module Miniprogram::Controllers::Index
 
     private
 
-    def get_uri(code)
-      str = 'https://api.weixin.qq.com/sns/jscode2session?' \
-      "appid=#{APP_ID}&"   \
-      "secret=#{APP_SECRET}&" \
-      "js_code=#{code}&"  \
-      'grant_type=authorization_code'
-
-      URI(str)
+    def login_uri(code)
+      URI('https://api.weixin.qq.com/sns/jscode2session?' \
+          "appid=#{APP_ID}&"      \
+          "secret=#{APP_SECRET}&" \
+          "js_code=#{code}&"      \
+          'grant_type=authorization_code')
     end
 
     def find_or_create_user(openid)

@@ -1,8 +1,8 @@
 module Web::Controllers::Index
+  # redirect '/' to '/index.html'
   class Index
     include Web::Action
-
-    def call(params)
+    def call(_params)
       self.format = :html
       redirect_to '/index.html'
     end

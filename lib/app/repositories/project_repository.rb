@@ -2,7 +2,7 @@ class ProjectRepository < Hanami::Repository
   NUM_PER_PAGE = 16
   NUM_PER_PAGE_MINI = 4
 
-  def get_projects_for_manager(id, page)
+  def get_projects_for_manager(id, _page)
     # if page == 1 # 15 items in first page
     #   projects.read(
     #     'SELECT * FROM projects '\
@@ -22,12 +22,12 @@ class ProjectRepository < Hanami::Repository
     #   )
     # end
 
-      projects.read(
-        'SELECT * FROM projects '\
-        "WHERE creator_id = #{id.to_i} "\
-        "AND state IN ('open','pause')"\
-        'ORDER BY state ,id DESC ' \
-      )
+    projects.read(
+      'SELECT * FROM projects '\
+      "WHERE creator_id = #{id.to_i} "\
+      "AND state IN ('open','pause')"\
+      'ORDER BY state ,id DESC ' \
+    )
   end
 
   def get_projects_for_manager_miniprogram(id, page)

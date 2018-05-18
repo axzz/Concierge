@@ -1,6 +1,7 @@
 module MiniprogramAdmin::Controllers::Index
   class Sms
     include MiniprogramAdmin::Action
+    handle_exception ArgumentError => 422
 
     def call(params)
       tel = params[:tel]

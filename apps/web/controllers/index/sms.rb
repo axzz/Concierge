@@ -3,6 +3,8 @@ module Web::Controllers::Index
   class Sms
     include Web::Action
 
+    handle_exception ArgumentError => 422
+
     def call(params)
       tel = params[:tel]
 

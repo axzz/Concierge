@@ -2,6 +2,7 @@ module Miniprogram::Controllers::Index
   # Get sms when make reservation
   class Sms
     include Miniprogram::Action
+    handle_exception ArgumentError => 422
 
     def call(params)
       tel = params[:tel]

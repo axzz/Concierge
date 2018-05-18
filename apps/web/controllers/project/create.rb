@@ -26,6 +26,7 @@ module Web::Controllers::Project
 
     def call(params)
       project = create_project(params)
+      make_wxcode(project.id)
       TimeTableUtils.make_time_table(project.id, project.min_time.to_date)
       halt 201
     end
@@ -60,10 +61,13 @@ module Web::Controllers::Project
         reservation_per_user: params[:reservation_per_user],
         date_display:       params[:date_display],
         ahead_time:         JSON.parse(params[:ahead_time]),
-        wxcode:             WxcodeUtils.make_share_project_wxcode(project.id)
       )
       ProjectRepository.new.create(project)
     end
 
+    def make_wxcode(project_id)
+      wxcode = WxcodeUtils.make_share_project_wxcode(project_id)
+      ProjectRepository.new.update(project_id, wxcode: wxcode)
+    end
   end
 end
