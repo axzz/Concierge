@@ -42,7 +42,7 @@ class SmsService
     manager = UserRepository.new.find(project.creator_id)
     msg = {
       manager_name: manager.name,
-      customer_name: customer.name,
+      customer_name: reservation.name,
       tel: reservation.tel,
       address: project.name,
       date:    reservation.date,
@@ -57,7 +57,7 @@ class SmsService
     project = ProjectRepository.new.find(reservation.project_id)
     customer = UserRepository.new.find(reservation.creator_id)
     msg = {
-      customer_name: customer.name,
+      customer_name: reservation.name,
       address: project.name,
       date: reservation.date,
       time: reservation.time.first,
@@ -72,7 +72,7 @@ class SmsService
     project = ProjectRepository.new.find(reservation.project_id)
     customer = UserRepository.new.find(reservation.creator_id)
     msg = {
-      customer_name: customer.name,
+      customer_name: reservation.name,
       address: project.name,
       date: reservation.date,
       time: reservation.time.first
@@ -87,7 +87,7 @@ class SmsService
     project = ProjectRepository.new.find(reservation.project_id)
     customer = UserRepository.new.find(reservation.creator_id)
     msg = {
-      customer_name: customer.name,
+      customer_name: reservation.name,
       address: project.name,
       date: reservation.date,
       time1: reservation.time.first
@@ -102,7 +102,7 @@ class SmsService
     project = ProjectRepository.new.find(reservation.project_id)
     customer = UserRepository.new.find(reservation.creator_id)
     msg = {
-      customer_name: customer.name,
+      customer_name: reservation.name,
       address: project.name,
       date: reservation.date,
       time: reservation.time.first,

@@ -5,7 +5,7 @@ module Web::Controllers::Reservation
     include FindReservation
 
     def call(params)
-      sleep 10
+
       halt 400 unless @reservation.state == 'wait'
       ReservationRepository.new.update(@reservation.reservation_id,
                                        state: 'success')
