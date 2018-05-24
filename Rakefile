@@ -23,7 +23,7 @@ task refresh_reservations: :environment do
 end
 
 task everyday_send_to_manager: :environment do
-
+  ProjectRepository.new.everyday_send_to_manager
 end
 
 task one_hour_notice: :environment do

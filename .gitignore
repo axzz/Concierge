@@ -4,3 +4,5 @@ public/uploads/*
 log/*
 lib/tools/global.rb
 public/wxcode/*
+.env.development
+log/development.log

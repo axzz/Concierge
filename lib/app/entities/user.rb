@@ -1,6 +1,6 @@
 class User < Hanami::Entity
-  def projects(page: 1)
-    ProjectRepository.new.get_projects_for_manager(id, page)
+  def projects(page: 1, size: 12)
+    ProjectRepository.new.get_projects_for_manager(id, page, size)
   end
 
   def projects_miniprogram(page: 1)

@@ -16,6 +16,8 @@ module Web::Controllers::Project
       optional(:reservation_per_user).maybe(:int?)
       optional(:date_display).maybe(:int?)
       optional(:ahead_time).maybe
+      optional(:group).maybe
+      optional(:authority).maybe
     end
 
     handle_exception RuntimeError => 400,
@@ -60,6 +62,7 @@ module Web::Controllers::Project
         multi_time:         params[:multi_time],
         reservation_per_user: params[:reservation_per_user],
         date_display:       params[:date_display],
+        authority:          params[:authority],
         ahead_time:         JSON.parse(params[:ahead_time]),
       )
       ProjectRepository.new.create(project)

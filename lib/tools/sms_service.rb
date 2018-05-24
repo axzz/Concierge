@@ -29,16 +29,19 @@ class SmsService
 
   # 通知SMS
   # 管理员每日通知
-  def send_manager_everyday_notice_sms(user, project_num, reservation_num)
-    msg = {}.to_json
-    code = ''
-    Aliyun::Sms.send(@tel, EVERYDAY_NOTICE_CODE, msg.to_json, '') unless TEST
+  def send_manager_everyday_notice_sms(project, num)
+    manager = UserRepository.new.find(project.creator_id)
+    msg = { manager_name: manager.name,
+            date: Date.today.to_s,
+            address: project.name,
+            total: num.to_s,
+            time: "#{Time.now.hour}:#{Time.now.min}" }.to_json
+    Aliyun::Sms.send(@tel, EVERYDAY_NOTICE_CODE, msg, '') unless TEST
   end
 
   # 管理员收到待审核通知
   def review_notice_sms(reservation)
     project = ProjectRepository.new.find(reservation.project_id)
-    customer = UserRepository.new.find(reservation.creator_id)
     manager = UserRepository.new.find(project.creator_id)
     msg = {
       manager_name: manager.name,
@@ -48,14 +51,12 @@ class SmsService
       date:    reservation.date,
       time:    reservation.time.first
     }.to_json
-    res = Aliyun::Sms.send(@tel, REVIEW_NOTICE_CODE, msg, '') # unless TEST
-    puts res.body
+    Aliyun::Sms.send(@tel, REVIEW_NOTICE_CODE, msg, '')  unless TEST
   end
 
   # 管理员取消预约，用户收到短信
   def manager_cancel_sms(reservation)
     project = ProjectRepository.new.find(reservation.project_id)
-    customer = UserRepository.new.find(reservation.creator_id)
     msg = {
       customer_name: reservation.name,
       address: project.name,
@@ -63,53 +64,43 @@ class SmsService
       time: reservation.time.first,
       reason: reservation.remark
     }.to_json
-    res = Aliyun::Sms.send(@tel, MANAGER_CANCEL_CODE, msg, '') # unless TEST
-    puts res.body
+    Aliyun::Sms.send(@tel, MANAGER_CANCEL_CODE, msg, '') unless TEST
   end
 
   # 用户取消预约，用户收到短信
   def customer_cancel_sms(reservation) 
     project = ProjectRepository.new.find(reservation.project_id)
-    customer = UserRepository.new.find(reservation.creator_id)
     msg = {
       customer_name: reservation.name,
       address: project.name,
       date: reservation.date,
       time: reservation.time.first
     }.to_json
-    code = 'SMS_135041424'
-    res = Aliyun::Sms.send(@tel, CUSTOMER_CANCEL_CODE, msg, '') # unless TEST
-    puts res.body
+    Aliyun::Sms.send(@tel, CUSTOMER_CANCEL_CODE, msg, '')  unless TEST
   end
 
   # 审核通过
   def success_notice_sms(reservation)
     project = ProjectRepository.new.find(reservation.project_id)
-    customer = UserRepository.new.find(reservation.creator_id)
     msg = {
       customer_name: reservation.name,
       address: project.name,
       date: reservation.date,
       time1: reservation.time.first
     }.to_json
-    code = 'SMS_135026550'
-    res = Aliyun::Sms.send(@tel, SUCCESS_NOTICE_CODE, msg, '')#  unless TEST
-    puts res.body
+    Aliyun::Sms.send(@tel, SUCCESS_NOTICE_CODE, msg, '') unless TEST
   end
 
   # 提前1小时提醒短信
   def one_hour_notice_sms(reservation)
     project = ProjectRepository.new.find(reservation.project_id)
-    customer = UserRepository.new.find(reservation.creator_id)
     msg = {
       customer_name: reservation.name,
       address: project.name,
       date: reservation.date,
       time: reservation.time.first,
     }.to_json
-    code = 'SMS_135036370'
-    res = Aliyun::Sms.send(@tel, ONE_HOUR_NOTICE_CODE, msg, '') # unless TEST
-    puts res.body
+    Aliyun::Sms.send(@tel, ONE_HOUR_NOTICE_CODE, msg, '') unless TEST
   end
 
   private

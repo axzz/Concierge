@@ -260,8 +260,8 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
       controller.prepare do
-        include Web::Headermaker
         include Web::Authentication
+        include Web::Headermaker
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback
       end

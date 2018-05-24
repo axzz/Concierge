@@ -33,3 +33,10 @@ get '/projects/:project_id/reservations/count', to: 'reservation#count'
 get '/.well-known/acme-challenge/*', to: 'index#ssl_verfy'
 
 get '/', to: 'index#index'
+
+get '/all-projects', to: 'project#all'
+get '/groups', to: 'group#index'
+post '/groups', to: 'group#create'
+put '/groups/:id', to: 'group#update'
+delete '/groups/:id', to: 'group#destroy'
+get '/groups/:id', to: 'group#show'

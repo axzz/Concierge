@@ -22,6 +22,7 @@ module Web::Controllers::Project
       optional(:reservation_per_user).maybe(:int?)
       optional(:date_display).maybe(:int?)
       optional(:ahead_time).maybe
+      optional(:group).maybe
     end
 
     before :validate_params
@@ -41,6 +42,7 @@ module Web::Controllers::Project
         date_display:  params[:date_display],
         ahead_time:    JSON.parse(params[:ahead_time])
       )
+      # @project.add_group(params[:group])
       if @project.ahead_time != JSON.parse(params[:ahead_time])
         TimeTableUtils.make_time_table(@project.id, @project.min_time.to_date)
       end

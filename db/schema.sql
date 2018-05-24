@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.8
--- Dumped by pg_dump version 9.6.8
+-- Dumped from database version 9.6.9
+-- Dumped by pg_dump version 9.6.9
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -66,6 +66,72 @@ ALTER SEQUENCE public.day_tables_id_seq OWNED BY public.day_tables.id;
 
 
 --
+-- Name: group_projects; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.group_projects (
+    id integer NOT NULL,
+    group_id integer NOT NULL,
+    project_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: group_projects_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.group_projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: group_projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.group_projects_id_seq OWNED BY public.group_projects.id;
+
+
+--
+-- Name: groups; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.groups (
+    id integer NOT NULL,
+    creator_id integer NOT NULL,
+    name text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    total integer,
+    wx_code text
+);
+
+
+--
+-- Name: groups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.groups_id_seq OWNED BY public.groups.id;
+
+
+--
 -- Name: images; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -121,7 +187,8 @@ CREATE TABLE public.projects (
     reservation_per_user integer,
     date_display integer,
     ahead_time jsonb,
-    wxcode text
+    wxcode text,
+    authority text DEFAULT 'public'::text
 );
 
 
@@ -259,6 +326,20 @@ ALTER TABLE ONLY public.day_tables ALTER COLUMN id SET DEFAULT nextval('public.d
 
 
 --
+-- Name: group_projects id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.group_projects ALTER COLUMN id SET DEFAULT nextval('public.group_projects_id_seq'::regclass);
+
+
+--
+-- Name: groups id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.groups ALTER COLUMN id SET DEFAULT nextval('public.groups_id_seq'::regclass);
+
+
+--
 -- Name: images id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -299,6 +380,22 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 ALTER TABLE ONLY public.day_tables
     ADD CONSTRAINT day_tables_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: group_projects group_projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.group_projects
+    ADD CONSTRAINT group_projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: groups groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.groups
+    ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
 
 
 --
@@ -350,6 +447,30 @@ ALTER TABLE ONLY public.day_tables
 
 
 --
+-- Name: group_projects group_projects_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.group_projects
+    ADD CONSTRAINT group_projects_group_id_fkey FOREIGN KEY (group_id) REFERENCES public.groups(id) ON DELETE CASCADE;
+
+
+--
+-- Name: group_projects group_projects_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.group_projects
+    ADD CONSTRAINT group_projects_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.projects(id) ON DELETE CASCADE;
+
+
+--
+-- Name: groups groups_creator_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.groups
+    ADD CONSTRAINT groups_creator_id_fkey FOREIGN KEY (creator_id) REFERENCES public.users(id) ON DELETE CASCADE;
+
+
+--
 -- Name: projects projects_creator_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -389,8 +510,8 @@ ALTER TABLE ONLY public.time_tables
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.8
--- Dumped by pg_dump version 9.6.8
+-- Dumped from database version 9.6.9
+-- Dumped by pg_dump version 9.6.9
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -444,6 +565,12 @@ COPY public.schema_migrations (filename) FROM stdin;
 20180509015501_update_project.rb
 20180510032421_update_reservation.rb
 20180515025520_add_wxcode_path.rb
+20180521071223_create_groups.rb
+20180521072633_create_group_projects.rb
+20180523012755_group_total.rb
+20180523032122_add_private.rb
+20180523035552_change_default.rb
+20180524024620_group_code.rb
 \.
 
 

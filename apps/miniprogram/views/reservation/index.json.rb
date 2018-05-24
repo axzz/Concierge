@@ -14,7 +14,7 @@ module Miniprogram::Views::Reservation
       def transformed_reservations
         project_repository = ProjectRepository.new
         ids = reservations.map &:reservation_id
-        projects = project_repository.get_projects_from_reservations(*ids)
+        projects = project_repository.get_projects_from_reservations(ids)
         i = 0
         reservations.map do |reservation|
           project = projects[i]

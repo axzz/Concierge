@@ -38,6 +38,7 @@ V0.3
     "multi_time":true,
     "reservation_per_user":1,
     "date_display":7,
+    "group":[1,2,3],
     "ahead_time":{ day: 1, hour: 0, min: 0 }
 }
 ```
@@ -197,6 +198,7 @@ V0.3
     "latitude": "经度(float)",
     "longtitude":"纬度(float)",
     "time_state":"未经处理的时间表JSON(详见创建预约项目)",
+    "group":[1,2,3],
     "check_mode":"auto or manual",
 }
 ```

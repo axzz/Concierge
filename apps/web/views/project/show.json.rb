@@ -4,6 +4,8 @@ module Web::Views::Project
       format :json
 
       def render
+        groups = transform_groups(project.groups)
+        puts groups
         raw ({
           name:         project.name,
           description:  project.description || '',
@@ -17,8 +19,18 @@ module Web::Views::Project
           multi_time:   project.multi_time,
           reservation_per_user: project.reservation_per_user,
           date_display: project.date_display,
+          groups:       groups,
           ahead_time:   project.ahead_time
         }.to_json)
+      end
+
+      private
+
+      def transform_groups(groups)
+        puts groups
+        groups.map do |group|
+          { id: group.id, name: group.name }
+        end
       end
   end
 end

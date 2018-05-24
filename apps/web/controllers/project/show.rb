@@ -13,6 +13,7 @@ module Web::Controllers::Project
     end
 
     def call(params)
+      puts project.groups
       halt 422 unless params.valid?
     end
   end

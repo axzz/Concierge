@@ -136,9 +136,10 @@ class ReservationRepository < Hanami::Repository
   def one_hour_notice
     tmp = reservations.where(date: Date.today, state: 'success').to_a
     tmp.each do |reservation|
-      period = TimePeriod.new(reservation.time)
-      if period.start.to_time == Time.now + 3600
-        one_hour_notice_sms(reservation)
+      time = TimePeriod.new(reservation.time.first).start
+      if time.min == Time.now.min && time.hour == Time.now.hour + 1
+        user = UserRepository.new.find(reservation.creator_id)
+        SmsService.new(user.tel).one_hour_notice_sms(reservation)
       end
     end
   end

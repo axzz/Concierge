@@ -73,6 +73,7 @@
     **Content:** 
     ```JSON
     {
+        count: 2,
         "projects" : [{
             "id" : 1,
             "cover" : "url",
