@@ -13,6 +13,18 @@ class ProjectRepository < Hanami::Repository
     )
   end
 
+  def search_projects_for_manager(id, page, size, search)
+    projects.read(
+      'SELECT * FROM projects '\
+      "WHERE creator_id = #{id.to_i} "\
+      "AND NAME ILIKE '%#{search}%' OR ADDRESS ILIKE '%#{search}%'"\
+      "AND state IN ('open','pause')"\
+      'ORDER BY state ,id DESC ' \
+      "limit #{size} "\
+      "OFFSET #{size * page - size}"
+    )
+  end
+
   def get_projects_for_manager_miniprogram(id, page)
     projects.read(
       'SELECT * FROM projects '\

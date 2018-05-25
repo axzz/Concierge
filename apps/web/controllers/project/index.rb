@@ -9,13 +9,17 @@ module Web::Controllers::Project
       optional(:page).maybe
       optional(:group).maybe
       optional(:size).maybe
+      optional(:search).maybe(:str?)
     end
 
     def call(params)
       page = params[:page].to_i > 0 ? params[:page].to_i : 1
       size = params[:size].to_i > 0 ? params[:size].to_i : 12
 
-      if params[:group]
+      if !params[:search].blank?
+        @count = @user.search_projects(size: 10_000, search: params[:search]).count
+        @projects = @user.search_projects(page: page, size: size, search: params[:search])
+      elsif !params[:group].blank?
         group = GroupRepository.new.find(params[:group].to_i)
         halt 404 unless group
         halt 401 unless group.creator_id == @user.id
