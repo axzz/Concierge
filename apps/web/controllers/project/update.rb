@@ -22,6 +22,7 @@ module Web::Controllers::Project
       optional(:reservation_per_user).maybe(:int?)
       optional(:date_display).maybe(:int?)
       optional(:ahead_time).maybe
+      optional(:authority).maybe
       optional(:group).maybe
     end
 
@@ -40,6 +41,7 @@ module Web::Controllers::Project
         multi_time:    params[:multi_time],
         reservation_per_user: params[:reservation_per_user],
         date_display:  params[:date_display],
+        authority:     params[:authority],
         ahead_time:    JSON.parse(params[:ahead_time])
       )
       # @project.add_group(params[:group])

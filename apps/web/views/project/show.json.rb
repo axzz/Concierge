@@ -19,6 +19,7 @@ module Web::Views::Project
           multi_time:   project.multi_time,
           reservation_per_user: project.reservation_per_user,
           date_display: project.date_display,
+          authority:    project.authority,
           groups:       groups,
           ahead_time:   project.ahead_time
         }.to_json)

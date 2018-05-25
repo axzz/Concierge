@@ -2,7 +2,7 @@ class GroupProjectRepository < Hanami::Repository
   def find_projects_by_group(group_id, page, size)
     group_projects.where(group_id: group_id)
                   .limit(size)
-                  .offset(size*page - size)
+                  .offset(size * page - size)
   end
 
   def clear(group_id)

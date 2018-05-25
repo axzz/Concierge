@@ -22,6 +22,7 @@ post    '/image',        to: 'index#upload_image'
 
 get '/projects/:id/pause', to: 'project#pause'
 get '/projects/:id/open',  to: 'project#open'
+patch '/project/authority', to: 'project#authority'
 
 get  '/projects/:project_id/reservations', to: 'reservation#index'
 post '/projects/:project_id/reservations/:reservation_id/cancel', to: 'reservation#cancel'
@@ -38,5 +39,7 @@ get '/all-projects', to: 'project#all'
 get '/groups', to: 'group#index'
 post '/groups', to: 'group#create'
 put '/groups/:id', to: 'group#update'
+
 delete '/groups/:id', to: 'group#destroy'
 get '/groups/:id', to: 'group#show'
+

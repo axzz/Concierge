@@ -27,7 +27,8 @@ module Miniprogram::Controllers::Project
         project_repository.search(params[:search], page)
       elsif params[:group]
         group = GroupRepository.new.find(params[:group].to_i)
-        group.projects(page: page, size: 6)
+        halt 404 unless group
+        group.projects(page,6)
       elsif !params[:distance].blank?
         project_repository.get_projects_in_distance(params[:distance],
                                                     params[:latitude],

@@ -12,7 +12,7 @@ module Web
 
     def make_header
       headers['Access-Control-Expose-Headers'] = 'Authorization'
-      headers['Access-Control-Allow-Methods'] = 'POST, GET, HEAD, OPTIONS, PUT, DELETE'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, HEAD, OPTIONS, PUT, PATCH, DELETE'
       headers['Access-Control-Allow-Origin'] = '*' # for TEST
       headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header, Authorization'
       headers['Access-Control-Max-Age'] = '1728000'
