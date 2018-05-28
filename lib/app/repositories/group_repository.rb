@@ -20,6 +20,6 @@ class GroupRepository < Hanami::Repository
     ids.each { |id| str << (',' + id.to_s) }
     groups.read(
       "UPDATE groups SET total = total + 1 WHERE id IN (#{str})"
-      ).to_a
+    ).to_a
   end
 end

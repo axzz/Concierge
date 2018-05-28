@@ -5,11 +5,12 @@ module Web::Controllers::Reservation
     include Web::Action
     include FindReservation
 
-    def call(params)      
+    def call(_params)
       halt 400 unless @reservation.state == 'success'
-      ReservationRepository.new.update(@reservation.reservation_id, state: 'checked')
+      ReservationRepository.new.update(@reservation.reservation_id,
+                                       state: 'checked')
       send_msg_to_customer(@reservation)
-      halt 201,''
+      halt 201
     end
 
     def send_msg_to_customer(reservation)

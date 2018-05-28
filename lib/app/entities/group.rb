@@ -1,6 +1,9 @@
 class Group < Hanami::Entity
   def projects(page = 1, size = 10_000)
-    relation = GroupProjectRepository.new.find_projects_by_group(id, page, size).to_a
+    relation = GroupProjectRepository
+               .new
+               .find_projects_by_group(id, page, size)
+               .to_a
     ids = relation.map &:project_id
     ProjectRepository.new.find_projects(ids)
   end

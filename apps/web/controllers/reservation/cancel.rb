@@ -22,7 +22,7 @@ module Web::Controllers::Reservation
 
     def add_remain
       TimeTableRepository.new(@project.id)
-                         .add_remain(@reservation.date, @reservation.time) 
+                         .add_remain(@reservation.date, @reservation.time)
     end
 
     def send_msg_to_customer(reservation)

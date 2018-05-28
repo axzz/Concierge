@@ -12,8 +12,9 @@ module Miniprogram::Controllers::Index
 
     def call(params)
       halt 422 unless params.valid?
-      html_response = Net::HTTP.get(login_uri(params[:code]))
-      openid = JSON.parse(html_response)['openid']
+      response = Net::HTTP.get(login_uri(params[:code]))
+      openid = JSON.parse(response)['openid']
+      halt 422 unless openid
       user = find_or_create_user(openid)
       token = Tools.make_miniprogram_jwt(user.id)
       self.body = { token: token, role: user.role }.to_json

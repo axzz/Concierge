@@ -2,7 +2,6 @@ require 'net/http'
 require 'base64'
 require 'digest'
 
-
 class WxcodeUtils
   ACCESS_URI = URI("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=#{APP_ID}&secret=#{APP_SECRET}")
   WXCODE_URI = 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token='
@@ -10,7 +9,6 @@ class WxcodeUtils
   GROUP_PAGE = 'pages/group/group'
   REGIST_PAGE = 'pages/regist/regist'
 
-  
   def self.access_token
     token = Redis.new.get('access_token')
     unless token
@@ -28,7 +26,6 @@ class WxcodeUtils
     name = Digest::MD5.hexdigest("wxcode_#{project_id}")
     path = "/wxcode/#{name}.png"
     save_wxcode(path, wxcode)
-    path
   end
 
   def self.make_group_wxcode(group_id)
@@ -36,17 +33,13 @@ class WxcodeUtils
     name = Digest::MD5.hexdigest("group_#{group_id}")
     path = "/wxcode/#{name}.png"
     save_wxcode(path, wxcode)
-    path
   end
 
   def self.make_register_wxcode
     wxcode = require_wxcode('1', REGIST_PAGE)
     path = '/wxcode/regist.png'
     save_wxcode(path, wxcode)
-    path
   end
-
-  private
 
   def self.require_wxcode(data, page)
     uri = URI(WXCODE_URI + access_token)
@@ -58,10 +51,10 @@ class WxcodeUtils
   end
 
   def self.save_wxcode(path, wxcode)
-    path = "public" << path
-    file = File.new(path, 'a')
+    file = File.new('public' << path, 'a')
     file.binmode
     file.write(wxcode)
     file.close
+    path
   end
 end
