@@ -528,7 +528,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: kyon
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.schema_migrations (
@@ -536,10 +536,10 @@ CREATE TABLE public.schema_migrations (
 );
 
 
-ALTER TABLE public.schema_migrations OWNER TO kyon;
+ALTER TABLE public.schema_migrations OWNER TO postgres;
 
 --
--- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: kyon
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.schema_migrations (filename) FROM stdin;
@@ -575,7 +575,7 @@ COPY public.schema_migrations (filename) FROM stdin;
 
 
 --
--- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: kyon
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.schema_migrations
