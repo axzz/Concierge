@@ -6,3 +6,4 @@ lib/tools/global.rb
 public/wxcode/*
 .env.development
 log/development.log
+public/excels/*

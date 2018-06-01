@@ -43,3 +43,4 @@ put '/groups/:id', to: 'group#update'
 delete '/groups/:id', to: 'group#destroy'
 get '/groups/:id', to: 'group#show'
 
+get '/projects/:project_id/reservations/export', to: 'reservation#export'

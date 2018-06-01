@@ -152,6 +152,7 @@ GEM
       dry-types (~> 0.11.0)
       rom (~> 3.2, >= 3.2.2)
       sequel (~> 4.43)
+    rubyzip (1.2.1)
     sequel (4.49.0)
     shrine (2.9.0)
       down (~> 4.1)
@@ -166,8 +167,13 @@ GEM
       ethon (>= 0.9.0)
     url_mount (0.2.1)
       rack
+    write_xlsx (0.85.5)
+      rubyzip (>= 1.0.0)
+      zip-zip
     xpath (3.0.0)
       nokogiri (~> 1.8)
+    zip-zip (0.3)
+      rubyzip (>= 1.0.0)
 
 PLATFORMS
   ruby
@@ -189,6 +195,7 @@ DEPENDENCIES
   redis
   shrine
   sidekiq
+  write_xlsx
 
 BUNDLED WITH
    1.16.1

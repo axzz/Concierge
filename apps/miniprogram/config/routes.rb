@@ -14,3 +14,5 @@ post '/reservations',      to: 'reservation#create'
 
 post '/reservations/:id/cancel', to: 'reservation#cancel'
 get '/groups/:id', to: 'group#show'
+
+get '/reservations/:id', to: 'reservation#show'

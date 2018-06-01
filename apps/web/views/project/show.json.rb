@@ -5,7 +5,6 @@ module Web::Views::Project
 
       def render
         groups = transform_groups(project.groups)
-        puts groups
         raw ({
           name:         project.name,
           description:  project.description || '',
@@ -28,7 +27,6 @@ module Web::Views::Project
       private
 
       def transform_groups(groups)
-        puts groups
         groups.map do |group|
           { id: group.id, name: group.name }
         end

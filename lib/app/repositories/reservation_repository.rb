@@ -30,21 +30,6 @@ class ReservationRepository < Hanami::Repository
       .where { state.in('success', 'wait') }
   end
 
-  # def finished_user_reservations(user_id, page)
-  #   basic_user_reservations(user_id, page)
-  #     .where { state.in('overtime', 'checked') }
-  # end
-
-  # def cancelled_user_reservations(user_id, page)
-  #   basic_user_reservations(user_id, page)
-  #     .where(state: 'cancelled')
-  # end
-
-  # def refused_user_reservations(user_id, page)
-  #   basic_user_reservations(user_id, page)
-  #     .where(state: 'refused')
-  # end
-
   def search(data, user_id, page)
     offset_num = (page - 1) * NUM_PER_PAGE_MINI
     reservations.read(
@@ -61,12 +46,12 @@ class ReservationRepository < Hanami::Repository
     )
   end
 
-  NUM_PER_PAGE_MINI = 10
+  NUM_PER_PAGE_MINI = 20
 
-  def inquire(project_id, date_from, date_to, tel_num, state, page)
+  def inquire(project_id, date_from, date_to, tel_num, state, page, size = NUM_PER_PAGE_MINI)
     tmp = reservations.where(project_id: project_id)
-                      .limit(NUM_PER_PAGE_MINI)
-                      .offset((page - 1) * NUM_PER_PAGE_MINI)
+                      .limit(size)
+                      .offset((page - 1) * size)
                       .order { reservation_id.desc }
 
     tmp = tmp.where { date >= Date.parse(date_from) } unless date_from.blank?

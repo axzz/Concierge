@@ -1,5 +1,4 @@
 require 'net/http'
-require 'base64'
 require 'digest'
 
 class WxcodeUtils
