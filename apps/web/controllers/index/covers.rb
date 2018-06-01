@@ -12,7 +12,7 @@ module Web::Controllers::Index
       [
         '/static/images/img0.jpg',
         '/static/images/img1.jpg',
-        '/static/images/img2.png',
+        '/static/images/img2.jpg',
         '/static/images/img3.jpg',
         '/static/images/img4.jpg',
         '/static/images/img5.jpg',
