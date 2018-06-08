@@ -2,7 +2,7 @@ module Web::Controllers::Index
   class SslVerfy
     include Web::Action
 
-    def call
+    def call(params)
       puts request.path_info
       path = 'public/.well-known/acme-challenge' + request.path_info
       file = ::File.open(path, 'r')
